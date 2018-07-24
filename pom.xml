@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.tutorial</groupId>
+  <artifactId>tutorial_springboot_</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>tutorial_springboot</module>
+    <module>tutorial_rabbitmq</module>
+    <module>tutorial_kafka</module>
+    <module>tutorial_domain</module>
+    <module>tutorial_repository</module>
+    <module>tutorial_service</module>
+    <module>tutorial_elasticsearch</module>
+      <module>tutorial_solr</module>
+    <module>tutorial_canal</module>
+      <module>tutorial_redis</module>
+    <module>tutorial_mongo</module>
+    <module>tutorial_netty</module>
+    <module>tutorial_websocket</module>
+      <module>tutorial_utils</module>
+  </modules>
+
+  <name>tutorial_springboot_</name>
+  <url>http://www.example.com</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+
+  </dependencies>
+
+</project>

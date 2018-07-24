@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_canal" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_kafka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_mongo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_netty" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_rabbitmq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_repository" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_service" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_solr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_springboot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_websocket" charset="UTF-8" />
+  </component>
+</project>
