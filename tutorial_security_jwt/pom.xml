@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tutorial_utils</artifactId>
-    <packaging>jar</packaging>
-    <name>tutorial_utils</name>
+    <artifactId>tutorial_security_jwt</artifactId>
+
+    <name>tutorial_security_jwt</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -23,5 +23,4 @@
     <dependencies>
 
     </dependencies>
-
 </project>

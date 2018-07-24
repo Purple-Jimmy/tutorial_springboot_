@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tutorial_utils</artifactId>
-    <packaging>jar</packaging>
-    <name>tutorial_utils</name>
+    <artifactId>tutorial_quartz</artifactId>
+
+    <name>tutorial_quartz</name>
     <url>http://www.example.com</url>
 
     <properties>
@@ -21,7 +21,6 @@
     </properties>
 
     <dependencies>
-
     </dependencies>
 
 </project>

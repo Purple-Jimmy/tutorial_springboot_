@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head>
+    <title>home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+home 主页
+<h2>1. Visit <a th:href="@{/admin}">Admin page (Spring Security protected, Need Admin Role)</a></h2>
+<h2>2. Visit <a th:href="@{/user}">User page (Spring Security protected, Need User Role)</a></h2>
+<!--<h2>3. Visit <a th:href="@{/about}">Normal page</a></h2>-->
+<h1 th:inline="text">welcome, [[${#httpServletRequest.remoteUser}]]!</h1>
+<!--  登陆成功会显示名字 -->
+<!--<security:authorize access="isAuthenticated()">
+    <h3>登录成功！${username}</h3>
+</security:authorize>　-->
+
+<p>用户列表:<a th:href="@{/userPage}">这里</a></p>
+<p>书籍列表:<a th:href="@{/bookPage}">这里</a></p>
+</body>
+</html>

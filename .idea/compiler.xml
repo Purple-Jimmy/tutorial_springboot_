@@ -12,16 +12,20 @@
         <module name="tutorial_kafka" />
         <module name="tutorial_mongo" />
         <module name="tutorial_netty" />
+        <module name="tutorial_quartz" />
         <module name="tutorial_rabbitmq" />
         <module name="tutorial_redis" />
         <module name="tutorial_repository" />
+        <module name="tutorial_security_jwt" />
+        <module name="tutorial_security_oauth2" />
         <module name="tutorial_service" />
         <module name="tutorial_solr" />
         <module name="tutorial_springboot" />
+        <module name="tutorial_themeleaf" />
         <module name="tutorial_utils" />
         <module name="tutorial_websocket" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="7" />
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
