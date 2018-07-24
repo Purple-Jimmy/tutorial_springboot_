@@ -26,7 +26,6 @@
     <module>tutorial_quartz</module>
     <module>tutorial_themeleaf</module>
     <module>tutorial_security_jwt</module>
-    <module>tutorial_security_oauth2</module>
   </modules>
 
   <name>tutorial_springboot_</name>
@@ -91,19 +90,6 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
-      <!-- <optional>true</optional>-->
-    </dependency>
-    <!--测试-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-    </dependency>
-    <!--lombok -->
-    <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.18</version>
-      <scope>provided</scope>
     </dependency>
     <!--JPA-->
     <dependency>
@@ -125,6 +111,13 @@
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-envers</artifactId>
       <version>5.3.1.Final</version>
+    </dependency>
+    <!--lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.18</version>
+      <scope>provided</scope>
     </dependency>
     <!--org.apache.poi/poi -->
     <dependency>
@@ -162,82 +155,35 @@
       <artifactId>fastjson</artifactId>
       <version>1.2.47</version>
     </dependency>
-    <!--mongoDB-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-mongodb</artifactId>
-    </dependency>
-    <!--redis-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-redis</artifactId>
-    </dependency>
     <!--commons-pool2 -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-pool2</artifactId>
       <version>2.5.0</version>
     </dependency>
-    <!--elasticsearch -->
-    <dependency>
-      <groupId>org.elasticsearch</groupId>
-      <artifactId>elasticsearch</artifactId>
-      <!-- <version>6.1.1</version>-->
-      <version>6.3.0</version>
-    </dependency>
-    <dependency>
-      <groupId>io.searchbox</groupId>
-      <artifactId>jest</artifactId>
-      <version>5.3.3</version>
-    </dependency>
     <!--thymeleaf -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
-    <!--jjwt -->
-    <dependency>
-      <groupId>io.jsonwebtoken</groupId>
-      <artifactId>jjwt</artifactId>
-      <version>0.9.0</version>
-    </dependency>
-    <!--spring-boot-starter-security -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-security</artifactId>
-      <!--  <version>2.0.0.RELEASE</version>-->
-    </dependency>
-    <!--spring-security-oauth2 -->
-    <dependency>
-      <groupId>org.springframework.security.oauth</groupId>
-      <artifactId>spring-security-oauth2</artifactId>
-      <version>2.3.0.RELEASE</version>
-    </dependency>
     <!--thymeleaf-extras-springsecurity4 -->
-    <dependency>
+    <!--<dependency>
       <groupId>org.thymeleaf.extras</groupId>
       <artifactId>thymeleaf-extras-springsecurity4</artifactId>
       <version>3.0.2.RELEASE</version>
-    </dependency>
-    <!--quartz-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-quartz</artifactId>
-    </dependency>
+    </dependency>-->
     <!--pinyin4j -->
     <dependency>
       <groupId>com.belerweb</groupId>
       <artifactId>pinyin4j</artifactId>
       <version>2.5.1</version>
     </dependency>
-    <!--spring-boot-starter-data-solr -->
+
+    <!--测试-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-solr</artifactId>
-      <!-- <version>1.5.9.RELEASE</version>-->
-      <version>2.0.2.RELEASE</version>
+      <artifactId>spring-boot-starter-test</artifactId>
     </dependency>
-
     <!--性能测试依赖-->
     <!--  <dependency>
           <groupId>org.databene</groupId>

@@ -17,7 +17,6 @@
         <module name="tutorial_redis" />
         <module name="tutorial_repository" />
         <module name="tutorial_security_jwt" />
-        <module name="tutorial_security_oauth2" />
         <module name="tutorial_service" />
         <module name="tutorial_solr" />
         <module name="tutorial_springboot" />
@@ -26,6 +25,8 @@
         <module name="tutorial_websocket" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8" />
+    <bytecodeTargetLevel target="8">
+      <module name="tutorial_security_oauth2" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>
