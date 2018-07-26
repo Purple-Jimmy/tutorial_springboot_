@@ -24,8 +24,8 @@
     <module>tutorial_websocket</module>
     <module>tutorial_utils</module>
     <module>tutorial_quartz</module>
-    <module>tutorial_themeleaf</module>
     <module>tutorial_security_jwt</module>
+    <module>tutorial_themeleaf</module>
   </modules>
 
   <name>tutorial_springboot_</name>
