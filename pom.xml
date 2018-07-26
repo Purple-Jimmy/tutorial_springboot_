@@ -26,6 +26,7 @@
     <module>tutorial_quartz</module>
     <module>tutorial_security_jwt</module>
     <module>tutorial_themeleaf</module>
+    <module>tutorial_java8</module>
   </modules>
 
   <name>tutorial_springboot_</name>
