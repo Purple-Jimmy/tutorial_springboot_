@@ -17,7 +17,7 @@ import java.util.List;
  * @Date: 2018/7/25
  */
 @Repository
-public interface UserRepository  extends JpaRepository<User, Long>,JpaSpecificationExecutor<User> {
+public interface UserRepository extends JpaRepository<User, Long>,JpaSpecificationExecutor<User> {
 
     /**
      * 默认方法
