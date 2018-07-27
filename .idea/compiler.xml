@@ -9,6 +9,7 @@
         <module name="tutorial_canal" />
         <module name="tutorial_domain" />
         <module name="tutorial_elasticsearch" />
+        <module name="tutorial_java8" />
         <module name="tutorial_kafka" />
         <module name="tutorial_mongo" />
         <module name="tutorial_netty" />
@@ -25,8 +26,6 @@
         <module name="tutorial_websocket" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="tutorial_security_oauth2" target="1.7" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="8" />
   </component>
 </project>
