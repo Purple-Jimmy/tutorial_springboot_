@@ -1,0 +1,14 @@
+server:
+  port: 8081
+
+
+# thymeleaf
+spring:
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false #开发时关闭缓存,不然没法看到实时页面
+
+
