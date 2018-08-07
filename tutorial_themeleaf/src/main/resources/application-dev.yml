@@ -10,5 +10,7 @@ spring:
     servlet:
       content-type: text/html
     cache: false #开发时关闭缓存,不然没法看到实时页面
+    prefix: /templates
+    suffix: .html
 
 
