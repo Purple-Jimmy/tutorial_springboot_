@@ -26,7 +26,6 @@
     <module>tutorial_quartz</module>
     <module>tutorial_security_jwt</module>
     <module>tutorial_themeleaf</module>
-    <module>tutorial_java8</module>
       <module>tutorial_java</module>
   </modules>
 

@@ -166,5 +166,13 @@ public class GetStartDemo {
         OptionalDouble benzAvgPrice = carList.stream().filter(car -> car.getBrand().equals("benz")).mapToDouble(car->car.getPrice()).average();
         System.out.println("benzAvgPrice-"+benzAvgPrice);
 
+        //打印benz品牌的car
+        carList.forEach(car -> {if(car.getBrand().equals("benz")){
+            System.out.println(car.getId());
+        }});
+
+        //找出price>100的car
+        List<Car> over100Car = carList.stream().filter(car -> car.getPrice()>100L).collect(Collectors.toList());
+        System.out.println("over100Car-"+over100Car);
     }
 }
