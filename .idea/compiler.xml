@@ -9,6 +9,7 @@
         <module name="tutorial_canal" />
         <module name="tutorial_domain" />
         <module name="tutorial_elasticsearch" />
+        <module name="tutorial_java" />
         <module name="tutorial_java8" />
         <module name="tutorial_kafka" />
         <module name="tutorial_mongo" />

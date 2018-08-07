@@ -5,6 +5,7 @@
     <file url="file://$PROJECT_DIR$/tutorial_canal" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_domain" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_elasticsearch" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_java8" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_kafka" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_mongo" charset="UTF-8" />
@@ -17,7 +18,6 @@
     <file url="file://$PROJECT_DIR$/tutorial_service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_solr" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_springboot" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/tutorial_themeleaf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_themeleaf" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_utils" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_websocket" charset="UTF-8" />
