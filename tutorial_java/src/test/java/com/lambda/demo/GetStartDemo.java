@@ -1,14 +1,9 @@
 package com.lambda.demo;
 
 import com.java.domain.Car;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.junit.Test;
 
-import java.io.Console;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -20,7 +15,7 @@ public class GetStartDemo {
 
     @Test
     public void getStart_1(){
-
+        Car car = new Car();
     }
 
 

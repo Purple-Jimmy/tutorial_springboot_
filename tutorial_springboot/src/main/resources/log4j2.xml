@@ -18,13 +18,13 @@
 
 
         <!--append:false 这个log每次运行程序会自动清空-->
-        <File name="autoClearLogFile" fileName="F:/tutorial/logs/autoClearLog.log" append="false">
+        <File name="autoClearLogFile" fileName="./tutorial/logs/autoClearLog.log" append="false">
             <PatternLayout pattern="${PATTERN}"/>
         </File>
 
         <!--info日志-->
         <RollingFile name="springBootFile" fileName="F:/tutorial/logs/springBoot.log"
-                     filePattern="F:/tutorial/logs/springBoot_%d{yyyy-MM-dd}.log.gz">
+                     filePattern="./tutorial/logs/springBoot_%d{yyyy-MM-dd}.log.gz">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
@@ -36,7 +36,7 @@
 
         <!--error日志-->
         <RollingFile name="springBootErrorFile" fileName="F:/tutorial/logs/springBootError.log"
-                     filePattern="F:/tutorial/logs/springBootError_%d{yyyy-MM-dd}.log.gz">
+                     filePattern="./tutorial/logs/springBootError_%d{yyyy-MM-dd}.log.gz">
             <!--控制台只输出level及以上级别的信息（onMatch）,其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>

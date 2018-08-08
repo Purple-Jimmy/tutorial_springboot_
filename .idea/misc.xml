@@ -9,7 +9,6 @@
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/tutorial_java8/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_security_oauth2/pom.xml" />
       </set>
     </option>
