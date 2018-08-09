@@ -13,17 +13,24 @@ public class HelloWorld {
      * @param str
      */
     public static void excuteSay(CustomActionInterface action,String str){
-        action.sayHello(str);
+            action.sayHello(str);
     }
 
+    public static String excuteSaySuccess(CustomActionInterface action,String str){
+        action.sayHello(str);
+        return "success";
+    }
     public static void main(String[] args) {
-        excuteSay(new CustomActionInterface(){
+       /* excuteSay(new CustomActionInterface(){
             @Override
             public void sayHello(String str) {
                 System.out.println(str);
             }
-        },"Hello World");
+        },"Hello World");*/
 
         excuteSay(str -> System.out.println(str),"hello");
+
+        String result = excuteSaySuccess(str -> {},"haha");
+        System.out.println(result);
     }
 }
