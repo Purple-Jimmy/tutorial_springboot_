@@ -7,4 +7,4 @@
 *.iml
 out
 gen
-log4j.xml
+# log4j.xml

@@ -23,8 +23,8 @@
         </File>
 
         <!--info日志-->
-        <RollingFile name="springBootFile" fileName="/tutorial/logs/springBoot.log"
-                     filePattern="/tutorial/logs/springBoot_%d{yyyy-MM-dd}.log.gz">
+        <RollingFile name="springBootFile" fileName="/tutorial/logs/redis.log"
+                     filePattern="/tutorial/logs/redis_%d{yyyy-MM-dd}.log.gz">
             <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
@@ -35,8 +35,8 @@
         </RollingFile>
 
         <!--error日志-->
-        <RollingFile name="springBootErrorFile" fileName="/tutorial/logs/springBootError.log"
-                     filePattern="/tutorial/logs/springBootError_%d{yyyy-MM-dd}.log.gz">
+        <RollingFile name="springBootErrorFile" fileName="F:/tutorial/logs/redisError.log"
+                     filePattern="/tutorial/logs/redisError_%d{yyyy-MM-dd}.log.gz">
             <!--控制台只输出level及以上级别的信息（onMatch）,其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
