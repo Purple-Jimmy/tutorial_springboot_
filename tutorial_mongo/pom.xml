@@ -21,11 +21,6 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.tutorial</groupId>
-            <artifactId>tutorial_service</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <!--mongoDB-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

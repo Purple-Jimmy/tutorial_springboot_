@@ -12,9 +12,6 @@
     <module>tutorial_springboot</module>
     <module>tutorial_rabbitmq</module>
     <module>tutorial_kafka</module>
-    <module>tutorial_domain</module>
-    <module>tutorial_repository</module>
-    <module>tutorial_service</module>
     <module>tutorial_elasticsearch</module>
     <module>tutorial_solr</module>
     <module>tutorial_canal</module>
@@ -42,7 +39,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.0.3.RELEASE</version>
+    <version>2.0.4.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -92,27 +89,7 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-configuration-processor</artifactId>
     </dependency>
-    <!--JPA-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-jpa</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-    </dependency>
-    <!--数据库连接池-->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>druid-spring-boot-starter</artifactId>
-      <version>1.1.9</version>
-    </dependency>
-    <!--hibernate-envers 记录执行数据变更历史-->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-envers</artifactId>
-      <version>5.3.1.Final</version>
-    </dependency>
+
     <!--lombok -->
     <dependency>
       <groupId>org.projectlombok</groupId>

@@ -1,6 +1,5 @@
 package com.basic.demo;
 
-import com.alibaba.druid.sql.visitor.functions.Char;
 import org.junit.Test;
 
 /**

@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tutorial_canal" />
-        <module name="tutorial_domain" />
         <module name="tutorial_elasticsearch" />
         <module name="tutorial_java" />
         <module name="tutorial_kafka" />
@@ -16,9 +15,7 @@
         <module name="tutorial_quartz" />
         <module name="tutorial_rabbitmq" />
         <module name="tutorial_redis" />
-        <module name="tutorial_repository" />
         <module name="tutorial_security_jwt" />
-        <module name="tutorial_service" />
         <module name="tutorial_solr" />
         <module name="tutorial_springboot" />
         <module name="tutorial_themeleaf" />
@@ -27,7 +24,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
+      <module name="tutorial_domain" target="1.8" />
       <module name="tutorial_java8" target="1.8" />
+      <module name="tutorial_repository" target="1.8" />
+      <module name="tutorial_service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
