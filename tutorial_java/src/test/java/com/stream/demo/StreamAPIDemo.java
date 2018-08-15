@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 
 /**
  * @author jimmy
@@ -87,5 +88,17 @@ public class StreamAPIDemo {
     public void groupTest(){
         Map<String, Map<Long,List<Car>>> map = carList.stream().collect(Collectors.groupingBy(Car::getBrand,Collectors.groupingBy(Car::getPrice)));
         System.out.println(map);
+    }
+
+
+    /**
+     * 并行流
+     */
+    @Test
+    public void streamTest(){
+        LongStream.rangeClosed(1,100000L).sequential().reduce(0,Long::sum);//顺序流
+        LongStream.rangeClosed(1,100000L).parallel().reduce(0,Long::sum);//并行流
+
+
     }
 }
