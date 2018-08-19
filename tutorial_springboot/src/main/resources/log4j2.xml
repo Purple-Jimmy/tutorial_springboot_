@@ -9,7 +9,7 @@
         <property name="PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} |-%-5level [%thread] %c [%L] [ LOGID:%X{logId} ]-| %msg%n</property>
     </properties>
 
-    <!--定义日志输出位置（控制台、文件或其他）、内容结构（起始就是PatternLayout）、日志等级-->
+    <!--定义日志输出位置(控制台、文件或其他)、内容结构(起始就是PatternLayout)、日志等级-->
     <appenders>
         <!--定义输出到控制台-->
         <Console name="CONSOLE" target="system_out">
@@ -18,14 +18,14 @@
 
 
         <!--append:false 这个log每次运行程序会自动清空-->
-        <File name="autoClearLogFile" fileName="/tutorial/logs/autoClearLog.log" append="false">
+        <File name="autoClearLogFile" fileName="./logs/autoClearLog.log" append="false">
             <PatternLayout pattern="${PATTERN}"/>
         </File>
 
         <!--info日志-->
-        <RollingFile name="springBootFile" fileName="/tutorial/logs/springBoot.log"
-                     filePattern="/tutorial/logs/springBoot_%d{yyyy-MM-dd}.log.gz">
-            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+        <RollingFile name="springBootFile" fileName="./logs/springBoot.log"
+                     filePattern="./logs/springBoot_%d{yyyy-MM-dd}.log.gz">
+            <!--控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch)-->
             <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
             <Policies>
@@ -35,9 +35,9 @@
         </RollingFile>
 
         <!--error日志-->
-        <RollingFile name="springBootErrorFile" fileName="/tutorial/logs/springBootError.log"
+        <RollingFile name="springBootErrorFile" fileName="./logs/springBootError.log"
                      filePattern="/tutorial/logs/springBootError_%d{yyyy-MM-dd}.log.gz">
-            <!--控制台只输出level及以上级别的信息（onMatch）,其他的直接拒绝（onMismatch）-->
+            <!--控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch)-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
             <Policies>
