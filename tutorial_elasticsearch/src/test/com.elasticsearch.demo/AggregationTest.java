@@ -50,5 +50,28 @@ public class AggregationTest {
         for(TermsAggregation.Entry entry:list){
             System.out.println( entry.getKey()+"---"+ entry.getCount());
         }
+
+       /* SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+
+        QueryBuilder queryBuilder = QueryBuilders.boolQuery()
+                .must(QueryBuilders.wildcardQuery("title.keyword", "*刘德华*"));
+
+        searchSourceBuilder.query(queryBuilder).from(0).size(10);
+
+        AggregationBuilder aggregationBuilder = AggregationBuilders.terms("country_terms_aggs").field("actionType.keyword").size(Integer.MAX_VALUE);
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        String query1 = searchSourceBuilder.toString();
+        Search search = new Search.Builder(query1)
+                .addIndex(Constants.ITEM_CONTENT_INDEX)
+                .addType(Constants.ITEM_CONTENT_TYPE)
+                .build();
+
+        SearchResult result = jestClient.execute(search);
+
+        TermsAggregation agg = result.getAggregations().getTermsAggregation("country_terms_aggs");
+        List<TermsAggregation.Entry> list = agg.getBuckets();
+        for(TermsAggregation.Entry entry:list){
+            System.out.println( entry.getKey()+"---"+ entry.getCount());
+        }*/
     }
 }
