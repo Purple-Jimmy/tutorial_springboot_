@@ -24,6 +24,7 @@
     <module>tutorial_security_jwt</module>
     <module>tutorial_themeleaf</module>
     <module>tutorial_java</module>
+      <module>tutorial_batch</module>
   </modules>
 
   <name>tutorial_springboot_</name>
