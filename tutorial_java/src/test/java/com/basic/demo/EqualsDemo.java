@@ -92,4 +92,25 @@ public class EqualsDemo {
      * 用单引号''标识，只能放单个字符。
      * char+char，char+int——类型均提升为int，附值char变量后，输出字符编码表中对应的字符
      */
+
+    @Test
+    public void longTest(){
+        Long l1 = 10000L;
+        Long l2 = 10000L;
+        System.out.println(l1 == l2);//false
+        System.out.println(l1.equals(l2));//true
+
+        Integer i1 = 10000;
+        Integer i2 = 10000;
+
+        System.out.println(i1 == i2);//false
+        System.out.println(i1.equals(i2));//true
+
+        Integer i3 = 127;
+        Integer i4 = 127;
+
+        System.out.println(i3 == i4);//true
+        System.out.println(i3.equals(i4));//true
+
+    }
 }
