@@ -24,7 +24,7 @@
     <module>tutorial_security_jwt</module>
     <module>tutorial_themeleaf</module>
     <module>tutorial_java</module>
-      <module>tutorial_batch</module>
+    <module>tutorial_batch</module>
   </modules>
 
   <name>tutorial_springboot_</name>
@@ -119,7 +119,8 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <!--<version>23.0</version>-->
-      <version>17.0</version>
+      <!--<version>17.0</version>-->
+      <version>26.0-jre</version>
     </dependency>
     <!--gson -->
     <dependency>
