@@ -12,6 +12,18 @@
 5. 日志目录 /var/log/elasticsearch/
 
 
+# groupadd es
+# useradd es -g es -p es
+# chown es:es ${elasticsearch_HOME}/
+# sudo su es
+# ./bin/elasticsearch
+
+vim /usr/lib/systemd/system/elasticsearch.service
+MAX_LOCKED_MEMORY=unlimited
+
+sysctl -p
+
+
 > 安装kibana
 1. 上传rpm包到路径/usr/search
 2. 解压 rpm -ivh kibana-6.1.1-x86_64.rpm  安装路径在/usr/share/kibana
