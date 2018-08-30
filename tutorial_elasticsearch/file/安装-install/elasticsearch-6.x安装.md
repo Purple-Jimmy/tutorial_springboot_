@@ -83,7 +83,7 @@ network.host: 0.0.0.0
 #discovery.zen.ping.unicast.hosts: ["host1", "host2"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
-#
+# 一个节点需要看到的具有master节点资格的最小数量,然后才能在集群中做操作.默认1.
 #discovery.zen.minimum_master_nodes: 
 #
 # For more information, consult the zen discovery module documentation.
