@@ -9,10 +9,12 @@
         <module name="tutorial_batch" />
         <module name="tutorial_canal" />
         <module name="tutorial_elasticsearch" />
+        <module name="tutorial_guava" />
         <module name="tutorial_java" />
         <module name="tutorial_kafka" />
         <module name="tutorial_mongo" />
         <module name="tutorial_netty" />
+        <module name="tutorial_pattern" />
         <module name="tutorial_quartz" />
         <module name="tutorial_rabbitmq" />
         <module name="tutorial_redis" />

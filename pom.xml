@@ -25,6 +25,8 @@
     <module>tutorial_themeleaf</module>
     <module>tutorial_java</module>
     <module>tutorial_batch</module>
+    <module>tutorial_pattern</module>
+    <module>tutorial_guava</module>
   </modules>
 
   <name>tutorial_springboot_</name>
