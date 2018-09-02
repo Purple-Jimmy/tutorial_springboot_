@@ -79,7 +79,7 @@ network.host: 0.0.0.0
 #
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
-#
+# 指定一组通信主机,在集群中的所有主机上为该属性设置相同的值,使用集群节点的名称来定义主机列表
 #discovery.zen.ping.unicast.hosts: ["host1", "host2"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
@@ -99,7 +99,7 @@ network.host: 0.0.0.0
 # ---------------------------------- Various -----------------------------------
 #
 # Require explicit names when deleting indices:
-#
+# true 禁用delete _all api
 #action.destructive_requires_name
 http.cors.enabled: true   
 http.cors.allow-origin: "*"
