@@ -27,6 +27,7 @@
     <module>tutorial_batch</module>
     <module>tutorial_pattern</module>
     <module>tutorial_guava</module>
+      <module>tutorial_lombok</module>
   </modules>
 
   <name>tutorial_springboot_</name>

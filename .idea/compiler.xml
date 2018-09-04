@@ -12,6 +12,7 @@
         <module name="tutorial_guava" />
         <module name="tutorial_java" />
         <module name="tutorial_kafka" />
+        <module name="tutorial_lombok" />
         <module name="tutorial_mongo" />
         <module name="tutorial_netty" />
         <module name="tutorial_pattern" />
