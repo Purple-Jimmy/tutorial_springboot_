@@ -7,4 +7,4 @@
 ### mongo插件
 Mongo Plugin
 
-https://rapidgator.net/file/9eff3c3d96ffb29245a999ab6f17c1e1/ClMMX401.zip.html?referer=https://www.macbed.com/download/52263.html
+https://rapidgator.net/file/4b9d34efd69e89d8dd83765c21ad87bc/BetZ413.zip.html?referer=https://www.macbed.com/download/48452.html
