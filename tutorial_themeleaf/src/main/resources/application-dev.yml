@@ -13,4 +13,21 @@ spring:
     prefix: /templates
     suffix: .html
 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.50.116:3306/search?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: ysten123
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+        auto-commit: true
+        maximum-pool-size: 15
+        minimum-idle: 5
+        idle-timeout: 30000
+        pool-name: NDMS-BACKEND-POOL
+        max-lifetime: 1800000
+        connection-timeout: 30000
+        connection-test-query: SELECT 1
+
+
 
