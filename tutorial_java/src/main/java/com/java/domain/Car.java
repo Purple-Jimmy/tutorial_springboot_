@@ -1,11 +1,9 @@
 package com.java.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @Author: jimmy
@@ -15,7 +13,8 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Car implements Serializable {
+//@EqualsAndHashCode
+public class Car implements Serializable{
     private static final long serialVersionUID = 4403335633735558138L;
 
     private Long id;
@@ -29,4 +28,20 @@ public class Car implements Serializable {
      * 价格
      */
     private Long price;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return Objects.equals(id, car.id) &&
+                Objects.equals(brand, car.brand) &&
+                Objects.equals(price, car.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, brand, price);
+    }
 }
