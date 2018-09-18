@@ -12,7 +12,9 @@ public class EsTransportClient {
 
     /**
      * 获取客户端
-     *
+     *  private String url;
+     *  private String serverIp;
+     *  private int serverPort;
      * @return jestclient
      */
    /* public static synchronized TransportClient getClient(ElasticSearchCfg searchCfg) {
