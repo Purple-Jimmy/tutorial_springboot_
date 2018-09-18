@@ -13,6 +13,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @Builder
 public class Picture {
+
     @JestId
     private Integer id;
 

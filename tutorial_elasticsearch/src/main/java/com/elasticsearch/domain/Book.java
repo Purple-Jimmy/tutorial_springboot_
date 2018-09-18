@@ -17,6 +17,7 @@ import java.util.List;
 @Builder
 //@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book {
+
     @JestId
     private Long id;
 
@@ -34,7 +35,6 @@ public class Book {
      * 价格
      */
     private Float price;
-
 
     /**
      * 发布时间
