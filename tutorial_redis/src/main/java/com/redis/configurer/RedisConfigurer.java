@@ -18,6 +18,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @Date: 2018/8/13
  */
 //@Configuration
+//@AutoConfigureAfter(RedisAutoConfiguration.class)
 public class RedisConfigurer {
     private static final Logger logger = LoggerFactory.getLogger(RedisConfigurer.class);
 
