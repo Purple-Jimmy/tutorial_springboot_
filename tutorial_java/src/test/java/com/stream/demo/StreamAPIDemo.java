@@ -99,4 +99,24 @@ public class StreamAPIDemo {
         LongStream.rangeClosed(1,100000L).sequential().reduce(0,Long::sum);//顺序流
         LongStream.rangeClosed(1,100000L).parallel().reduce(0,Long::sum);//并行流
     }
+
+    /**
+     * 并行流
+     * 如果forEachOrdered()中间有其他如filter()的中介操作,会试着平行化处理,然后最终forEachOrdered()会以原数据顺序处理,
+     * 因此,使用forEachOrdered()这类的有序处理,可能会(或完全失去)失去平行化的一些优势,实际上中介操作亦有可能如此,例如sorted()方法
+     *
+     * lambda的执行并不是瞬间完成的,所有使用parallel streams的程序都有可能成为阻塞程序的源头,并且在执行过程中程序中的其他部分将无法访问这些workers,
+     * 这意味着任何依赖parallel streams的程序在什么别的东西占用着common ForkJoinPool时将会变得不可预知并且暗藏危机
+     *
+     */
+    @Test
+    public void parallelStreamTest(){
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        //展示顺序不一定会是1、2、3、4、5、6、7、8、9，而可能是任意的顺序
+        numbers.parallelStream().forEach(System.out::print);
+        System.out.println();
+        //希望最后顺序是按照原来Stream的数据顺序
+        numbers.parallelStream().forEachOrdered(System.out::print);
+
+    }
 }
