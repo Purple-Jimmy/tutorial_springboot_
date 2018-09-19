@@ -98,7 +98,5 @@ public class StreamAPIDemo {
     public void streamTest(){
         LongStream.rangeClosed(1,100000L).sequential().reduce(0,Long::sum);//顺序流
         LongStream.rangeClosed(1,100000L).parallel().reduce(0,Long::sum);//并行流
-
-
     }
 }
