@@ -21,11 +21,18 @@
     </properties>
 
     <dependencies>
-        <!--elasticsearch -->
+        <!--elasticsearch-cluster-runner-->
+       <!-- <dependency>
+            <groupId>org.codelibs</groupId>
+            <artifactId>elasticsearch-cluster-runner</artifactId>
+            <version>6.4.1.0</version>
+            <scope>test</scope>
+        </dependency>-->
+        <!--elasticsearch-->
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>6.2.4</version>
+            <version>6.4.1</version>
         </dependency>
         <!--jest方式-->
         <dependency>
@@ -33,6 +40,12 @@
             <artifactId>jest</artifactId>
            <!-- <version>5.3.3</version>-->
             <version>6.3.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
        <!--transport方式-->
         <dependency>

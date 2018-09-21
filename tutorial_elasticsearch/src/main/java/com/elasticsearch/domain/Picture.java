@@ -1,8 +1,9 @@
 package com.elasticsearch.domain;
 
-import io.searchbox.annotations.JestId;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 /**
@@ -12,9 +13,11 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Picture {
 
-    @JestId
+   // @JestId
     private Integer id;
 
     /**
