@@ -123,12 +123,54 @@ public class MappingDemo {
     }
 
     /**
-     * ignoreAbove 指定字段索引和存储的长度,超过指定长度的部分被忽略
+     * ignoreAbove 指定字段索引和存储的长度最大值,超过最大值的会被忽略
      * @throws IOException
      */
     @Test
     public void ignoreAboveDemo() throws IOException {
 
     }
+
+    /**
+     * ignore_malformed 忽略不规则数据.例如userId字段,有可能写整数,有可能写邮箱.
+     * 如果给一个字段索引不合适的数据类型就会发生异常,导致整个文档索引失败.
+     * ignore_malformed默认false.设置true,忽略抛出的异常,出异常的字段不被索引,其他字段索引正常
+     * @throws IOException
+     */
+    @Test
+    public void ignoreMalFormedDemo() throws IOException {
+
+    }
+
+    /**
+     * index_options 控制哪些信息添加到倒排索引,用于搜索和突出显示目的
+     * @throws IOException
+     */
+    @Test
+    public void indexOptionsDemo() throws IOException {
+
+    }
+
+    /**
+     * index 指定字段是否索引,不索引也就不可搜索
+     * true false
+     * @throws IOException
+     */
+    @Test
+    public void indexDemo() throws IOException {
+
+    }
+
+    /**
+     * fields 可以让同一文本有多种不同的索引方式,比如一个String类型的字段,
+     * 可以使用text类型做全文检索,使用keyword类型做聚合和排序
+     * true false
+     * @throws IOException
+     */
+    @Test
+    public void fieldsDemo() throws IOException {
+
+    }
+
 
 }

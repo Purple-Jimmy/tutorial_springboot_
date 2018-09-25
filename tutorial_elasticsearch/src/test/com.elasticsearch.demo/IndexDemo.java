@@ -52,7 +52,7 @@ public class IndexDemo {
     public void deleteIndex() throws IOException {
         // DeleteIndex index = new DeleteIndex.Builder("articles1").build();
         // jestClient.execute(index);
-        DeleteIndex.Builder index = new DeleteIndex.Builder("tutorial1");
+        DeleteIndex.Builder index = new DeleteIndex.Builder("tutorial_book");
         jestClient.execute(index.build());
     }
 
