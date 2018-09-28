@@ -23,10 +23,12 @@ public class RedisDemo {
 
     @Test
     public void prefixDemo(){
-       // stringRedisTemplate.opsForValue().set("test:1","1");
-       // stringRedisTemplate.opsForValue().set("test:2","2");
+     //   stringRedisTemplate.opsForValue().set("test:1","1");
+     //   stringRedisTemplate.opsForValue().set("test:2","5");
 
-        redisTemplate.opsForValue().set("h:1",21);
-        redisTemplate.opsForValue().set("h:2",22);
+       // redisTemplate.opsForValue().set("h:1",21);
+      //  redisTemplate.opsForValue().set("h:2",22);
+        System.out.println(stringRedisTemplate.opsForValue().get("test:1"));
+        System.out.println(stringRedisTemplate.keys("test:*"));
     }
 }
