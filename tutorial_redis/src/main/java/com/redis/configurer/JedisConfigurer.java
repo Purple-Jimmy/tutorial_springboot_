@@ -3,10 +3,8 @@ package com.redis.configurer;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -17,8 +15,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @Author: jimmy
  * @Date: 2018/8/13
  */
-@Configuration
-@Slf4j
+//@Configuration
+//@Slf4j
 public class JedisConfigurer {
     @Autowired
     RedisConnectionFactory redisConnectionFactory;
@@ -30,7 +28,7 @@ public class JedisConfigurer {
      */
     @Bean
     public StringRedisTemplate stringRedisTemplate() {
-        log.info("StringRedisTemplate 初始化...");
+       // log.info("StringRedisTemplate 初始化...");
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
@@ -45,7 +43,7 @@ public class JedisConfigurer {
      */
     @Bean
     public RedisTemplate<String,Object> redisTemplate(){
-        log.info("redisTemplate 初始化...");
+       // log.info("redisTemplate 初始化...");
         RedisTemplate<String,Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);
