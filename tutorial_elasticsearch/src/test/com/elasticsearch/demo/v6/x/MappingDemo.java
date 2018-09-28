@@ -30,7 +30,7 @@ public class MappingDemo {
      */
     @Test
     public void deleteIndex() throws IOException {
-        DeleteIndex.Builder index = new DeleteIndex.Builder("tutorial");
+        DeleteIndex.Builder index = new DeleteIndex.Builder("rabbitmq");
         JestResult jestResult = jestClient.execute(index.build());
         System.out.println(jestResult);
     }

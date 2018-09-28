@@ -32,7 +32,7 @@ public class IndexDemo {
      */
     @Test
     public void existIndex() throws IOException {
-        IndicesExists indicesExists = new IndicesExists.Builder("tutorial").build();
+        IndicesExists indicesExists = new IndicesExists.Builder("rabbitmq").build();
         JestResult jestResult = jestClient.execute(indicesExists);
         System.out.println(jestResult);
     }

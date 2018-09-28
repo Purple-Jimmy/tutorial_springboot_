@@ -75,7 +75,7 @@ public class IndexDemo {
     @Test
     public void isExistIndex() throws IOException {
         //TODO
-        /*IndicesExists indicesExists = new IndicesExists.Builder("tutorial").build();
+        /*IndicesExists indicesExists = new IndicesExists.Builder("rabbitmq").build();
         JestResult jestResult = jestClient.execute(indicesExists);
         System.out.println(jestResult.getJsonString());*/
     }

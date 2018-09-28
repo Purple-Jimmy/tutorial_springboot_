@@ -235,7 +235,7 @@ public class DocumentTest {
      */
     @Test
     public void getCount() throws IOException {
-        String index = "tutorial";
+        String index = "rabbitmq";
         String type = "movie";
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         QueryBuilder queryBuilder = QueryBuilders.boolQuery()

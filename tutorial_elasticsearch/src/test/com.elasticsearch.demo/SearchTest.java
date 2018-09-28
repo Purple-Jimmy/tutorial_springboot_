@@ -22,7 +22,7 @@ import java.io.IOException;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ElasticsearchStart.class)
 public class SearchTest {
-    public static final String INDEX ="tutorial";
+    public static final String INDEX ="rabbitmq";
     public static final String TYPE  ="movie";
 
     @Autowired
