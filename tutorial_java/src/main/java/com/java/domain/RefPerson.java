@@ -13,8 +13,12 @@ public class RefPerson {
     private Integer id;
     private String name;
 
-    public String showNaame(){
+    public String showName(){
         return this.name;
+    }
+
+    public void showAge(){
+        System.out.println("age-----");
     }
 
     @Override
