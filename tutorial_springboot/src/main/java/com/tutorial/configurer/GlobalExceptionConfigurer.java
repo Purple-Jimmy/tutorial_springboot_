@@ -21,13 +21,15 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionConfigurer {
 
     @ExceptionHandler(value = Exception.class)
-    public Object defaultErrorHandler(HttpServletRequest request, Exception e) throws Exception {
+    public Object defaultErrorHandler(HttpServletRequest request, Exception e) {
         ExceptionMsg resultMsg = new ExceptionMsg();
         resultMsg.setErrorMsg(e.getMessage());
         if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
             resultMsg.setErrorCode(HttpStatus.NOT_FOUND.toString());
         } else {
-            resultMsg.setErrorCode("500");
+            resultMsg.setRequestUrl(request.getRequestURL().toString())
+                    .setErrorCode("500")
+                    .setErrorMsg(e.getMessage());
         }
         return resultMsg;
     }
@@ -70,9 +72,12 @@ public class GlobalExceptionConfigurer {
     @ExceptionHandler(value = CustomException.class)
     public Object customExceptionHandler(HttpServletRequest request, CustomException e){
         ExceptionMsg resultMsg = new ExceptionMsg();
-        resultMsg.setRequestUrl(request.getRequestURL().toString());
+       /* resultMsg.setRequestUrl(request.getRequestURL().toString());
         resultMsg.setErrorCode("301");
-        resultMsg.setErrorMsg("自定义异常:参数不合法");
+        resultMsg.setErrorMsg("自定义异常:参数不合法");*/
+        resultMsg.setRequestUrl(request.getRequestURL().toString())
+                 .setErrorCode(String.valueOf(e.getErrorCode()))
+                 .setErrorMsg(e.getMessage());
         return resultMsg;
     }
 }
