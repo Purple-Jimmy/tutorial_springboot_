@@ -63,7 +63,7 @@ public class MappingDemo {
     }
 
     /**
-     * coerce 清楚脏数据,默认true
+     * coerce 清除脏数据,默认true
      * @throws IOException
      */
     @Test
@@ -164,7 +164,6 @@ public class MappingDemo {
     /**
      * fields 可以让同一文本有多种不同的索引方式,比如一个String类型的字段,
      * 可以使用text类型做全文检索,使用keyword类型做聚合和排序
-     * true false
      * @throws IOException
      */
     @Test
