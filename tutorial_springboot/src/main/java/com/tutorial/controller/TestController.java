@@ -1,4 +1,4 @@
-package com.rabbitmq.controller;
+package com.tutorial.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

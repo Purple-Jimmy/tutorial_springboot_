@@ -1,4 +1,4 @@
-package com.rabbitmq.domain;
+package com.tutorial.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

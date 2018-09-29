@@ -1,6 +1,6 @@
-package com.rabbitmq.service;
+package com.tutorial.service;
 
-import com.rabbitmq.domain.User;
+import com.tutorial.domain.User;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

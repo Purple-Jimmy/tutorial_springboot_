@@ -1,6 +1,6 @@
-package com.rabbitmq.controller;
+package com.tutorial.controller;
 
-import com.rabbitmq.domain.User;
+import com.tutorial.domain.User;
 import com.utils.common.Constant;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

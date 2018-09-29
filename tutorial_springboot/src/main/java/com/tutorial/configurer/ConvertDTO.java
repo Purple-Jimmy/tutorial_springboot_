@@ -1,4 +1,4 @@
-package com.rabbitmq.configurer;
+package com.tutorial.configurer;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

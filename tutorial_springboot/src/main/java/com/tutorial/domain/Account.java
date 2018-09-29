@@ -1,4 +1,4 @@
-package com.rabbitmq.domain;
+package com.tutorial.domain;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

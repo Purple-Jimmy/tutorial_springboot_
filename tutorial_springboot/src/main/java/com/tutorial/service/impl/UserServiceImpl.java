@@ -1,8 +1,8 @@
-package com.rabbitmq.service.impl;
+package com.tutorial.service.impl;
 
-import com.rabbitmq.domain.User;
-import com.rabbitmq.repository.UserRepository;
-import com.rabbitmq.service.UserService;
+import com.tutorial.domain.User;
+import com.tutorial.repository.UserRepository;
+import com.tutorial.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

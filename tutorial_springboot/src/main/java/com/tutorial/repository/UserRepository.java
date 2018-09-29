@@ -1,6 +1,6 @@
-package com.rabbitmq.repository;
+package com.tutorial.repository;
 
-import com.rabbitmq.domain.User;
+import com.tutorial.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
