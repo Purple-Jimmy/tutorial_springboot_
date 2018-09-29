@@ -36,7 +36,7 @@
 
         <!--error日志-->
         <RollingFile name="springBootErrorFile" fileName="./logs/springBootError.log"
-                     filePattern="/tutorial/logs/springBootError_%d{yyyy-MM-dd}.log.gz">
+                     filePattern="./logs/springBootError_%d{yyyy-MM-dd}.log.gz">
             <!--控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch)-->
             <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${PATTERN}"/>
