@@ -9,13 +9,13 @@ spring:
     encoding: UTF-8
     servlet:
       content-type: text/html
-    cache: false #开发时关闭缓存,不然没法看到实时页面
+    cache: false #开发时关闭缓存,不然没法看到实时页面,生成环境设置true
     prefix: /templates
     suffix: .html
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.50.116:3306/search?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://192.168.50.116:3306/search_11?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: ysten123
     type: com.zaxxer.hikari.HikariDataSource
@@ -24,7 +24,7 @@ spring:
         maximum-pool-size: 15
         minimum-idle: 5
         idle-timeout: 30000
-        pool-name: NDMS-BACKEND-POOL
+        pool-name: tutorial_springboot
         max-lifetime: 1800000
         connection-timeout: 30000
         connection-test-query: SELECT 1

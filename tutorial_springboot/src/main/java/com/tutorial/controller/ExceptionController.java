@@ -19,6 +19,8 @@ public class ExceptionController {
     public String customExceptionTest(@RequestParam("id")Integer id) throws CustomException {
         if(id>num){
             throw new CustomException("id不能大于10",1001);
+        }else{
+            System.out.println(id+"-===");
         }
         return "success";
     }
