@@ -10,29 +10,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 
 /**
  * @Author: jimmy
  * @Date: 2018/9/29
  * 全局统一异常
+ * 当请求处理出现异常时,会根据异常处理器的配置顺序依次尝试异常匹配和处理
+ * 使用@ControllerAdvice处理异常也有一定的局限性,只有进入Controller层的错误,才会由@ControllerAdvice处理
+ * 拦截器抛出的错误以及访问错误地址的情况@ControllerAdvice处理不了,由Spring Boot默认的异常处理机制处理
  */
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionConfigurer {
-
-    @ExceptionHandler(value = Exception.class)
-    public Object defaultErrorHandler(HttpServletRequest request, Exception e) {
-        ExceptionMsg resultMsg = new ExceptionMsg();
-        resultMsg.setErrorMsg(e.getMessage());
-        if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
-            resultMsg.setErrorCode(HttpStatus.NOT_FOUND.toString());
-        } else {
-            resultMsg.setRequestUrl(request.getRequestURL().toString())
-                    .setErrorCode("500")
-                    .setErrorMsg(e.getMessage());
-        }
-        return resultMsg;
-    }
 
     /**
      * 添加全局异常处理流程,根据需要设置需要处理的异常
@@ -41,9 +31,9 @@ public class GlobalExceptionConfigurer {
      * @param exception
      * @return
      */
-    @ExceptionHandler(value=MethodArgumentNotValidException.class)
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public Object methodArgumentNotValidHandler(HttpServletRequest request,
-                                                MethodArgumentNotValidException exception){
+                                                MethodArgumentNotValidException exception) throws Exception {
         //exception.printStackTrace();
         //按需重新封装需要返回的错误信息
         //  List<ArgumentInvalidResult> invalidArguments = new ArrayList<>();
@@ -61,9 +51,18 @@ public class GlobalExceptionConfigurer {
             System.out.println("value:"+error.getRejectedValue());
             System.out.println("msg:"+error.getDefaultMessage());
             resultMsg.setErrorCode("301");
-            resultMsg.setErrorMsg("参数不合法");
+            resultMsg.setErrorMsg(error.getDefaultMessage());
             // resultMsg.setErrorMsg(error.getDefaultMessage());
         }
+        return resultMsg;
+    }
+
+
+
+    @ExceptionHandler(value = ConstraintViolationException.class)
+    public Object validExceptionHandler(ConstraintViolationException exception) {
+        ExceptionMsg resultMsg = new ExceptionMsg();
+        resultMsg.setErrorMsg(exception.getLocalizedMessage());
         return resultMsg;
     }
 
@@ -80,4 +79,20 @@ public class GlobalExceptionConfigurer {
                  .setErrorMsg(e.getMessage());
         return resultMsg;
     }
+
+
+    @ExceptionHandler(value = Exception.class)
+    public Object defaultErrorHandler(HttpServletRequest request, Exception e) throws Exception{
+        ExceptionMsg resultMsg = new ExceptionMsg();
+        resultMsg.setErrorMsg(e.getMessage());
+        if (e instanceof org.springframework.web.servlet.NoHandlerFoundException) {
+            resultMsg.setErrorCode(HttpStatus.NOT_FOUND.toString());
+        } else {
+            resultMsg.setRequestUrl(request.getRequestURL().toString())
+                    .setErrorCode("500")
+                    .setErrorMsg(e.getMessage());
+        }
+        return resultMsg;
+    }
+
 }

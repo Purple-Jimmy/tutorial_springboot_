@@ -1,0 +1,55 @@
+server:
+  port: 8081
+  servlet:
+   # context-path: /spring-boot
+    application-display-name: /spring-boot-tutorial
+  error:
+    path: /error
+  # 内嵌tomcat配置
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000 #内嵌Tomcat的最大线程数
+
+spring:
+  application:
+    name: springboot-tutorial
+  # 热部署 设置false restart类加载器还会初始化,但不会监视文件更新
+  devtools:
+    restart:
+      enabled: true
+  http:
+    encoding:
+    charset: UTF-8
+    enabled: true
+    force: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.50.116:3306/search_11?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: ysten123
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      maximum-pool-size: 15
+      minimum-idle: 5
+      idle-timeout: 30000
+      pool-name: SEARCH-POOL
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  # JPA配置
+  jpa:
+    #open-in-view: true
+    database: MYSQL
+    show-sql: true
+    generate-ddl: true # 自动生成表结构
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.MySQL5Dialect

@@ -3,9 +3,7 @@ package com.tutorial.controller;
 import com.tutorial.domain.Account;
 import com.tutorial.util.CustomException;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: jimmy
@@ -15,6 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExceptionController {
     public static final Integer num = 10;
 
+    /**
+     * 自定义异常
+     * @param id
+     * @return
+     * @throws CustomException
+     */
     @RequestMapping("customException")
     public String customExceptionTest(@RequestParam("id")Integer id) throws CustomException {
         if(id>num){
@@ -25,9 +29,13 @@ public class ExceptionController {
         return "success";
     }
 
-
-    @RequestMapping("bindException")
-    public String bindException(@Validated Account account) {
+    /**
+     * 参数绑定异常
+     * @param account
+     * @return
+     */
+    @RequestMapping(value = "bindException",method = RequestMethod.POST)
+    public String bindException(@Validated @RequestBody Account account) {
         System.out.println(account);
         return "success";
     }

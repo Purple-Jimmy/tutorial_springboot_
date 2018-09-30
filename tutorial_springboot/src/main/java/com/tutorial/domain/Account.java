@@ -1,7 +1,7 @@
 package com.tutorial.domain;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -11,6 +11,10 @@ import java.io.Serializable;
  * Created by Jimmy. 2018/3/26  15:11
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 @Table
 @Entity(name="account")
@@ -32,14 +36,4 @@ public class Account implements Serializable {
 
     private String token;
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", token='" + token + '\'' +
-                '}';
-    }
 }
