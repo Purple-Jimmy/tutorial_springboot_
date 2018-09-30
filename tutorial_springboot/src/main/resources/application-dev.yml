@@ -8,7 +8,9 @@ server:
   # 内嵌tomcat配置
   tomcat:
     uri-encoding: UTF-8
-    max-threads: 1000 #内嵌Tomcat的最大线程数
+    max-threads: 1000 # tomcat能启动用来处理请求的最大线程数,如果请求处理量一直远远大于最大线程数,可能会僵死
+    max-connections: 500 # 瞬时最大连接数,超出的会排队等待
+    accept-count: 500 # 如果tomcat的线程都忙于响应,新来的连接会进入队列排队,如果超出排队大小,则拒绝连接
 
 spring:
   application:
