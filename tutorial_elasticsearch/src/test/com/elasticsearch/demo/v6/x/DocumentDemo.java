@@ -80,5 +80,11 @@ public class DocumentDemo {
         //
         JestResult jestResult = jestClient.execute(bulk);
         System.out.println(jestResult);
+
+      /*  Bulk bulk = new Bulk.Builder()
+                .defaultIndex(Constants.ITEM_CONTENT_INDEX)
+                .defaultType(Constants.ITEM_CONTENT_TYPE)
+                .addAction(list.stream().map(t->new Index.Builder(t).build()).collect(Collectors.toList()))
+                .build();*/
     }
 }

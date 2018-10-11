@@ -231,8 +231,64 @@ public class SearchTest {
         for(SearchResult.Hit<Movie, Void> hit : hits){
             System.out.println(hit.source);
         }*/
+
+
+
+
+      /*  HighlightBuilder hiBuilder = new HighlightBuilder();
+        hiBuilder.preTags("<font color='#0DC201'>");
+        hiBuilder.postTags("</font>");
+        hiBuilder.field("name").field("leadingRole").field("director").requireFieldMatch(false).numOfFragments(0);*/
     }
 
+  /*  BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+
+        if(StringUtils.isNotEmpty(vo.getItemContentName())){
+        boolQueryBuilder.must(QueryBuilders.wildcardQuery("name","*"+vo.getItemContentName()+"*"));
+    }
+        if(StringUtils.isNotEmpty(vo.getDesktopName())){
+        boolQueryBuilder.must(QueryBuilders.wildcardQuery("desktop.desktopName","*"+vo.getDesktopName()+"*"));
+    }
+        if(StringUtils.isNotEmpty(vo.getDesktopStatus())){
+        boolQueryBuilder.must(QueryBuilders.termQuery("desktop.desktopStatus",vo.getDesktopStatus()));
+    }
+        if(StringUtils.isNotEmpty(vo.getActionTypeParam()) && !"all".equals(vo.getActionTypeParam())){
+        boolQueryBuilder.must(QueryBuilders.termQuery("actionType",vo.getActionTypeParam()));
+    }
+
+    SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+    int from = ((vo.getPageNumber()-1)*vo.getPageSize());
+        searchSourceBuilder.query(boolQueryBuilder).from(from).size(vo.getPageSize()).sort("_score",SortOrder.DESC);
+    //
+    String query = searchSourceBuilder.toString();
+        log.info("Method:queryItemContentES query {}",query);
+    Search search = new Search.Builder(query).addIndex(Constants.ITEM_CONTENT_INDEX).build();
+*/
+
+
+    //计算bucket
+   /* SearchSourceBuilder aggBuilder = new SearchSourceBuilder();
+    AggregationBuilder aggregationBuilder = AggregationBuilders.terms("actionType_terms_agg").field("actionType").size(Integer.MAX_VALUE);
+        aggBuilder.aggregation(aggregationBuilder);
+    String queryAgg = aggBuilder.toString();
+        log.info("Method:queryItemContentES queryAgg {}",queryAgg);
+    Search searchAgg = new Search.Builder(queryAgg).addIndex(Constants.ITEM_CONTENT_INDEX).build();
+        try {
+        SearchResult resultAgg = jestClient.execute(searchAgg);
+        if(resultAgg != null){
+            TermsAggregation agg = resultAgg.getAggregations().getTermsAggregation("actionType_terms_agg");
+            List<TermsAggregation.Entry> list = agg.getBuckets();
+            Long sum = 0L;
+            for(TermsAggregation.Entry entry:list){
+                pageData.getAggMap().put(entry.getKey(),entry.getCount());
+                sum += entry.getCount();
+            }
+            pageData.getAggMap().put("all",sum);
+        }
+    } catch (IOException e) {
+        log.error("Method:queryItemContentES queryAgg error.",e);
+    }
+*/
     /**
      * stringQuery 查询
      * @throws IOException
@@ -368,4 +424,16 @@ public class SearchTest {
             }
         }*/
     }
+
+/*
+    BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+        boolQueryBuilder
+                .must(QueryBuilders.termQuery("name.pinyinname", context.getKeyword()))
+                .must(QueryBuilders.termsQuery("epgCounts.epgGroupId", new Long[]{context.getEpgGroupId()}))
+            .mustNot(QueryBuilders.termsQuery("epgCounts.count", new Long[]{0L}));
+    String[] fields = {"name"};
+    FetchSourceContext sourceContext = new FetchSourceContext(true, fields, null);
+    SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        searchSourceBuilder.query(boolQueryBuilder).fetchSource(sourceContext).from(context.getStart()).size(context.getLimit());
+        return searchSourceBuilder.toString();*/
 }
