@@ -31,10 +31,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>-->
+       <!--特别要注意版本号-->
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>1.1.6.RELEASE</version>
+           <!-- <version>1.1.6.RELEASE</version>-->
+            <version>1.0.0.RELEASE</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.kafka</groupId>

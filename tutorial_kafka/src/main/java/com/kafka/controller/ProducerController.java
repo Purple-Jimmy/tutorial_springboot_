@@ -16,8 +16,8 @@ public class ProducerController {
 
     @RequestMapping("/producer")
     public String producer(){
-        System.out.println(kafkaTemplate);
-        kafkaTemplate.send("viper-search-ns","hello");
+     //   kafkaTemplate.send("test","kafka","hello");
+        kafkaTemplate.send("test","hello");
         return "success";
     }
 }
