@@ -96,7 +96,7 @@ output {
 ```
 cluster.name: demon # 设置集群名称,开启了自发现功能后,ES会按照此集群名称进行集群发现
 node.name: elk-1 #设置节点名称
-bootstrap.memory_lock: true #配置内存使用用交换分区
+bootstrap.memory_lock: false #配置内存禁用交换分区
 network.host: 0.0.0.0  # 设置 外网访问
 discovery.zen.ping.unicast.hosts: ["0.0.0.0"] # 设置 集群节点发现列表
 discovery.zen.minimum_master_nodes: 2   #集群可做master的最小节点数
