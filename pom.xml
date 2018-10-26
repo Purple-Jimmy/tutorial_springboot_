@@ -28,6 +28,7 @@
     <module>tutorial_pattern</module>
     <module>tutorial_guava</module>
       <module>tutorial_lombok</module>
+      <module>tutorial_docker</module>
   </modules>
 
   <name>tutorial_springboot_</name>
