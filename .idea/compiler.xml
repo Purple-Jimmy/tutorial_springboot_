@@ -11,6 +11,7 @@
         <module name="tutorial_canal" />
         <module name="tutorial_docker" />
         <module name="tutorial_elasticsearch" />
+        <module name="tutorial_flink" />
         <module name="tutorial_guava" />
         <module name="tutorial_java" />
         <module name="tutorial_kafka" />
