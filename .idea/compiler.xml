@@ -31,11 +31,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
-      <module name="tutorial_domain" target="1.8" />
+      <module name="tutorial_flink" target="1.8" />
       <module name="tutorial_guava" target="1.8" />
-      <module name="tutorial_java8" target="1.8" />
-      <module name="tutorial_repository" target="1.8" />
-      <module name="tutorial_service" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
