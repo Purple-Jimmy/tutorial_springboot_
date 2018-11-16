@@ -21,25 +21,29 @@ spring:
       enabled: true
   http:
     encoding:
-    charset: UTF-8
-    enabled: true
-    force: true
+      charset: UTF-8
+      enabled: true
+      force: true
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://192.168.50.116:3306/search_11?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.101.149.94:3306/tutorial?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
-    password: ysten123
+    password: New123456!
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       auto-commit: true
       maximum-pool-size: 15
       minimum-idle: 5
       idle-timeout: 30000
-      pool-name: SEARCH-POOL
+      pool-name: TUTORIAL-POOL
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
   # JPA配置
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred # Hibernate 将在一个独立的线程中启动,而其他应用程序的启动是同时并行
   jpa:
     #open-in-view: true
     database: MYSQL
@@ -55,3 +59,4 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
         dialect: org.hibernate.dialect.MySQL5Dialect
+

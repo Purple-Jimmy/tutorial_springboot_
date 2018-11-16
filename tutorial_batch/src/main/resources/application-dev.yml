@@ -14,19 +14,23 @@ server:
 
 spring:
   application:
-    name: flink-tutorial
+    name: springboot-tutorial
   # 热部署 设置false restart类加载器还会初始化,但不会监视文件更新
   devtools:
     restart:
       enabled: true
   http:
     encoding:
-    charset: UTF-8
-    enabled: true
-    force: true
+      charset: UTF-8
+      enabled: true
+      force: true
+  # batch配置
+  batch:
+    job:
+      enabled: false # Spring Batch在加载的时候job默认都会执行,置为false即把job设置成不可用,应用便会根据jobLauncher.run来执行
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://47.101.149.94:3306/tutorial?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.101.149.94:3306/spring_batch_tutorial?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: New123456!
     type: com.zaxxer.hikari.HikariDataSource
@@ -35,11 +39,15 @@ spring:
       maximum-pool-size: 15
       minimum-idle: 5
       idle-timeout: 30000
-      pool-name: SEARCH-POOL
+      pool-name: BATCH-POOL
       max-lifetime: 1800000
       connection-timeout: 30000
       connection-test-query: SELECT 1
   # JPA配置
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred # Hibernate 将在一个独立的线程中启动,而其他应用程序的启动是同时并行
   jpa:
     #open-in-view: true
     database: MYSQL
@@ -55,3 +63,4 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
         dialect: org.hibernate.dialect.MySQL5Dialect
+

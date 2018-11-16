@@ -1,6 +1,6 @@
 package com.rabbitmq.controller;
 
-import com.rabbitmq.configurer.Producer;
+import com.rabbitmq.configurer.ProducerConfigurer;
 import com.rabbitmq.domain.Animal;
 import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import java.util.List;
 public class RabbitController {
 
     @Autowired
-    private Producer producer;
+    private ProducerConfigurer producer;
 
 //-------direct--------------------------------------------------------------------------------------------------
 
