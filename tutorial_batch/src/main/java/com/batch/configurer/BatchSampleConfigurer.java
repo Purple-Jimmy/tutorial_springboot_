@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2018/11/1621:12
  */
 @Configuration
-public class BConfigurer {
+public class BatchSampleConfigurer {
 
     @Autowired
     public JobBuilderFactory jobBuilderFactory;
@@ -27,6 +27,12 @@ public class BConfigurer {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
+    /**
+     * JobParameters 相同的任务只能成功运行一次
+     * 如果希望该任务是周期执行的,那么必须保证周期内参数是唯一
+     * 因此配置Job时需要使用incrementer方法为每次执行创建一个递增的ID保证唯一性,否则任务仅会执行一次
+     * @return
+     */
     @Bean
     public Job processJob() {
         return jobBuilderFactory.get("processJob")

@@ -7,11 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author jimmy
  * @date 2018/11/1122:43
- * @EnableBatchProcessing是打开Batch,如果要实现多Job的情况,需要把EnableBatchProcessing注解的modular设置为true
+ * @EnableBatchProcessing是打开Batch,
+ * 如果要实现多Job的情况,需要把EnableBatchProcessing注解的modular设置为true,让每个Job使用自己的ApplicationConext
  */
 @SpringBootApplication
-@EnableBatchProcessing
-//@EnableBatchProcessing(modular = true)
+//@EnableBatchProcessing
+@EnableBatchProcessing(modular = true)
 public class BatchStart {
 
     public static void main(String[] args) {

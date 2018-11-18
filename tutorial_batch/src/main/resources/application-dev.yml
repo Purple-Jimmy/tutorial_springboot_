@@ -24,8 +24,13 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+  # json
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
   # batch配置
   batch:
+    initialize-schema: always # 是否生成执行状态记录的表结构
     job:
       enabled: false # Spring Batch在加载的时候job默认都会执行,置为false即把job设置成不可用,应用便会根据jobLauncher.run来执行
   datasource:
