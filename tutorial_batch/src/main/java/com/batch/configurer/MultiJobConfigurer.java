@@ -30,4 +30,9 @@ public class MultiJobConfigurer {
         return new GenericApplicationContextFactory(MessageMigrationJobConfigurer.class);
     }
 
+    @Bean
+    public ApplicationContextFactory JpaSampleContext() {
+        return new GenericApplicationContextFactory(JpaSampleConfigurer.class);
+    }
+
 }

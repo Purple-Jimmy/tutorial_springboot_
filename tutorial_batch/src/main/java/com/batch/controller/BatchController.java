@@ -23,12 +23,12 @@ public class BatchController {
 
     @Autowired
     JobLauncher jobLauncher;
-
     @Autowired
     Job processJob;
-
     @Autowired
     Job messageMigrationJob;
+    @Autowired
+    Job jpaJob;
 
     @RequestMapping("/invokeJob")
     public String handle() throws Exception {
@@ -50,6 +50,16 @@ public class BatchController {
         return "message migrated";
     }
 
+
+    @RequestMapping("/jpaJob")
+    public String jpaMessage() throws Exception {
+
+        JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
+                .toJobParameters();
+        jobLauncher.run(jpaJob, jobParameters);
+
+        return "message migrated";
+    }
 
     @RequestMapping("/hello")
     public String hello() throws Exception {

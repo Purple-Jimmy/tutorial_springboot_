@@ -10,12 +10,12 @@ import java.io.Serializable;
 
 /**
  * @author jimmy
- * @date 2018/11/1809:27
+ * @date 2018/11/1815:46
  */
 @Data
 @Entity
-@Table(name = "message")
-public class Message implements Serializable {
+@Table(name = "pay_message")
+public class PayMessage implements Serializable {
 
     @Id
     @Column(name = "object_id", nullable = false)
@@ -23,10 +23,4 @@ public class Message implements Serializable {
 
     @Column(name = "content")
     private String content;
-
-    @Column(name = "price")
-    private Long price;
-
-    @Column(name = "is_payed")
-    private Boolean isPayed = false;
 }
