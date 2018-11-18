@@ -4,6 +4,7 @@ import com.batch.domain.Message;
 import com.batch.listener.MessageItemReadListener;
 import com.batch.listener.MessageWriteListener;
 import com.batch.step.MessageLineMapper;
+import com.batch.step.Writer;
 import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -47,12 +48,12 @@ public class MessageMigrationJobConfigurer {
 
     @Bean
     public Step messageMigrationStep(@Qualifier("messageReader") FlatFileItemReader<Message> jsonMessageReader,
-                                     @Qualifier("messageItemWriter") JpaItemWriter<Message> messageItemWriter
-                                   ) {
+                                     @Qualifier("messageItemWriter") JpaItemWriter<Message> messageItemWriter,
+                                     @Qualifier("errorWriter") Writer errorWriter) {
         return stepBuilderFactory.get("messageMigrationStep")
                 .<Message, Message>chunk(CHUNK_SIZE)
                 .reader(jsonMessageReader).faultTolerant().skip(JsonParseException.class).skipLimit(SKIP_LIMIT)
-                .listener(new MessageItemReadListener())
+                .listener(new MessageItemReadListener(errorWriter))
                 .writer(messageItemWriter).faultTolerant().skip(Exception.class).skipLimit(SKIP_LIMIT)
                 .listener(new MessageWriteListener())
                 .build();
@@ -85,4 +86,8 @@ public class MessageMigrationJobConfigurer {
         return writer;
     }
 
+    @Bean
+    public Writer errorWriter(){
+        return new Writer();
+    }
 }

@@ -48,6 +48,7 @@ public class JpaSampleConfigurer {
         return stepBuilderFactory.get("step1").<Message, PayMessage>chunk(CHUNK_SIZE)
                 .reader(new JpaPagingItemReader<Message>() {{
                     setQueryString("select m from Message m");
+                    setPageSize(10);
                     setEntityManagerFactory(entityManagerFactory);}})
                 .processor((ItemProcessor<Message, PayMessage>) item ->
                 {

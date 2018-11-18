@@ -3,9 +3,9 @@ package com.batch.listener;
 import com.batch.domain.Message;
 import com.batch.step.Writer;
 import org.springframework.batch.core.ItemReadListener;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author jimmy
@@ -13,8 +13,11 @@ import java.util.ArrayList;
  */
 public class MessageItemReadListener implements ItemReadListener<Message> {
 
-    @Autowired
     private Writer errorWriter;
+
+    public MessageItemReadListener(Writer errorWriter) {
+        this.errorWriter = errorWriter;
+    }
 
     @Override
     public void beforeRead() {
@@ -29,7 +32,10 @@ public class MessageItemReadListener implements ItemReadListener<Message> {
     @Override
     public void onReadError(Exception e) {
         try {
-            errorWriter.write(new ArrayList<>());
+            List<String> list = new ArrayList<>();
+            list.add(e.getMessage());
+            errorWriter.write(list);
+            System.out.println("write error");
         } catch (Exception e1) {
             e1.printStackTrace();
         }

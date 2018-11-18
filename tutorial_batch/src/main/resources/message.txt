@@ -1,6 +1,6 @@
 {"objectId": "1","content": "this is test 1","price":100}
 {"objectId": "2","content": "this is test 2","price":200}
-{"objectId": "3","content": "this is test 3","price":30}
+{"objectId": "3","content": "this is test 3","price":"cc"}
 {"objectId": "4","content": "this is test 4","price":400}
 {"objectId": "5","content": "this is test 5","price":50}
 {"objectId": "6","content": "this is test 6","price":200}
