@@ -7,6 +7,7 @@ http://blog.csdn.net/yusewuhen/article/details/50685685
 http://blog.csdn.net/fighting_one_piece/article/details/77800921
 http://blog.csdn.net/zhangbin666/article/details/73348160
 http://blog.csdn.net/fenglailea/article/details/56845892
+https://blog.csdn.net/wwd0501/article/details/80001790?utm_source=blogxgwz1
 
 > 配置规则
 
@@ -87,4 +88,84 @@ curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index/blo
 }'
 ```
 
+curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index/blog/_search?pretty' -d '
+{
+  "query": { 
+        "match": { 
+              "name": "番"
+        }
+  },
+    "highlight" : {
+          "fields" : {
+              "name" : {}
+          }
+      }
+}'
+
+
+
 #### 动态更新同义词
+curl -X DELETE 'localhost:9200/synonyms_index_1?pretty'
+
+curl -H "Content-Type:application/json" -X PUT 'localhost:9200/synonyms_index_1?pretty' -d '
+{
+  "settings": {
+    "index": {
+      "analysis": {
+        "analyzer": {
+          "synonym": {
+            "tokenizer": "ik_max_word",
+            "filter": ["synonym"]
+          }
+        },
+        "filter": {
+          "synonym": {
+            "type": "dynamic_synonym",
+            "synonyms_path": "root/synonyms.txt",
+            "ignore_case": true
+          }
+        }
+      }
+    }
+  },
+  "mappings": {
+    "blog": {
+      "properties": {
+        "name": {
+          "type": "text",
+          "analyzer": "synonym"
+        },
+        "type": {
+          "type": "text",
+          "analyzer": "synonym"
+        }
+      }
+    }
+  }
+}'
+
+curl -H "Content-Type:application/json" -X POST 'localhost:9200/synonyms_index_1/blog?pretty' -d ' 
+{
+  "name":"西红柿" 
+}'
+
+curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index_1/blog/_search?pretty' -d '
+{
+  "query": { 
+        "match": { 
+              "name": "番茄"
+        }
+  },
+    "highlight" : {
+          "fields" : {
+              "name" : {}
+          }
+      }
+}'
+
+
+curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index_1/_analyze?pretty' -d '
+{
+   "analyzer": "synonym",
+    "text": "西红柿"
+}'
