@@ -121,7 +121,7 @@ curl -H "Content-Type:application/json" -X PUT 'localhost:9200/synonyms_index_1?
         "filter": {
           "synonym": {
             "type": "dynamic_synonym",
-            "synonyms_path": "root/synonyms.txt",
+            "synonyms_path": "synonyms.txt",
             "ignore_case": true
           }
         }
