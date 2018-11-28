@@ -19,6 +19,9 @@ import javax.validation.ConstraintViolationException;
  * 当请求处理出现异常时,会根据异常处理器的配置顺序依次尝试异常匹配和处理
  * 使用@ControllerAdvice处理异常也有一定的局限性,只有进入Controller层的错误,才会由@ControllerAdvice处理
  * 拦截器抛出的错误以及访问错误地址的情况@ControllerAdvice处理不了,由Spring Boot默认的异常处理机制处理
+ *
+ * 1.捕获返回json格式
+ * 2.捕获返回页面
  */
 @RestControllerAdvice
 @Slf4j
