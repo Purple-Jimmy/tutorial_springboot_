@@ -153,7 +153,7 @@ curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index_1/b
 {
   "query": { 
         "match": { 
-              "name": "番茄"
+              "name": "cqz"
         }
   },
     "highlight" : {
@@ -167,5 +167,6 @@ curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index_1/b
 curl -H "Content-Type:application/json" -XGET 'localhost:9200/synonyms_index_1/_analyze?pretty' -d '
 {
    "analyzer": "synonym",
-    "text": "西红柿"
+    "text": "cqz"
 }'
+
