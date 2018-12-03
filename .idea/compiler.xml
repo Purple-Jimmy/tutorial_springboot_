@@ -17,6 +17,7 @@
         <module name="tutorial_kafka" />
         <module name="tutorial_lombok" />
         <module name="tutorial_mongo" />
+        <module name="tutorial_multi_datasource" />
         <module name="tutorial_netty" />
         <module name="tutorial_pattern" />
         <module name="tutorial_quartz" />
@@ -34,5 +35,31 @@
       <module name="tutorial_flink" target="1.8" />
       <module name="tutorial_guava" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="tutorial_batch" options="-parameters" />
+      <module name="tutorial_canal" options="-parameters" />
+      <module name="tutorial_docker" options="-parameters" />
+      <module name="tutorial_elasticjob" options="-parameters" />
+      <module name="tutorial_elasticsearch" options="-parameters" />
+      <module name="tutorial_guava" options="-parameters" />
+      <module name="tutorial_java" options="-parameters" />
+      <module name="tutorial_kafka" options="-parameters" />
+      <module name="tutorial_lombok" options="-parameters" />
+      <module name="tutorial_mongo" options="-parameters" />
+      <module name="tutorial_multi_datasource" options="-parameters" />
+      <module name="tutorial_netty" options="-parameters" />
+      <module name="tutorial_pattern" options="-parameters" />
+      <module name="tutorial_quartz" options="-parameters" />
+      <module name="tutorial_rabbitmq" options="-parameters" />
+      <module name="tutorial_redis" options="-parameters" />
+      <module name="tutorial_security_jwt" options="-parameters" />
+      <module name="tutorial_solr" options="-parameters" />
+      <module name="tutorial_springboot" options="-parameters" />
+      <module name="tutorial_themeleaf" options="-parameters" />
+      <module name="tutorial_utils" options="-parameters" />
+      <module name="tutorial_websocket" options="-parameters" />
+    </option>
   </component>
 </project>
