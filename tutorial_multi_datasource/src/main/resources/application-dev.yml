@@ -26,34 +26,18 @@ spring:
       force: true
   primary:
     datasource:
-      jdbc-url: jdbc:mysql://47.101.149.94:3306/data_source_1?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://47.101.149.94:3306/data_source_1?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
       username: root
       password: New123456!
-      type: com.zaxxer.hikari.HikariDataSource
-      hikari:
-        auto-commit: true
-        maximum-pool-size: 15
-        minimum-idle: 5
-        idle-timeout: 30000
-        pool-name: PRIMARY-POOL
-        max-lifetime: 1800000
-        connection-timeout: 30000
-        connection-test-query: SELECT 1
+      configuration:
+        maximum-pool-size: 30
   second:
     datasource:
-      jdbc-url: jdbc:mysql://47.101.149.94:3306/data_source_2?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+      url: jdbc:mysql://47.101.149.94:3306/data_source_2?useUnicode=true&ch4aracterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull
       username: root
       password: New123456!
-      type: com.zaxxer.hikari.HikariDataSource
-      hikari:
-        auto-commit: true
-        maximum-pool-size: 15
-        minimum-idle: 5
-        idle-timeout: 30000
-        pool-name: SECOND-POOL
-        max-lifetime: 1800000
-        connection-timeout: 30000
-        connection-test-query: SELECT 1
+      configuration:
+        maximum-pool-size: 30
   #JPA配置
   data:
     jpa:
