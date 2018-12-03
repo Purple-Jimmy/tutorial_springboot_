@@ -38,7 +38,7 @@ public class DataSourceConfigurer {
 
     @Bean
     @Primary
-    @ConfigurationProperties("spring.primary.datasource")
+    @ConfigurationProperties(prefix = "spring.primary.datasource")
     public DataSourceProperties primaryDataSourceProperties() {
         return new DataSourceProperties();
     }
@@ -53,7 +53,7 @@ public class DataSourceConfigurer {
 
 
     @Bean
-    @ConfigurationProperties("spring.second.datasource")
+    @ConfigurationProperties(prefix = "spring.second.datasource")
     public DataSourceProperties secondDataSourceProperties() {
         return new DataSourceProperties();
     }
