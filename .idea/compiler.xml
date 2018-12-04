@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="tutorial_batch" />
         <module name="tutorial_canal" />
+        <module name="tutorial_cassandra" />
         <module name="tutorial_docker" />
         <module name="tutorial_elasticjob" />
         <module name="tutorial_elasticsearch" />

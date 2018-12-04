@@ -31,6 +31,7 @@
     <module>tutorial_docker</module>
     <module>tutorial_elasticjob</module>
       <module>tutorial_multi_datasource</module>
+      <module>tutorial_cassandra</module>
   </modules>
 
   <name>tutorial_springboot_</name>
