@@ -41,6 +41,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="tutorial_batch" options="-parameters" />
       <module name="tutorial_canal" options="-parameters" />
+      <module name="tutorial_cassandra" options="-parameters" />
       <module name="tutorial_docker" options="-parameters" />
       <module name="tutorial_elasticjob" options="-parameters" />
       <module name="tutorial_elasticsearch" options="-parameters" />
