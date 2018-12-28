@@ -175,6 +175,12 @@
       <artifactId>jjwt</artifactId>
       <version>0.9.0</version>
     </dependency>
+    <!--https://www.hutool.cn/-->
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>4.3.2</version>
+    </dependency>
     <!--热部署-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
