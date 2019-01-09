@@ -28,5 +28,13 @@ public class FileDemo {
            // Boolean flag = file2.delete();//删除文件
            // System.out.println(flag+"delete");
         }
+
+       /* file1.listFiles(new FilenameFilter() {
+
+            @Override
+            public boolean accept(File dir, String name) {
+                return false;
+            }
+        });*/
     }
 }
