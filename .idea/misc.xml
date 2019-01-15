@@ -13,6 +13,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/tutorial_domain/pom.xml" />
+        <option value="$PROJECT_DIR$/tutorial_elasticjob/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_flink/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_guava/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_repository/pom.xml" />
