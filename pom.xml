@@ -26,7 +26,6 @@
     <module>tutorial_java</module>
     <module>tutorial_batch</module>
     <module>tutorial_pattern</module>
-    <module>tutorial_guava</module>
     <module>tutorial_lombok</module>
     <module>tutorial_docker</module>
       <module>tutorial_multi_datasource</module>
