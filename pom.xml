@@ -28,8 +28,8 @@
     <module>tutorial_pattern</module>
     <module>tutorial_lombok</module>
     <module>tutorial_docker</module>
-      <module>tutorial_multi_datasource</module>
-      <module>tutorial_cassandra</module>
+    <module>tutorial_multi_datasource</module>
+    <module>tutorial_cassandra</module>
     <module>tutorial_elasticjob</module>
   </modules>
 
