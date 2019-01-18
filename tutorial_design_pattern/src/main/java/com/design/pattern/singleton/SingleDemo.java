@@ -1,4 +1,4 @@
-package com.design.pattern.single;
+package com.design.pattern.singleton;
 
 /**
  * 单例模式
