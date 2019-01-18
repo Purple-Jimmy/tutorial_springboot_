@@ -25,7 +25,7 @@ public class ThreadPoolConfigurer {
         executor.setMaxPoolSize(threadPoolParam.getMaxPoolSize());
         //缓冲队列:用来缓冲执行任务的队列
         executor.setQueueCapacity(threadPoolParam.getQueueCapacity());
-        //允许线程的空闲时间60秒:当超过了核心线程出之外的线程在空闲时间到达之后会被销毁
+        //允许线程的空闲时间60秒:当超过了核心线程数之外的线程在空闲时间到达之后会被销毁
         executor.setKeepAliveSeconds(threadPoolParam.getKeepAliveSeconds());
         // executor.setAllowCoreThreadTimeOut(true);
         //线程池名的前缀

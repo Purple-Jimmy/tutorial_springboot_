@@ -31,6 +31,7 @@
     <module>tutorial_multi_datasource</module>
     <module>tutorial_cassandra</module>
     <module>tutorial_elasticjob</module>
+    <module>tutorial_design_pattern</module>
   </modules>
 
   <name>tutorial_springboot_</name>
@@ -46,7 +47,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.1.0.RELEASE</version>
+    <version>2.1.2.RELEASE</version>
     <!--<relativePath/>--> <!-- lookup parent from repository -->
   </parent>
 
