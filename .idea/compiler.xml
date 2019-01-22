@@ -8,11 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tutorial_batch" />
+        <module name="tutorial_caffeine" />
         <module name="tutorial_canal" />
         <module name="tutorial_cassandra" />
+        <module name="tutorial_data_structure" />
         <module name="tutorial_design_pattern" />
         <module name="tutorial_docker" />
-        <module name="tutorial_elasticjob" />
         <module name="tutorial_elasticsearch" />
         <module name="tutorial_guava" />
         <module name="tutorial_java" />
@@ -42,8 +43,11 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="tutorial_batch" options="-parameters" />
+      <module name="tutorial_caffeine" options="-parameters" />
       <module name="tutorial_canal" options="-parameters" />
       <module name="tutorial_cassandra" options="-parameters" />
+      <module name="tutorial_data_structure" options="-parameters" />
+      <module name="tutorial_design_pattern" options="-parameters" />
       <module name="tutorial_docker" options="-parameters" />
       <module name="tutorial_elasticjob" options="-parameters" />
       <module name="tutorial_elasticsearch" options="-parameters" />

@@ -30,8 +30,9 @@
     <module>tutorial_docker</module>
     <module>tutorial_multi_datasource</module>
     <module>tutorial_cassandra</module>
-    <module>tutorial_elasticjob</module>
     <module>tutorial_design_pattern</module>
+    <module>tutorial_data_structure</module>
+      <module>tutorial_caffeine</module>
   </modules>
 
   <name>tutorial_springboot_</name>

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Author: Jimmy
  * @Date: 2018/7/24
  * @EnableTransactionManagement 开启事务
+ * /Applications/JProfiler.app/Contents/Resources/app/bin/macos/jprofiler.sh
  */
 @SpringBootApplication(exclude={MongoAutoConfiguration.class,MongoDataAutoConfiguration.class})
 @EnableTransactionManagement

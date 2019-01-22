@@ -62,13 +62,16 @@ spring:
   #开启事务
   transaction:
     rollback-on-commit-failure: true
-#redis配置
+  #缓存类型
+  cache:
+    type: redis
+  #redis配置
   redis:
     database: 10
     host: 47.101.149.94
     port: 6379
     timeout: 100s
-#lettuce pool
+    #lettuce pool
     lettuce:
       pool:
         max-active: 8 #连接池最大连接数(使用负值表示没有限制)
