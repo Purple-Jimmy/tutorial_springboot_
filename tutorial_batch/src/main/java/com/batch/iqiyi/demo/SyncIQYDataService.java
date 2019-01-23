@@ -24,7 +24,8 @@ public class SyncIQYDataService {
     JobBuilderFactory jobBuilderFactory;
     @Autowired
     IQYDataReaderStep iqyDataReaderStep;
-
+    @Autowired
+    IQYJobListener iqyJobListener;
 
     public void syncData(){
         try {
@@ -35,6 +36,7 @@ public class SyncIQYDataService {
                     // .listener(listener())
                     .flow(iqyDataReaderStep.iqyReadStep())
                     .end()
+                    .listener(iqyJobListener)
                     .build();
             JobExecution execution = jobLauncher.run(job, param);
             System.out.println("execution:"+execution);
