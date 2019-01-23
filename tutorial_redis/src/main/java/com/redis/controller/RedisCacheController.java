@@ -24,9 +24,30 @@ public class RedisCacheController {
         cityService.saveOrUpdate(city);
     }
 
+    @RequestMapping("/updateCity")
+    public void updateCity(){
+        City city = new City();
+        city.setId(10L);
+        city.setName("beijing");
+        cityService.saveOrUpdate(city);
+    }
+
+
     @RequestMapping("/findById")
     public void findById(){
-        City city = cityService.findById(3L);
+        City city = cityService.findById(10L);
         log.info("city {}",city);
+    }
+
+    @RequestMapping("/deleteById")
+    public void deleteById(){
+       log.info("delete by id");
+       cityService.delCity(10L);
+    }
+
+    @RequestMapping("/findAllCity")
+    public void findAllCity(){
+        log.info("findAllCity ....");
+        cityService.findAll();
     }
 }

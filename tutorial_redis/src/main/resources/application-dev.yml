@@ -67,7 +67,7 @@ spring:
     type: redis
   #redis配置
   redis:
-    database: 10
+    database: 1
     host: 47.101.149.94
     port: 6379
     timeout: 100s

@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table
 @Entity(name="city")
 public class City implements Serializable {
-    private static final long serialVersionUID = 5457507957150215600L;
+    private static final long serialVersionUID = -8461436713698977589L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

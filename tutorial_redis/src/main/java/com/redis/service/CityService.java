@@ -3,8 +3,13 @@ package com.redis.service;
 import com.redis.domain.City;
 import com.redis.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author jimmy
@@ -22,12 +27,23 @@ public class CityService {
     @Autowired
     CityRepository cityRepository;
 
-    //@CachePut(key = "\"city_\" + #city.id")
-    public void saveOrUpdate(City city){
-        cityRepository.save(city);
+    /**
+     * value 缓存位置名称,不能为空
+     * @param city
+     */
+   // @CachePut(value = "city",key = "'city' + #city.id",condition = "#city.id != null")
+    @CachePut(value = "city",key = "'city'.concat(#city.id.toString())",condition = "#city.id != null")
+    public City saveOrUpdate(City city){
+        city = cityRepository.save(city);
+        return city;
     }
 
 
+    /**
+     * 根据key删除缓存中的数据
+     * allEntries=true表示删除缓存中的所有数据
+     */
+    @CacheEvict(value = "city", key = "'city'.concat(#id.toString())")
     public void delCity(Long id){
         cityRepository.deleteById(id);
     }
@@ -40,8 +56,13 @@ public class CityService {
      */
     @Cacheable(value = "city", key = "'city'.concat(#id.toString())")
     public City findById(Long id){
-        City city = cityRepository.getOne(id);
-        System.out.println(city);
-        return city;
+        Optional<City> city = cityRepository.findById(id);
+        return city.get();
+    }
+
+
+    @Cacheable(value = "city", key = "T(com.utils.common.Constant).CITY_CACHE_KEY")
+    public List<City> findAll(){
+        return cityRepository.findAll();
     }
 }
