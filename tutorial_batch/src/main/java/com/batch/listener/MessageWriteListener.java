@@ -26,7 +26,7 @@ public class MessageWriteListener implements ItemWriteListener<Message> {
     }
 
     /**
-     * chuck机制，所以write的listener传入参数是一个List，因为它是累积到一定的数量才一起写入。
+     * chuck机制,所以write的listener传入参数是一个List,因为它是累积到一定的数量才一起写入
      * @param e
      * @param list
      */

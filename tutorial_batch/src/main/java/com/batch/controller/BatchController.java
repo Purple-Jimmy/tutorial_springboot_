@@ -1,5 +1,6 @@
 package com.batch.controller;
 
+import com.batch.iqiyi.demo.SyncIQYDataService;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParameters;
@@ -21,7 +22,8 @@ import java.io.File;
 @RestController
 public class BatchController {
     private String MESSAGE_FILE = "classpath:message.txt";
-
+    @Autowired
+    SyncIQYDataService syncIQYDataService;
     @Autowired
     JobLauncher jobLauncher;
     @Autowired
@@ -77,5 +79,11 @@ public class BatchController {
         return "ss";
     }
 
+
+    @RequestMapping("/iqyFileRead")
+    public String iqyFileRead() throws Exception {
+        syncIQYDataService.syncData();
+        return "ss";
+    }
 
 }
