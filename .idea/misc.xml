@@ -9,6 +9,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_design_pattern/pom.xml" />
+        <option value="$PROJECT_DIR$/tutorial_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/tutorial_batch/pom.xml" />
+        <option value="$PROJECT_DIR$/tutorial_utils/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

@@ -6,13 +6,13 @@
         <artifactId>tutorial_springboot_</artifactId>
         <groupId>com.tutorial</groupId>
         <version>1.0-SNAPSHOT</version>
+       <!-- <relativePath>../pom.xml</relativePath>-->
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tutorial_redis</artifactId>
-
+    <packaging>jar</packaging>
     <name>tutorial_redis</name>
-    <url>http://www.example.com</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,11 +40,104 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-      <!--  <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>-->
     </dependencies>
 
+    <build>
+        <finalName>hello-redis</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**.*</include>
+                    <include>**/*.*</include><!-- i18n能读取到 -->
+                    <include>**/*/*.*</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <finalName>content</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>  <!-- 如果只想有finalName,不需要連接release.xml中的id -->
+                    <tarLongFileMode>posix</tarLongFileMode>  <!-- 解決tar大小的限制問題 -->
+                    <descriptors>
+                        <descriptor>src/main/assembly/assembly.xml</descriptor>
+                    </descriptors>
+                    <outputDirectory>../output</outputDirectory>
+                    <attach>false</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+       <!-- <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.1.0</version>
+                    <configuration>
+                        &lt;!&ndash; 如果只想有finalName,不需要连接release.xml中的id &ndash;&gt;
+                        <appendAssemblyId>false</appendAssemblyId>
+                        &lt;!&ndash; 解决tar大小的限制问题 &ndash;&gt;
+                        <tarLongFileMode>posix</tarLongFileMode>
+                        <descriptors>
+                            &lt;!&ndash;描述文件路径&ndash;&gt;
+                            <descriptor>src/main/assembly/assembly.xml</descriptor>
+                            <outputDirectory>../</outputDirectory>
+                            <attach>false</attach>
+                        </descriptors>
+                        <archive>
+                            <manifest>
+                                &lt;!&ndash; 项目启动类 &ndash;&gt;
+                                <mainClass>com.redis.RedisStart</mainClass>
+                                &lt;!&ndash; 依赖的jar的目录前缀 &ndash;&gt;
+                                <classpathPrefix>../lib</classpathPrefix>
+                                <addClasspath>true</addClasspath>
+                            </manifest>
+                        </archive>
+
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            &lt;!&ndash; 绑定到package生命周期阶段上 &ndash;&gt;
+                            <phase>package</phase>
+                            <goals>
+                                &lt;!&ndash; 只运行一次 &ndash;&gt;
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                &lt;!&ndash; 跳过单元测试,不然打包的时候会因为加载不了application.yaml报错 &ndash;&gt;
+               &lt;!&ndash; <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>&ndash;&gt;
+
+
+
+            </plugins>
+        </pluginManagement>-->
+    </build>
 
 </project>

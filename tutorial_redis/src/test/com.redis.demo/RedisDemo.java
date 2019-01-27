@@ -1,6 +1,5 @@
 package com.redis.demo;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,7 +20,7 @@ public class RedisDemo {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-    @Test
+    //@Test
     public void prefixDemo(){
      //   stringRedisTemplate.opsForValue().set("test:1","1");
      //   stringRedisTemplate.opsForValue().set("test:2","5");

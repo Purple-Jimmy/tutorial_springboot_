@@ -9,6 +9,7 @@
   <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
   <modules>
+    <module>tutorial_utils</module>
     <module>tutorial_springboot</module>
     <module>tutorial_rabbitmq</module>
     <module>tutorial_kafka</module>
@@ -19,7 +20,6 @@
     <module>tutorial_mongo</module>
     <module>tutorial_netty</module>
     <module>tutorial_websocket</module>
-    <module>tutorial_utils</module>
     <module>tutorial_quartz</module>
     <module>tutorial_security_jwt</module>
     <module>tutorial_themeleaf</module>
@@ -32,7 +32,7 @@
     <module>tutorial_cassandra</module>
     <module>tutorial_design_pattern</module>
     <module>tutorial_data_structure</module>
-      <module>tutorial_caffeine</module>
+    <module>tutorial_caffeine</module>
   </modules>
 
   <name>tutorial_springboot_</name>
@@ -40,9 +40,9 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-
   </properties>
 
   <parent>
@@ -202,7 +202,7 @@
       </dependency>-->
     <!--cloud-->
   </dependencies>
-  <profiles>
+ <!-- <profiles>
     <profile>
       <id>jdk1.8</id>
       <activation>
@@ -215,5 +215,6 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
       </properties>
     </profile>
-  </profiles>
+  </profiles>-->
+
 </project>

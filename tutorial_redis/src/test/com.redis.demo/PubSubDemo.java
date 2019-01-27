@@ -1,6 +1,5 @@
 package com.redis.demo;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,7 +18,7 @@ public class PubSubDemo {
     private RedisTemplate redisTemplate;
 
 
-    @Test
+    //@Test
     public void publish(){
         System.out.println("-=================================");
         redisTemplate.convertAndSend("test-channel","this is test");

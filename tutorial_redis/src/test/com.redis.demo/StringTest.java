@@ -1,7 +1,6 @@
 package com.redis.demo;
 
 import com.redis.RedisStart;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,19 +20,19 @@ public class StringTest {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Test
+    //@Test
     public void saveStringTest(){
         //redisTemplate.opsForValue().set("zzp","big z");
         stringRedisTemplate.opsForValue().set("zz","hello");
     }
 
-    @Test
+    //@Test
     public void getStringTest(){
         System.out.println(stringRedisTemplate.opsForValue().get("zz"));
     }
 
 
-    @Test
+    //@Test
     public void saveUserTest(){
        /* Book book = new Book();
         book.setId(1L);
@@ -41,14 +40,14 @@ public class StringTest {
         redisTemplate.opsForValue().set("book",book);*/
     }
 
-    @Test
+    //@Test
     public void getUserTest(){
         System.out.println(redisTemplate.opsForValue().get("book"));
     }
 
 
 
-    @Test
+    //@Test
     public void objToStringTest(){
        /* ValueOperations<String,Book> operations = redisTemplate.opsForValue();
         Book book_1 = new Book();
@@ -62,7 +61,7 @@ public class StringTest {
         operations.set("Book:b2",book_2);*/
     }
 
-    @Test
+    //@Test
     public void getObjToStringTest(){
         System.out.println(redisTemplate.opsForValue().get("Book:b1"));
     }
