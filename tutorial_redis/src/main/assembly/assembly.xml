@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <assembly>
-    <!-- 可自定义，这里指定的是项目环境 -->
     <!-- spring-boot-assembly-local-1.0.RELEASE.tar.gz  -->
     <id>tutorialRedis</id>
 
@@ -20,23 +19,23 @@
 
         <!-- 将src/bin目录下的所有文件输出到打包后的bin目录中 -->
         <fileSet>
-            <directory>${project.basedir}/src/main/bin</directory>
+            <directory>src/main/bin</directory>
             <outputDirectory>bin</outputDirectory>
             <fileMode>0755</fileMode>
             <lineEnding>unix</lineEnding>
             <includes>
-                <include>**.sh</include>
+                <include>*.sh</include>
             </includes>
         </fileSet>
 
         <!-- 指定输出target/classes中的配置文件到config目录中 -->
         <fileSet>
-            <directory>${project.basedir}/src/main/resources</directory>
+            <directory>src/main/resources</directory>
             <outputDirectory>config</outputDirectory>
             <fileMode>0644</fileMode>
             <includes>
                 <include>application.yml</include>
-                <include>application-${profileActive}.yml</include>
+                <include>application-dev.yml</include>
                 <include>mapper/**/*.xml</include>
                 <include>static/**</include>
                 <include>templates/**</include>
@@ -47,7 +46,7 @@
 
         <!-- 将第三方依赖打包到lib目录中 -->
         <fileSet>
-            <directory>${project.basedir}/target/lib</directory>
+            <directory>target/lib</directory>
             <outputDirectory>lib</outputDirectory>
             <fileMode>0755</fileMode>
             <includes>
@@ -59,14 +58,14 @@
         </fileSet>
 
         <!-- 将项目启动jar打包到boot目录中 -->
-       <!-- <fileSet>
+        <fileSet>
             <directory>${project.build.directory}</directory>
-            <outputDirectory>/boot</outputDirectory>
+            <outputDirectory>boot</outputDirectory>
             <fileMode>0755</fileMode>
             <includes>
                 <include>${project.build.finalName}.jar</include>
             </includes>
-        </fileSet>-->
+        </fileSet>
 
 
         <!-- 包含根目录下的文件 -->

@@ -43,6 +43,7 @@
     </dependencies>
 
     <build>
+        <!--tar包的名字 jar包的名字-->
         <finalName>hello-redis</finalName>
         <resources>
             <resource>
@@ -52,6 +53,7 @@
                     <include>**/*.*</include><!-- i18n能读取到 -->
                     <include>**/*/*.*</include>
                 </includes>
+                <filtering>false</filtering>
             </resource>
         </resources>
         <plugins>
@@ -60,13 +62,12 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <finalName>content</finalName>
-                    <appendAssemblyId>false</appendAssemblyId>  <!-- 如果只想有finalName,不需要連接release.xml中的id -->
-                    <tarLongFileMode>posix</tarLongFileMode>  <!-- 解決tar大小的限制問題 -->
+                    <appendAssemblyId>false</appendAssemblyId>  <!-- 如果只想有finalName,不需要连接release.xml中的id -->
+                    <tarLongFileMode>posix</tarLongFileMode>  <!-- 解決tar大小的限制问题 -->
                     <descriptors>
                         <descriptor>src/main/assembly/assembly.xml</descriptor>
                     </descriptors>
-                    <outputDirectory>../output</outputDirectory>
+                    <outputDirectory>output</outputDirectory>
                     <attach>false</attach>
                 </configuration>
                 <executions>
