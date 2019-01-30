@@ -1,7 +1,6 @@
 package com.batch.iqiyi.demo;
 
 import com.batch.step.Writer;
-import com.fasterxml.jackson.core.JsonParseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -25,18 +24,29 @@ public class IQYDataReaderStep {
     @Autowired
     IQYProcessor iqyProcessor;
     @Autowired
+    IQYProcessorListener iqyProcessorListener;
+    @Autowired
+    IQYWriteListener iqyWriteListener;
+    @Autowired
     ThreadPoolTaskExecutor taskExecutor;
 
     public Step iqyReadStep() {
         log.info("iqyReadStep start...");
         Step step = stepBuilderFactory.get("iqyReadStep")
-                .<IQYDomain, IQYDomain>chunk(5)
-                .reader(iqyReadHelper.syncReader()).faultTolerant().skip(JsonParseException.class).skipLimit(4)
+                .<IQYDomain, IQYWriterDomain>chunk(3)
+                .faultTolerant()
+               /* .skip(JsonSyntaxException.class)
+                .skip(FlatFileParseException.class)
+                .skip(MalformedJsonException.class)*/
+                .skip(Exception.class)
+                .skipLimit(2)
+                .reader(iqyReadHelper.syncReader())
                 .listener(new IQYReadListener(new Writer()))
                 .processor(iqyProcessor)
-                .writer(iqyWriteHelper).faultTolerant().skip(Exception.class).skipLimit(4)
-                .taskExecutor(taskExecutor)
-                .listener(new IQYWriteListener())
+                .listener(iqyProcessorListener)
+                .writer(iqyWriteHelper.syncWriter())
+               // .taskExecutor(taskExecutor)
+                .listener(iqyWriteListener)
                 .build();
         return step;
     }

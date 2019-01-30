@@ -1,5 +1,6 @@
 package com.batch.iqiyi.demo;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -17,6 +18,7 @@ import java.util.Date;
  * @Date: 2019/1/23
  */
 @Configuration
+@Slf4j
 public class SyncIQYDataService {
     @Autowired
     JobLauncher jobLauncher;
@@ -33,13 +35,12 @@ public class SyncIQYDataService {
             JobParameters param = new JobParametersBuilder().addString("run.time", dateParam).toJobParameters();
             Job job = jobBuilderFactory.get("iqyJob")
                     .incrementer(new RunIdIncrementer())
-                    // .listener(listener())
                     .flow(iqyDataReaderStep.iqyReadStep())
                     .end()
                     .listener(iqyJobListener)
                     .build();
             JobExecution execution = jobLauncher.run(job, param);
-            System.out.println("execution:"+execution);
+            log.info("iqy execution {}",execution);
         } catch (JobExecutionAlreadyRunningException e) {
             e.printStackTrace();
         } catch (JobRestartException e) {

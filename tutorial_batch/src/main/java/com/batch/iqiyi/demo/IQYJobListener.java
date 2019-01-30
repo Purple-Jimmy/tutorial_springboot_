@@ -5,6 +5,7 @@ import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobExecutionListener;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StopWatch;
 
 /**
  * @Author: jimmy
@@ -13,10 +14,10 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class IQYJobListener implements JobExecutionListener {
-    private long startTime;
+    StopWatch stopWatch = new StopWatch();
     @Override
     public void beforeJob(JobExecution jobExecution) {
-        startTime = System.currentTimeMillis();
+        stopWatch.start();
         log.info("IQYJobListener start execute params:{}", jobExecution.getJobParameters());
     }
 
@@ -27,7 +28,7 @@ public class IQYJobListener implements JobExecutionListener {
         } else if (jobExecution.getStatus() == BatchStatus.FAILED) {
             log.info("iqiyi execute failed");
         }
-        log.info("iqiyi execute cost Time : {}ms", (System.currentTimeMillis() - startTime));
-
+        stopWatch.stop();
+        log.info("iqiyi execute cost Time : {}ms", stopWatch.getTotalTimeMillis());
     }
 }

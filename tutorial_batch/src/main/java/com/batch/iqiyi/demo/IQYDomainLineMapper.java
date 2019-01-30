@@ -16,7 +16,7 @@ public class IQYDomainLineMapper implements LineMapper<IQYDomain> {
 
     @Override
     public IQYDomain mapLine(String line, int lineNumber) {
-        IQYDomain bean = new IQYDomain();
+       /* IQYDomain bean = new IQYDomain();
         try {
             Gson gson = new GsonBuilder()
                     .setPrettyPrinting()
@@ -26,6 +26,13 @@ public class IQYDomainLineMapper implements LineMapper<IQYDomain> {
         } catch (Exception e) {
             log.error("mapLine is error.line:{},lineNumber:{}", line, lineNumber);
         }
+        return bean;*/
+        Gson gson = new GsonBuilder()
+                .setPrettyPrinting()
+                .disableHtmlEscaping()
+                .create();
+        IQYDomain bean = gson.fromJson(line, IQYDomain.class);
         return bean;
+
     }
 }

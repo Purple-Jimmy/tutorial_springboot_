@@ -4,9 +4,6 @@ import com.batch.step.Writer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.ItemReadListener;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Author: jimmy
  * @Date: 2019/1/23
@@ -26,18 +23,20 @@ public class IQYReadListener implements ItemReadListener<IQYDomain> {
 
     @Override
     public void afterRead(IQYDomain iqyDomain) {
-        log.info("IQYReadListener afterRead end");
+        log.info("IQYReadListener afterRead end id {}",iqyDomain.getId());
     }
 
     @Override
     public void onReadError(Exception e) {
-        try {
+       /* try {
             List<String> list = new ArrayList<>();
             list.add(e.getMessage());
             errorWriter.write(list);
             log.info("IQYReadListener error {}",list);
         } catch (Exception e1) {
             e1.printStackTrace();
-        }
+        }*/
+
+        log.info("IQYReadListener error {}",e);
     }
 }

@@ -10,10 +10,18 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class IQYProcessor implements ItemProcessor<IQYDomain, IQYDomain> {
+public class IQYProcessor implements ItemProcessor<IQYDomain, IQYWriterDomain> {
     @Override
-    public IQYDomain process(IQYDomain iqyDomain) throws Exception {
-        //TODO
-        return iqyDomain;
+    public IQYWriterDomain process(IQYDomain iqyDomain) throws Exception {
+        log.info("process is{}",iqyDomain.getId());
+        IQYWriterDomain iqyWriterDomain = null;
+        if(false && iqyDomain.getId().equals("90009401")){
+            return iqyWriterDomain;
+        }else{
+            iqyWriterDomain = new IQYWriterDomain();
+            iqyWriterDomain.setId(iqyDomain.getId());
+            iqyWriterDomain.setName(iqyDomain.getName());
+            return iqyWriterDomain;
+        }
     }
 }

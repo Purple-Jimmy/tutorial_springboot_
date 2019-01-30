@@ -21,10 +21,18 @@ public class IQYReadHelper{
             reader = new FlatFileItemReader<IQYDomain>();
             reader.setEncoding("UTF-8");
             reader.setResource(new FileSystemResource(ResourceUtils.getFile("classpath:iqiyi3.txt")));
-            reader.setLineMapper(new IQYDomainLineMapper());
+
         } catch (Exception e) {
-           log.error("read file {} error.");
+           log.error("read file error.");
         }
+        reader.setLineMapper(new IQYDomainLineMapper());
         return reader;
+
+
+       /* reader = new FlatFileItemReader<IQYDomain>();
+        reader.setEncoding("UTF-8");
+        reader.setResource(new FileSystemResource(ResourceUtils.getFile("classpath:iqiyi3.txt")));
+        reader.setLineMapper(new IQYDomainLineMapper());
+        return reader;*/
     }
 }
