@@ -53,6 +53,13 @@
             <artifactId>transport</artifactId>
             <version>6.2.4</version>
         </dependency>
+        <!--结巴分词器 -->
+        <dependency>
+            <groupId>com.huaban</groupId>
+            <artifactId>jieba-analysis</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
     </dependencies>
 
 </project>
