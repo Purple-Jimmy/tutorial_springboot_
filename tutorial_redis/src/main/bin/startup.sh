@@ -41,8 +41,8 @@ LOG_BACK_DIR="${LOG_DIR}/back/"
 LOG_STARTUP_PATH="${LOG_DIR}/startup.log"
 
 # 当前时间
-NOW=`date +'%Y-%m-%m-%H-%M-%S'`
-NOW_PRETTY=`date +'%Y-%m-%m %H:%M:%S'`
+NOW=`date +'%Y-%m-%d-%H-%M-%S'`
+NOW_PRETTY=`date +'%Y-%m-%d %H:%M:%S'`
 
 # 启动日志
 STARTUP_LOG="================================================ ${NOW_PRETTY} ================================================\n"
