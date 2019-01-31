@@ -15,7 +15,7 @@ public class IQYProcessor implements ItemProcessor<IQYDomain, IQYWriterDomain> {
     public IQYWriterDomain process(IQYDomain iqyDomain) throws Exception {
         log.info("process is{}",iqyDomain.getId());
         IQYWriterDomain iqyWriterDomain = null;
-        if(false && iqyDomain.getId().equals("90009401")){
+        if(iqyDomain.getId().equals("90009401")){
             return iqyWriterDomain;
         }else{
             iqyWriterDomain = new IQYWriterDomain();
