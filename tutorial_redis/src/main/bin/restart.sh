@@ -16,6 +16,8 @@ APPLICATION_JAR="sbt_redis.jar"
 echo stop ${APPLICATION} Application...
 sh shutdown.sh
 
+sleep 5s;
+
 # 启动服务
 echo start ${APPLICATION} Application...
 sh startup.sh
