@@ -70,7 +70,7 @@ docker ps
 
 ```
 
-* 交互式启动容器
+* 启动容器
 ```
 docker run 
 参数说明:
@@ -81,8 +81,12 @@ docker run
 5. -P:随机端口映射 
 6. -p:指定端口映射
 
-
+交互式启动  docker run -it tomcat --name tomcat-springboot
+守护式启动  docker run -d  tomcat --name tomcat-springboot
 ```
+重要:docker容器后台运行,必须有一个前台进程,容器运行的命令如果不是那些一直挂起的命令(tail,top),就会自动退出
+
+
 
 * 退出容器
 ```
@@ -114,4 +118,40 @@ docker kill 容器id或名字
 ```
 docker rm 容器id或名字
 删除多个: docker rm -f $(docker ps -a -q)
+```
+
+* 查看容器日志
+```
+docker logs -f -t --tail 容器id
+参数说明:
+1. -t 时间戳
+2. -f 跟随最新的日志打印
+3. --tail 100 显示最后100条
+```
+
+* 查看容器内部运行的进程
+```
+docker top 容器id
+```
+
+
+* 查看容器内部细节
+```
+docker inspect 容器id
+```
+
+
+* 进入正在运行的容器并以命令行交互
+```
+docker attach 容器id
+直接进入容器启动命令的终端,不会启动新的进程
+
+docker exec -it 容器id bashshell
+在容器中打开新的终端,并且可以启动新的进程
+```
+
+
+* 从容器内拷贝文件到主机上
+```
+docker cp 容器id:容器内路径 目的主机路径
 ```
