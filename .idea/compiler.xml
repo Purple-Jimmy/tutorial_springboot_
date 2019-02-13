@@ -65,6 +65,7 @@
       <module name="tutorial_redis" options="-parameters" />
       <module name="tutorial_security_jwt" options="-parameters" />
       <module name="tutorial_solr" options="-parameters" />
+      <module name="tutorial_spring" options="-parameters" />
       <module name="tutorial_springboot" options="-parameters" />
       <module name="tutorial_themeleaf" options="-parameters" />
       <module name="tutorial_utils" options="-parameters" />

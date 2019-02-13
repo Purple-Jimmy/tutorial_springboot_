@@ -155,3 +155,20 @@ docker exec -it 容器id bashshell
 ```
 docker cp 容器id:容器内路径 目的主机路径
 ```
+
+
+## 容器数据卷
+1. 直接命令添加
+```
+容器内文件可读可写
+docker run -it -v /宿主机绝对路径:/容器内路径  镜像名
+
+容器内文件只读
+docker run -it -v /宿主机绝对路径:/容器内路径:ro  镜像名
+```
+2. dockerFile添加
+
+* 查看数据卷是否挂载成功
+```
+docker inspect 容器id
+```
