@@ -166,9 +166,29 @@ docker run -it -v /宿主机绝对路径:/容器内路径  镜像名
 容器内文件只读
 docker run -it -v /宿主机绝对路径:/容器内路径:ro  镜像名
 ```
-2. dockerFile添加
+2. Dockerfile添加
+```
+1. 在宿主机根目录下新建文件夹(myDocker)并进入
+2. 在Dockerfile中通过VOLUME指令给镜像添加一个或多个数据卷
+   vi Dockerfile
+   
+   #volume test
+   FROM tomcat
+   VOLUME 【"/volume1","/volume2"】
+   CMD echo "success attach volume"
+   CMD /bin/bash
+   
+3. bulid生成一个新的镜像
+   [root@izuf64u1jmuzim8azzt99bz myDockerFile]# docker build -f ../myDockerFile/Dockerfile -t tutorial/tomcatvolume:1.0 .
+4. 对应的宿主机文件路径通过命令查看:docker inspect 容器id
+```
+docker run -it -v --privileged=true  镜像名
+
 
 * 查看数据卷是否挂载成功
 ```
 docker inspect 容器id
 ```
+
+
+## 数据卷容器
