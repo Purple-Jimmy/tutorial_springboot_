@@ -28,6 +28,7 @@
         <module name="tutorial_redis" />
         <module name="tutorial_security_jwt" />
         <module name="tutorial_solr" />
+        <module name="tutorial_spring" />
         <module name="tutorial_springboot" />
         <module name="tutorial_themeleaf" />
         <module name="tutorial_utils" />

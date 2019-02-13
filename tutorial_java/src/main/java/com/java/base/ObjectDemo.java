@@ -9,13 +9,13 @@ import org.junit.Test;
  * @author jimmy
  * @date 2019-02-0110:46
  */
-public class ObjectAnalyser {
+public class ObjectDemo {
 
     /**
      * Car重写了toString方法,因为知道属性是什么
      * Car(id=1, brand=null, price=null)
-     * 未重写toString方法,因为Object类并不知道具体对象的属性,无法用文本描述,但又得区分不同对象
-     * com.java.domain.City@64b8f8f4 其中􏱟􏱰􏰋􏰅􏱊􏱛􏱟􏱰􏰋􏰅􏱊􏱛􏱟􏱰􏰋􏰅􏱊􏱛@64b8f8f4是对象的哈希值,通常是对象的内存地址值
+     * city未重写toString方法,此时Object类并不知道具体对象的属性,无法用文本描述,但又得区分不同对象
+     * com.java.domain.City@64b8f8f4 其中64b8f8f4是对象的哈希值,通常是对象的内存地址值
      *
      */
     @Test
