@@ -2,12 +2,14 @@
 
 ## 启动tomcat
 ```
-docker run -it -p 8888:8080 tomcat --name springboot_tutorial
+指定端口,并指定容器名字为springboot_tutorial
+docker run -it --name springboot_tutorial -p 8084:8080 tomcat
+
 参数说明:
 8888:docker的端口
 8080:docker里面tomcat运行的端口
 ```
-访问:http://47.101.149.94:8088/
+访问:http://ip:8088/
 
 
 ## 进入tomcat,删除
