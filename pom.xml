@@ -33,7 +33,7 @@
     <module>tutorial_design_pattern</module>
     <module>tutorial_data_structure</module>
     <module>tutorial_caffeine</module>
-      <module>tutorial_spring</module>
+    <module>tutorial_spring</module>
   </modules>
 
   <name>tutorial_springboot_</name>

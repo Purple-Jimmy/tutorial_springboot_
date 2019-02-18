@@ -53,6 +53,10 @@ docker rmi tomcat
 删除全部: docker rmi -f $(docker images -qa)
 ```
 
+* 列出镜像的变更历史
+```
+docker history 镜像名字or镜像id
+```
 
 ## 容器命令
 
@@ -65,9 +69,6 @@ docker ps
 3. -n:显示最近创建的n个容器
 4. -q:静默显示,只显示容器编号
 5. --no-trunc:不截断输出
-
-
-
 ```
 
 * 启动容器
@@ -192,3 +193,15 @@ docker inspect 容器id
 
 
 ## 数据卷容器
+1. 在如上挂载数据卷之后的容器生成的镜像上启动dc01容器实例(父容器)
+```
+docker run -it --name dc01 tutorial/tomcatvolume:1.0
+```
+2. 使用参数--volumes-from启动dc02,dc03两个容器实例继承自dc01
+```
+docker run -it --name dc02 --volumes-from dc01 tutorial/tomcatvolume:1.0
+docker run -it --name dc03 --volumes-from dc01 tutorial/tomcatvolume:1.0
+```
+结论:  
+1. dc01容器删除之后,dc02和dc03不受任何影响,文件数据依然存在
+2. 容器之间配置的信息传递,数据卷的生命周期一直持续到没有容器使用它为止.
