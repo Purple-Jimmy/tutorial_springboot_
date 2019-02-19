@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--通过配置告诉spring的IoC容器,需要帮我管理那些类的对象-->
+    <bean id="helloWorld" class="com.tutorial.spring.pojo.HelloWorld">
+        <!--注意:一定要有setXXX()方法,此处的name对应set方法里面的参数名-->
+        <property name="id" value="2" />
+        <property name="name" value="jack" />
+    </bean>
+</beans>
