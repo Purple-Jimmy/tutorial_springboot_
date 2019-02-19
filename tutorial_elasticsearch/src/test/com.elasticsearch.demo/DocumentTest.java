@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.*;
-import io.searchbox.params.Parameters;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -20,7 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -250,4 +248,29 @@ public class DocumentTest {
         CountResult countResult = jestClient.execute(count);
         System.out.println(countResult.getCount());
     }
+
+/*
+    @Test
+    public void test13(){
+        JestClient jestClient = JestClientUtil.getJestClient();
+        //未知原因
+        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery().filter(QueryBuilders.termsQuery("id", "17089562","17089563"));
+        DeleteByQuery deleteByQuery = new DeleteByQuery.Builder(new SearchSourceBuilder().query(boolQueryBuilder).toString())
+                .addIndex(GlobalConstants.MAPPER_ + 40)
+                .addType(GlobalConstants.OTHER_TYPE)
+                .setParameter("scroll_size", 5000)
+                .refresh(true)
+                .setParameter("slices", 5)
+                .build();
+        //scroll_size=5000&refresh&slices=5
+        System.out.println( );
+        try {
+            JestResult execute =jestClient.execute(deleteByQuery);
+            System.out.println(execute.getJsonString());
+            jestClient.shutdownClient();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
+
 }
