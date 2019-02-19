@@ -39,7 +39,6 @@
       <module name="tutorial_elasticjob" target="1.8" />
       <module name="tutorial_flink" target="1.8" />
       <module name="tutorial_guava" target="1.8" />
-      <module name="tutorial_spring" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/tutorial_redis/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_batch/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_utils/pom.xml" />
+        <option value="$PROJECT_DIR$/tutorial_spring/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -23,7 +24,6 @@
         <option value="$PROJECT_DIR$/tutorial_repository/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_security_oauth2/pom.xml" />
         <option value="$PROJECT_DIR$/tutorial_service/pom.xml" />
-        <option value="$PROJECT_DIR$/tutorial_spring/pom.xml" />
       </set>
     </option>
   </component>
