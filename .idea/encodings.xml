@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with NO BOM">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_batch" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_caffeine" charset="UTF-8" />
@@ -22,6 +22,7 @@
     <file url="file://$PROJECT_DIR$/tutorial_redis" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_security_jwt" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_solr" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/tutorial_spring" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_spring" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_springboot" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/tutorial_themeleaf" charset="UTF-8" />
