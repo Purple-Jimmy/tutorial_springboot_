@@ -4,6 +4,8 @@ import com.tutorial.spring.pojo.HelloWorld;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
@@ -33,7 +35,7 @@ public class HelloWorldDemo {
     }
 
     /**
-     * 使用spring方式
+     * 使用spring方式 BeanFactory
      */
     @Test
     public void TestWithSpring(){
@@ -85,4 +87,15 @@ public class HelloWorldDemo {
         helloWorld.sayHello();
     }
 
+
+    /**
+     * 使用spring方式 ApplicationContext
+     * ApplicationContext是BeanFactory的子接口
+     */
+    @Test
+    public void testApplicationContext(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        HelloWorld helloWorld = ctx.getBean("helloWorld",HelloWorld.class);
+        System.out.println(helloWorld);
+    }
 }
