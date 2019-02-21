@@ -1,6 +1,6 @@
 package com.tutorial.spring.test.helloworld;
 
-import com.tutorial.spring.pojo.HelloWorld;
+import com.tutorial.spring.helloworld.HelloWorld;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -60,7 +60,7 @@ public class HelloWorldDemo {
      */
     @Test
     public void springIoCMock() throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InstantiationException, IntrospectionException, InvocationTargetException {
-        String className = "com.tutorial.spring.pojo.HelloWorld";
+        String className = "com.tutorial.spring.helloworld.HelloWorld";
         HelloWorld helloWorld = null;
         //----------------------------
         //使用反射创建对象
@@ -97,5 +97,8 @@ public class HelloWorldDemo {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         HelloWorld helloWorld = ctx.getBean("helloWorld",HelloWorld.class);
         System.out.println(helloWorld);
+        //手动销毁bean
+        //registerShutdownHook 把spring线程作为JVM的子线程,JVM虚拟机在结束之前要把spring先结束掉
+        ((ClassPathXmlApplicationContext) ctx).registerShutdownHook();
     }
 }

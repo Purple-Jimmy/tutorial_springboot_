@@ -1,6 +1,6 @@
 package com.tutorial.spring.test.helloworld;
 
-import com.tutorial.spring.pojo.HelloWorld;
+import com.tutorial.spring.helloworld.HelloWorld;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

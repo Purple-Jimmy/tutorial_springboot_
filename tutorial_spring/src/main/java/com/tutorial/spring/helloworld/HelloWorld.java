@@ -1,4 +1,4 @@
-package com.tutorial.spring.pojo;
+package com.tutorial.spring.helloworld;
 
 /**
  * @author jimmy

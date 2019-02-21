@@ -5,10 +5,18 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <!--通过配置告诉spring的IoC容器,需要帮我管理那些类的对象-->
-    <bean id="helloWorld" class="com.tutorial.spring.pojo.HelloWorld">
+    <!--通过配置告诉spring的IoC容器,需要帮忙管理哪些类的对象-->
+    <bean id="helloWorld" class="com.tutorial.spring.helloworld.HelloWorld">
         <!--注意:一定要有setXXX()方法,此处的name对应set方法里面的参数名-->
         <property name="id" value="2" />
         <property name="name" value="jack" />
     </bean>
+
+    <!--
+        bean生命周期
+        init-method:定义初始化方法,在构造器执行之后立马执行
+        destroy-method:定义销毁之前的方法
+    -->
+    <bean id="springBeanLifeCycle" class="com.tutorial.spring.helloworld.SpringBeanLifeCycle" scope="prototype" init-method="open" destroy-method="close"/>
+
 </beans>
