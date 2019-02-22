@@ -1,4 +1,4 @@
-package com.java.encrypt;
+package com.java.encrypt.demo;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

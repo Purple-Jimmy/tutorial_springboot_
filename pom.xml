@@ -34,6 +34,7 @@
     <module>tutorial_data_structure</module>
     <module>tutorial_caffeine</module>
     <module>tutorial_spring</module>
+      <module>tutorial_elasticsearch_spring_data</module>
   </modules>
 
   <name>tutorial_springboot_</name>
