@@ -14,11 +14,11 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 @ContextConfiguration("classpath:applicationContext.xml")
 public class DITest {
     @Autowired
-    Empolyee empolyee;
+    Empolyee empolyee1;
 
 
     @Test
     public void test(){
-        System.out.println(empolyee);
+        System.out.println(empolyee1);
     }
 }

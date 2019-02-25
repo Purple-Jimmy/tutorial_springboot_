@@ -12,3 +12,9 @@
 1. 常量类型,value
 2. 对象类型(引用类型),ref
 3. 集合类型,set、list
+
+
+## DI注解
+1. @Autowired
+2. @Resource
+3. @Value

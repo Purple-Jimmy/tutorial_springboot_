@@ -60,3 +60,7 @@ Application:
 
 
 ## IoC注解配置
+1. @Component
+2. @Repository
+3. @Service
+4. @Controller
