@@ -68,4 +68,11 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: true
         dialect: org.hibernate.dialect.MySQL5Dialect
+  #elasticsearch配置
+  elasticsearch:
+    jest:
+      uris: http://47.101.149.94:9200
+      multi-threaded: true
+      read-timeout: 5000s
+      connection-timeout: 5000s
 
