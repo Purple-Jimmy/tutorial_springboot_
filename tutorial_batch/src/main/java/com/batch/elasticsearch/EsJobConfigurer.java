@@ -40,7 +40,7 @@ public class EsJobConfigurer {
      * processJob 定义job的名字
      */
     @Bean
-    public Job esJob(@Qualifier("esStep") Step esStep) {
+    public Job esJob(@Qualifier("esStep")Step esStep) {
         return jobBuilderFactory.get("esJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener())
