@@ -2,6 +2,8 @@ package com.rabbitmq.configurer;
 
 import com.rabbitmq.util.RabbitExchangeType;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -51,7 +53,7 @@ public class RabbitMQConfigurer {
     /**
      * 声明名字为direct_queue的queue
      * 参数1:String name
-     * 参数2:boolean durable
+     * 参数2:boolean durable     是否持久化,rabbitmq重启的时候不需要创建新的队列
      * 参数3:boolean exclusive   仅创建者可以使用的私有队列,断开后自动删除
      * 参数4:boolean autoDelete  当所有消费客户端连接断开后,是否自动删除队列
      * 参数5:Map arguments
@@ -180,4 +182,14 @@ public class RabbitMQConfigurer {
     public Binding bindingTopicAll() {
         return BindingBuilder.bind(topicQueueLogAll()).to(topicExchange()).with("log.#");
     }
+
+
+    /**
+     * 定义消息转换实例  转化成 JSON 传输  传输实体就可以不用实现序列化
+     * */
+    @Bean
+    public MessageConverter integrationEventMessageConverter() {
+        return  new Jackson2JsonMessageConverter();
+    }
+
 }

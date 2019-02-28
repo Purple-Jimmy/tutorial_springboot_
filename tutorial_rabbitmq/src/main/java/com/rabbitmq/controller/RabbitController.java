@@ -40,13 +40,12 @@ public class RabbitController {
     @RequestMapping("/fanout")
     public String fanoutProducer(){
     //  producer.send_fanout("fanout producer");
-       /* for(Animal animal:getAnimals("fanout")){
-          //  producer.convertAndSend_fanout(animal);
-
-        }*/
-        Animal animal = new Animal();
+        for(Animal animal:getFanoutAnimals("fanout")){
+            producer.convertAndSend_fanout(animal);
+        }
+       /* Animal animal = new Animal();
         animal.setId(100L);
-        producer.convertSendAndReceive_fanout(animal);
+        producer.convertSendAndReceive_fanout(animal);*/
         return "success";
     }
 
@@ -66,6 +65,19 @@ public class RabbitController {
 
 
     private List<Animal> getAnimals(String name){
+        List<Animal> list = Lists.newArrayList();
+        Animal animal = null;
+        for(Long i=1L;i<=100;i++){
+            animal = new Animal();
+            animal.setId(i);
+            animal.setName(name);
+            animal.setColor("white");
+            list.add(animal);
+        }
+        return list;
+    }
+
+    private List<Animal> getFanoutAnimals(String name){
         List<Animal> list = Lists.newArrayList();
         Animal animal = null;
         for(Long i=1L;i<=10;i++){

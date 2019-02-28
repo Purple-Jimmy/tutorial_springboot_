@@ -38,6 +38,18 @@ public class ProducerConfigurer implements RabbitTemplate.ConfirmCallback, Rabbi
 
     /**
      * 当消息成功到达exchange的时候触发的ack回调
+     * 实现消息发送到RabbitMQ交换器后接收ack回调,如果消息发送确认失败就进行重试.
+     * 若使用confirm-callback或return-callback
+     * 必须要配置publisherConfirms或publisherReturns为true
+     * 每个rabbitTemplate只能有一个confirm-callback和return-callback
+     * 使用return-callback时必须设置mandatory为true,或者在配置中设置mandatory-expression的值为true
+     * 可针对每次请求的消息去确定’mandatory’的boolean值
+     * 只能在提供’return -callback’时使用,与mandatory互斥
+     * Confirms给客户端一种轻量级的方式，能够跟踪哪些消息被broker处理
+     * 哪些可能因为broker宕掉或者网络失败的情况而重新发布
+     * 确认并且保证消息被送达,提供了两种方式:发布确认和事务(两者不可同时使用)
+     * 在channel为事务时,不可引入确认模式;同样channel为确认模式下,不可使用事务
+     *
      * @param correlationData
      * @param ack
      * @param cause
@@ -65,6 +77,22 @@ public class ProducerConfigurer implements RabbitTemplate.ConfirmCallback, Rabbi
     @Override
     public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {
         log.info("消息发送失败:{}",message.getMessageProperties().getCorrelationId());
+    }
+
+    /**
+     * convertAndSend 异步,消息是否发送成功用ConfirmCallback和ReturnCallback回调函数类确认。
+     * 发送MQ消息
+     */
+    public void sendMessage(String exchangeName, String routingKey, Object message) {
+        rabbitTemplate.convertAndSend(exchangeName, routingKey, message, new CorrelationData(UUID.randomUUID().toString()));
+    }
+
+    /**
+     * sendMessageAndReturn 当发送消息过后,该方法会一直阻塞在哪里等待返回结果,直到请求超时,配置spring.rabbitmq.template.reply-timeout来配置超时时间。
+     * 发送MQ消息并返回结果
+     */
+    public Object sendMessageAndReturn(String exchangeName, String routingKey, Object message) {
+        return rabbitTemplate.convertSendAndReceive(exchangeName, routingKey, message, new CorrelationData(UUID.randomUUID().toString()));
     }
 
 

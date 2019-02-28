@@ -1,0 +1,55 @@
+server:
+  port: 8090
+  servlet:
+   #context-path: /spring-boot
+    application-display-name: /spring-boot-rabbitmq
+  error:
+    path: /error
+  #内嵌tomcat配置
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000 #tomcat能启动用来处理请求的最大线程数,如果请求处理量一直远远大于最大线程数,可能会僵死
+    max-connections: 500 #瞬时最大连接数,超出的会排队等待
+    accept-count: 500 #如果tomcat的线程都忙于响应,新来的连接会进入队列排队,如果超出排队大小,则拒绝连接
+
+spring:
+  application:
+    name: springboot-rabbitmq
+  #热部署 设置false restart类加载器还会初始化,但不会监视文件更新
+  devtools:
+    restart:
+      enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+  rabbitmq:
+    host: 47.101.149.94
+    port: 5672
+    username: admin
+    password: admin
+    virtual-host: my_vhost
+    publisher-confirms: true  #开启发送确认 开启发送消息到exchange确认机制.消息能收到回调(对publisher来说)
+    publisher-returns: true   #开启发送失败退回 开启发送消息到exchange但是exchange没有和队列绑定的确认机制
+    template:
+      mandatory: true
+      reply-timeout: 10000 #超时时间
+      retry:
+        enabled: true  #设置为true的时候RabbitTemplate(生产端)能够实现重试
+    listener:
+      direct:
+        retry:
+          enabled: true #消费者端的重试
+      simple:
+        acknowledge-mode: manual  # 指定acknowledge的模式auto,none,manual
+        prefetch: 1  # 每一次发送到消费者的消息数量,如果有事务的话,必须大于等于transaction数量
+        transaction-size: 1  # 一个事务处理的消息数量,最好是小于等于prefetch的数量
+        concurrency: 10  # 消费者数量 min
+        max-concurrency: 20 # 消费者数量 max
+        retry:
+          enabled: true #消费者端的重试
+
+

@@ -14,11 +14,12 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * RabbitHandler用于有多个方法时但是参数类型不能一样,否则会报错
  * Created by Jimmy. 2018/2/13  13:56
  */
 @Component
-public class Consumer {
-    private static final Logger logger = LoggerFactory.getLogger(Consumer.class);
+public class ConsumerConfigurer {
+    private static final Logger logger = LoggerFactory.getLogger(ConsumerConfigurer.class);
 
 //---------direct-----------------------------------------------------------------------------------------------
 
@@ -83,8 +84,8 @@ public class Consumer {
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
-    @RabbitListener(queues = RabbitMQConfigurer.FANOUT_QUEUE_2)
-    @RabbitHandler
+   // @RabbitListener(queues = RabbitMQConfigurer.FANOUT_QUEUE_2)
+   // @RabbitHandler
     public void processConvertAndSend_fanout_2(@Payload Animal animal, Channel channel, Message message) throws InterruptedException, IOException {
         logger.info("接收到fanout_queue_2的消息,开始处理,消息Id {},内容 {}",message.getMessageProperties().getDeliveryTag(), animal);
         TimeUnit.SECONDS.sleep(10);
