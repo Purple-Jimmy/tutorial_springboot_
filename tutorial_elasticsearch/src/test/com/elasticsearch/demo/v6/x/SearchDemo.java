@@ -9,8 +9,14 @@ import io.searchbox.client.JestClient;
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Bulk;
 import io.searchbox.core.Index;
+import io.searchbox.core.Search;
+import io.searchbox.core.SearchResult;
 import io.searchbox.indices.CreateIndex;
 import io.searchbox.indices.mapping.PutMapping;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.collapse.CollapseBuilder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -164,4 +170,21 @@ public class SearchDemo {
     }
 
 
+    /**
+     * 分页去重查询
+     */
+    public void distinctQuery() throws IOException {
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        QueryBuilder queryBuilder = QueryBuilders
+                .prefixQuery("name.keyword", "大话");
+        //
+        CollapseBuilder headerCollapse = new CollapseBuilder("headerId");
+        searchSourceBuilder.query(queryBuilder).collapse(headerCollapse);
+        //
+        String query = searchSourceBuilder.toString();
+        System.out.println(query);
+        Search search = new Search.Builder(query).addIndex("").addType("").build();
+        //
+        SearchResult result = jestClient.execute(search);
+    }
 }
