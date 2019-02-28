@@ -12,7 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
  */
 @SpringJUnitConfig()
 @ContextConfiguration("classpath:applicationContext.xml")
-public class DITest {
+public class DIDemo {
     @Autowired
     Empolyee empolyee1;
 

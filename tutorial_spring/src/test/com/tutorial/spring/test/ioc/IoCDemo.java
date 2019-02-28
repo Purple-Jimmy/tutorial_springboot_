@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
  */
 @SpringJUnitConfig
 @ContextConfiguration("classpath:applicationContext-ioc.xml")
-public class IoCTest {
+public class IoCDemo {
     @Autowired
     private LifeCycleAnno bean1;
 
