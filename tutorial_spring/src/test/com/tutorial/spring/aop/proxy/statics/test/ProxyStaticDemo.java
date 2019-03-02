@@ -1,7 +1,7 @@
-package com.tutorial.spring.aop.test;
+package com.tutorial.spring.aop.proxy.statics.test;
 
-import com.tutorial.aop.proxy.staticproxy.Employee;
-import com.tutorial.aop.proxy.staticproxy.EmployeeService;
+import com.tutorial.spring.entity.Employee;
+import com.tutorial.spring.service.IEmployeeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 @ContextConfiguration("classpath:applicationContext-proxy.xml")
 public class ProxyStaticDemo {
     @Autowired
-    EmployeeService employeeServiceProxy;
+    IEmployeeService employeeServiceProxy;
 
     @Test
     public void saveTest(){

@@ -1,18 +1,20 @@
-package com.tutorial.aop.proxy.staticproxy;
+package com.tutorial.spring.aop.proxy.statics;
 
-import com.tutorial.tx.TransactionManager;
+import com.tutorial.spring.entity.Employee;
+import com.tutorial.spring.service.IEmployeeService;
+import com.tutorial.spring.tx.TransactionManager;
 
 /**
  * 静态代理类
  * @author jimmy
  * @date 2019-02-2823:52
  */
-public class EmployeeServiceProxy implements EmployeeService {
+public class EmployeeServiceProxy implements IEmployeeService {
 
     /**
      * 真实对象(委托对象)
      */
-    private EmployeeService target;
+    private IEmployeeService target;
 
     /**
      * 模拟事务管理器
@@ -42,11 +44,11 @@ public class EmployeeServiceProxy implements EmployeeService {
         }
     }
 
-    public EmployeeService getTarget() {
+    public IEmployeeService getTarget() {
         return target;
     }
 
-    public void setTarget(EmployeeService target) {
+    public void setTarget(IEmployeeService target) {
         this.target = target;
     }
 

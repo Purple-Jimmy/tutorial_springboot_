@@ -17,7 +17,7 @@ public class EsTransportClient {
      *  private int serverPort;
      * @return jestclient
      */
-   /* public static synchronized TransportClient getClient(ElasticSearchCfg searchCfg) {
+   /* public statics synchronized TransportClient getClient(ElasticSearchCfg searchCfg) {
         if (client == null) {
             try {
                 client = new PreBuiltTransportClient(Settings.EMPTY)

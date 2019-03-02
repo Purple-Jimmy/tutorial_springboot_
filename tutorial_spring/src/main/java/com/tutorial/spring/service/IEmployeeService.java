@@ -1,10 +1,12 @@
-package com.tutorial.aop.proxy.staticproxy;
+package com.tutorial.spring.service;
+
+import com.tutorial.spring.entity.Employee;
 
 /**
  * @author jimmy
  * @date 2019-02-2823:54
  */
-public interface EmployeeService {
+public interface IEmployeeService {
 
     void save(Employee employee);
 

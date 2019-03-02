@@ -23,7 +23,7 @@ public class ProxyPatternDemo {
 
     /**
      * 动态代理
-     * public static Object newProxyInstance(ClassLoader loader,
+     * public statics Object newProxyInstance(ClassLoader loader,
      *                                           Class<?>[] interfaces,
      *                                           InvocationHandler h)
      *

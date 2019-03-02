@@ -1,4 +1,4 @@
-package com.tutorial.tx;
+package com.tutorial.spring.tx;
 
 /**
  * 模拟事务管理器

@@ -1,4 +1,4 @@
-package com.tutorial.aop.proxy.staticproxy;
+package com.tutorial.spring.entity;
 
 /**
  * @author jimmy

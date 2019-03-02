@@ -10,15 +10,15 @@
 
 
 
-    <bean id="employeeRepository" class="com.tutorial.aop.proxy.staticproxy.EmployeeRepositoryImpl" />
+    <bean id="employeeRepository" class="com.tutorial.spring.repository.impl.EmployeeRepositoryImpl" />
 
 
-    <bean id="transactionManager" class="com.tutorial.tx.TransactionManager" />
+    <bean id="transactionManager" class="com.tutorial.spring.tx.TransactionManager" />
 
     <!--代理对象-->
-    <bean id="employeeServiceProxy" class="com.tutorial.aop.proxy.staticproxy.EmployeeServiceProxy">
+    <bean id="employeeServiceProxy" class="com.tutorial.spring.aop.proxy.statics.EmployeeServiceProxy">
         <property name="target">
-            <bean class="com.tutorial.aop.proxy.staticproxy.EmployeeServiceImpl">
+            <bean class="com.tutorial.spring.service.impl.EmployeeServiceImpl">
                 <property name="employeeRepository" ref="employeeRepository"/>
             </bean>
         </property>

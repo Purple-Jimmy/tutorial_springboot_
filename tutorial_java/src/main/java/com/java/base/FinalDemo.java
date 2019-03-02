@@ -38,7 +38,7 @@ public final class FinalDemo {
      * 4. 在匿名类中所有变量都必须是final变量
      * 5. final关键字容易与finalize()方法搞混,后者是在Object类中定义的方法,是在垃圾回收之前被JVM调用的方法
      * 6. final和abstract这两个关键字是反相关的,final类就不可能是abstract的
-     * 7. final方法在编译阶段绑定,称为静态绑定(static binding)
+     * 7. final方法在编译阶段绑定,称为静态绑定(statics binding)
      * 8. 对于集合对象声明为final指的是引用不能被更改,但是可以向其中增加,删除或者改变内容
      *    private final List Loans = new ArrayList();
      *    list.add(“home loan”);  //valid

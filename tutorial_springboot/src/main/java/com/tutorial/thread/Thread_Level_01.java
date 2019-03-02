@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
  * Created by Jimmy. 2018/1/30  17:14
  */
 public class Thread_Level_01 {
-    // public static ExecutorService fixedExecutorService = new ThreadPoolExecutor(3, 5, 0, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>());  //Executors.newFixedThreadPool(5);
+    // public statics ExecutorService fixedExecutorService = new ThreadPoolExecutor(3, 5, 0, TimeUnit.MILLISECONDS, new SynchronousQueue<Runnable>());  //Executors.newFixedThreadPool(5);
     public static ExecutorService fixedExecutorService = new ThreadPoolExecutor(3, 5, 0, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
     public static void main(String[] args) {
         for(int i=0;i<1000;i++){
