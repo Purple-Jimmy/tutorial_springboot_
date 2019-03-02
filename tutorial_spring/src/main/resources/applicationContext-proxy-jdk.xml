@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/util/spring-context.xsd">
+
+    <bean id="employeeRepository" class="com.tutorial.spring.repository.impl.EmployeeRepositoryImpl" />
+
+    <bean id="employeeService" class="com.tutorial.spring.service.impl.EmployeeServiceImpl">
+        <property name="employeeRepository" ref="employeeRepository"/>
+    </bean>
+
+    <bean id="transactionManager" class="com.tutorial.spring.tx.TransactionManager" />
+
+    <bean id="transactionManagerAdvice" class="com.tutorial.spring.tx.TransactionManagerAdvice">
+        <property name="targetObj" ref="employeeService"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+</beans>
