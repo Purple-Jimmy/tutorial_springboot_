@@ -2,7 +2,16 @@
 
 
 ## AOP思想
+把一个个的横切关注点放到某个模块中称之为切面.每一个切面都能影响业务的某一种功能,切面的目的就是功能增强.如日志切面
 
+## 一些AOP术语
+* joinPoint:连接点 拦截需要被增强的方法                                       where:去哪里做增强
+* pointCut:切入点  哪些包中的哪些类的哪些方法,可认为是连接点的集合                where:去哪些地方做增强
+* advice:增强  当拦截到joinPoint之后,在方法执行的时机(when)做什么样的增强(what)
+* aspect:切面  pointCut+advice 去哪些地方+在什么时候+做什么增强
+* target:目标对象 被代理的目标对象
+* weaving:织入 把advice加入到target上之后,创建中proxy对象的过程
+* proxy:一个类被aop织入增强后,产生的代理类
 
 ## 代理模式
 客户端直接使用的都是代理对象,不知道真实对象是谁,此时代理对象可以在客户端和真实对象之间起到中介的作用
@@ -24,9 +33,6 @@
 # JDK动态代理---Java自带java.lang.reflect.Proxy
 
 
-
-
-
 # CGLIB动态代理
 
 
@@ -36,7 +42,9 @@
 然后再把这个二进制数据加载转换成对应的类,如此就完成了在代码中动态创建一个类的能力了
 
 ## AOP开发
-
+# 拦截器与过滤器
+1. 拦截器:interceptor 整个java领域的概念,包括service,web层等
+2. 过滤器:filter web领域的概念,只能针对于request和response做增强,离不开servlet-api
 
 ## 增强细节
 

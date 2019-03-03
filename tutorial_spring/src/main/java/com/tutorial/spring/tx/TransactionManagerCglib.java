@@ -1,15 +1,15 @@
 package com.tutorial.spring.tx;
 
+import org.springframework.cglib.proxy.Enhancer;
+
 import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 /**
- * 事务的增强操作
+ * 事务的增强操作 cglib代理
  * @author jimmy
- * @date 2019-03-0209:12
+ * @date 2019-03-0221:31
  */
-public class TransactionManagerAdvice implements java.lang.reflect.InvocationHandler{
-
+public class TransactionManagerCglib implements org.springframework.cglib.proxy.InvocationHandler {
     private TransactionManager transactionManager;
     /**
      * 真实对象 对谁做增强
@@ -24,40 +24,29 @@ public class TransactionManagerAdvice implements java.lang.reflect.InvocationHan
      * @return
      */
     public <T> T getProxyObject(){
-        return (T) Proxy.newProxyInstance(targetObj.getClass().getClassLoader(), targetObj.getClass().getInterfaces(), this);
+        Enhancer enhancer = new Enhancer();
+        //继承哪一个类去做增强
+        enhancer.setSuperclass(targetObj.getClass());
+        //设置增强的对象
+        enhancer.setCallback(this);
+        //创建代理对象
+        return (T) enhancer.create();
     }
 
-
-    /**
-     * 如何为真实对象的方法做增强的具体操作
-     * @param proxy
-     * @param method
-     * @param args
-     * @return
-     * @throws Throwable
-     */
     @Override
-    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println(proxy.getClass());
+    public Object invoke(Object o, Method method, Object[] objects) throws Throwable {
+        System.out.println(o.getClass());
         Object object = null;
         try{
             transactionManager.begin();
             //调用真实对象的方法
-            object = method.invoke(targetObj,args);
+            object = method.invoke(targetObj,objects);
             transactionManager.commit();
         }catch (Exception e){
             e.printStackTrace();
             transactionManager.rollback();
         }
         return object;
-    }
-
-    public Object getTargetObj() {
-        return targetObj;
-    }
-
-    public void setTargetObj(Object targetObj) {
-        this.targetObj = targetObj;
     }
 
     public TransactionManager getTransactionManager() {
@@ -68,11 +57,11 @@ public class TransactionManagerAdvice implements java.lang.reflect.InvocationHan
         this.transactionManager = transactionManager;
     }
 
-    /* class xx implements InvocationHandler{
+    public Object getTargetObj() {
+        return targetObj;
+    }
 
-        @Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            return null;
-        }
-    }*/
+    public void setTargetObj(Object targetObj) {
+        this.targetObj = targetObj;
+    }
 }
