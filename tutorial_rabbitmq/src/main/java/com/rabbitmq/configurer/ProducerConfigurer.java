@@ -166,6 +166,17 @@ public class ProducerConfigurer implements RabbitTemplate.ConfirmCallback, Rabbi
         rabbitTemplate.convertAndSend(RabbitExchangeType.TOPIC.name(), routingKey, object, correlationData);
     }
 
+    //--------------优先级消息队列--------------------------------------------------------------------------------------------
+
+
+    public void convertAndSend_priority(String routingKey,Object object,Integer priority) {
+        CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
+        rabbitTemplate.convertAndSend(RabbitExchangeType.PRIORITY.name(), routingKey, object, messagePostProcessor -> {
+            messagePostProcessor.getMessageProperties().setPriority(priority);
+            return messagePostProcessor;
+        });
+    }
+
 
 
 }

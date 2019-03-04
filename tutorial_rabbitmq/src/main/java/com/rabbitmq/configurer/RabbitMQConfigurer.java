@@ -2,10 +2,15 @@ package com.rabbitmq.configurer;
 
 import com.rabbitmq.util.RabbitExchangeType;
 import org.springframework.amqp.core.*;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Jimmy. 2018/2/6  11:23
@@ -17,8 +22,15 @@ public class RabbitMQConfigurer {
     public static final String FANOUT_QUEUE_2 = "fanout_queue_2";
     public static final String TOPIC_LOG_INFO_QUEUE  = "log.info";
     public static final String TOPIC_LOG_QUEUE  = "log.#";
-    public static final String PRIORITY_FIRST_QUEUE = "priority_first_queue";
-    public static final String PRIORITY_SECOND_QUEUE = "priority_second_queue";
+    public static final String PRIORITY_QUEUE = "priority_queue";
+
+    @Bean
+    public RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
+        RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
+        //设置忽略声明异常
+        rabbitAdmin.setIgnoreDeclarationExceptions(true);
+        return rabbitAdmin;
+    }
 
 //---------------direct------------------------------------------------------------------------------------------
     /**
@@ -172,34 +184,22 @@ public class RabbitMQConfigurer {
  //---------优先级队列--------------------------------------------------------------------------------------------
 
     @Bean
-    DirectExchange priorityFirstExchange() {
-        return new DirectExchange(RabbitExchangeType.DIRECT.name(),true,false,null);
+    TopicExchange priorityExchange() {
+        return new TopicExchange(RabbitExchangeType.PRIORITY.name(),true,false,null);
     }
 
     @Bean
-    public Queue priorityFirstQueue() {
-        return new Queue(DIRECT_QUEUE,true,false,false,null);
+    public Queue priorityQueue() {
+        Map<String,Object> args = new HashMap<>(10);
+        args.put("x-max-priority",10);
+        return new Queue(PRIORITY_QUEUE,true,false,false,args);
     }
 
     @Bean
-    public Binding bindingFirstPriority(Queue priorityFirstQueue,DirectExchange priorityFirstExchange) {
-        return BindingBuilder.bind(priorityFirstQueue).to(priorityFirstExchange).with("key.first");
+    public Binding bindingPriority(Queue priorityQueue,TopicExchange priorityExchange) {
+        return BindingBuilder.bind(priorityQueue).to(priorityExchange).with("key.priority.#");
     }
 
-    @Bean
-    DirectExchange prioritySecondExchange() {
-        return new DirectExchange(RabbitExchangeType.DIRECT.name(),true,false,null);
-    }
-
-    @Bean
-    public Queue prioritySecondQueue() {
-        return new Queue(DIRECT_QUEUE,true,false,false,null);
-    }
-
-    @Bean
-    public Binding bindingSecondPriority(Queue prioritySecondQueue,DirectExchange prioritySecondExchange) {
-        return BindingBuilder.bind(prioritySecondQueue).to(prioritySecondExchange).with("key.second");
-    }
 
 
  //------------------------------------------------------------------------------------------------------

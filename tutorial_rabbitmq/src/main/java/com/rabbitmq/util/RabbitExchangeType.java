@@ -5,7 +5,7 @@ package com.rabbitmq.util;
  */
 public enum RabbitExchangeType {
 
-    DIRECT("direct"),FANOUT("fanout"),TOPIC("topic");
+    DIRECT("direct"),FANOUT("fanout"),TOPIC("topic"),PRIORITY("priority");
 
     private String name;
 

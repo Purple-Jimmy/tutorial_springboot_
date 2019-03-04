@@ -157,4 +157,16 @@ public class ConsumerConfigurer {
         // 确认消息已经消费成功,手动ACK
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
+
+
+    //-------------优先级消息队列-------------------------------------------------------------
+    @RabbitListener(queues = RabbitMQConfigurer.PRIORITY_QUEUE)
+    @RabbitHandler
+    public void processConvertAndSend_priority(@Payload Animal animal, Channel channel, Message message) throws InterruptedException, IOException {
+        logger.info("接收到key.priority.#的消息,开始处理,消息Id {},优先级 {},内容 {}",message.getMessageProperties().getDeliveryTag(),message.getMessageProperties().getPriority(), animal);
+        TimeUnit.SECONDS.sleep(10);
+        logger.info("消息{} 处理完成,发送ACK",animal);
+        // 确认消息已经消费成功,手动ACK
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+    }
 }

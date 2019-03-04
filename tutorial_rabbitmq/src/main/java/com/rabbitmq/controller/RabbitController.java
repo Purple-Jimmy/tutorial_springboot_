@@ -62,8 +62,6 @@ public class RabbitController {
 
 
 
-
-
     private List<Animal> getAnimals(String name){
         List<Animal> list = Lists.newArrayList();
         Animal animal = null;
@@ -88,5 +86,15 @@ public class RabbitController {
             list.add(animal);
         }
         return list;
+    }
+
+    @RequestMapping("priorityQueue")
+    public void priorityQueue(@RequestParam(name = "priority",defaultValue = "1") Integer priority){
+        for(int i=1;i<priority;i++){
+            Animal animal = new Animal();
+            animal.setId(1000L+i);
+            animal.setName("priority_"+i);
+            producer.convertAndSend_priority("key.priority."+i,animal,i);
+        }
     }
 }
