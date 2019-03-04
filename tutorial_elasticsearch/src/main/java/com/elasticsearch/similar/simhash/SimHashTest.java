@@ -15,7 +15,7 @@ public class SimHashTest {
         hash1.subByDistance(hash1, 3);
 
         System.out.println("\n");
-        s = "战狼1";
+        s = "战狼2";
         SimHash hash2 = new SimHash(s, 64);
        // System.out.println(hash2.intSimHash+ "  " + hash2.intSimHash.bitCount());
         hash1.subByDistance(hash2, 3);
