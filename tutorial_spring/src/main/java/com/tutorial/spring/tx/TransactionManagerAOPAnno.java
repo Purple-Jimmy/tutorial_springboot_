@@ -4,38 +4,39 @@ package com.tutorial.spring.tx;
 /*import org.aspectj.lang.JoinPoint;*/
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.stereotype.Component;
 
 /**
  * 模拟事务管理器
  * @author jimmy
  * @date 2019-02-2823:40
  */
-public class TransactionManager {
+@Component
+//配置一个切面
+@Aspect
+public class TransactionManagerAOPAnno {
+    @Pointcut("execution(* com.tutorial.spring.service.impl.*ServiceImpl.*(..))")
+    public void pointCut(){
 
-   /* public void begin(JoinPoint joinPoint){
-        System.out.println("代理对象:"+joinPoint.getThis().getClass());
-        System.out.println("目标对象:"+joinPoint.getTarget().getClass());
-        System.out.println("当前连接点的类型:"+joinPoint.getKind());
-        System.out.println("开启事务");
-    }*/
+    }
 
-
+    @Before("pointCut()")
     public void begin(){
         System.out.println("开启事务");
     }
 
+    @AfterReturning("pointCut()")
     public void commit(){
         System.out.println("提交事务");
     }
 
-    public void rollback(){
-        System.out.println("回滚事务");
-    }
-
+    @AfterThrowing(value = "pointCut()",throwing = "ex")
     public void rollbackAOP(Throwable ex){
         System.out.println("回滚事务,异常信息"+ex.getMessage());
     }
 
+    @After("pointCut()")
     public void close(){
         System.out.println("释放资源");
     }
@@ -46,6 +47,7 @@ public class TransactionManager {
      * 2. 方法第一个参数必须是 ProceedingJoinPoint 是org.aspectj.lang.JoinPoint的子类,只用于环绕增强
      * @return
      */
+   // @Around("pointCut()")
     public Object around(ProceedingJoinPoint proceedingJoinPoint){
         Object object = null;
         System.out.println("开启事务");

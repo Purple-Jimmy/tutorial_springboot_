@@ -6,7 +6,7 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/util/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--通过配置告诉spring的IoC容器,需要帮忙管理哪些类的对象-->
     <bean id="helloWorld" class="com.tutorial.spring.helloworld.HelloWorld">

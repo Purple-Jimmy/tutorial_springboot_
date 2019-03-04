@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="employeeRepository" class="com.tutorial.spring.repository.impl.EmployeeRepositoryImpl" />
+
+    <bean id="employeeService" class="com.tutorial.spring.service.impl.EmployeeServiceImpl">
+        <property name="employeeRepository" ref="employeeRepository"/>
+    </bean>
+
+    <!--1.what:做什么增强-->
+    <bean id="transactionManager" class="com.tutorial.spring.tx.TransactionManager" />
+
+    <!--aop配置 在什么地点+什么时候+做什么-->
+    <aop:config> <!--proxy-target-class="true"-->
+        <!--配置aop切面-->
+        <aop:aspect ref="transactionManager"><!--关联做什么-->
+            <!--2.where:在哪些包中的哪些类上的哪些方法做增强-->
+            <aop:pointcut id="txPoint" expression="execution(* com.tutorial.spring.service.impl.*ServiceImpl.*(..))" />
+            <!--3.when在方法执行的什么时机做增强-->
+            <!--<aop:before method="begin" pointcut-ref="txPoint" />-->
+            <!--<aop:after-returning method="commit" pointcut-ref="txPoint" />--><!--正常执行完毕时执行-->
+            <!--出现异常时执行 ex必须要与rollback中声明的异常参数名一样且必须是Throwable-->
+            <!--<aop:after-throwing method="rollbackAOP" pointcut-ref="txPoint" throwing="ex"/>-->
+            <!--<aop:after method="close" pointcut-ref="txPoint" />--><!--最终执行-->
+            <aop:around method="around" pointcut-ref="txPoint" />
+        </aop:aspect>
+    </aop:config>
+</beans>
