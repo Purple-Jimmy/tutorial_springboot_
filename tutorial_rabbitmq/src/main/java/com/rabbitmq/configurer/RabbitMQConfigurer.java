@@ -17,24 +17,8 @@ public class RabbitMQConfigurer {
     public static final String FANOUT_QUEUE_2 = "fanout_queue_2";
     public static final String TOPIC_LOG_INFO_QUEUE  = "log.info";
     public static final String TOPIC_LOG_QUEUE  = "log.#";
-
-
-    /*@Bean
-    public ConnectionFactory connectionFactory() {
-        CachingConnectionFactory connectionFactory = new CachingConnectionFactory("36.111.193.248",5672);
-
-        connectionFactory.setUsername("guest");
-        connectionFactory.setPassword("guest");
-        connectionFactory.setVirtualHost("/");
-        connectionFactory.setPublisherConfirms(true);
-        return connectionFactory;
-    }*/
-
-    //rabbitAdmin 用于管理 exchanges, queues and bindings等
-   /* @Bean
-    RabbitAdmin rabbitAdmin(ConnectionFactory connectionFactory) {
-        return new RabbitAdmin(connectionFactory);
-    }*/
+    public static final String PRIORITY_FIRST_QUEUE = "priority_first_queue";
+    public static final String PRIORITY_SECOND_QUEUE = "priority_second_queue";
 
 //---------------direct------------------------------------------------------------------------------------------
     /**
@@ -184,6 +168,41 @@ public class RabbitMQConfigurer {
     }
 
 
+
+ //---------优先级队列--------------------------------------------------------------------------------------------
+
+    @Bean
+    DirectExchange priorityFirstExchange() {
+        return new DirectExchange(RabbitExchangeType.DIRECT.name(),true,false,null);
+    }
+
+    @Bean
+    public Queue priorityFirstQueue() {
+        return new Queue(DIRECT_QUEUE,true,false,false,null);
+    }
+
+    @Bean
+    public Binding bindingFirstPriority(Queue priorityFirstQueue,DirectExchange priorityFirstExchange) {
+        return BindingBuilder.bind(priorityFirstQueue).to(priorityFirstExchange).with("key.first");
+    }
+
+    @Bean
+    DirectExchange prioritySecondExchange() {
+        return new DirectExchange(RabbitExchangeType.DIRECT.name(),true,false,null);
+    }
+
+    @Bean
+    public Queue prioritySecondQueue() {
+        return new Queue(DIRECT_QUEUE,true,false,false,null);
+    }
+
+    @Bean
+    public Binding bindingSecondPriority(Queue prioritySecondQueue,DirectExchange prioritySecondExchange) {
+        return BindingBuilder.bind(prioritySecondQueue).to(prioritySecondExchange).with("key.second");
+    }
+
+
+ //------------------------------------------------------------------------------------------------------
     /**
      * 定义消息转换实例  转化成 JSON 传输  传输实体就可以不用实现序列化
      * */

@@ -11,10 +11,13 @@ import java.util.List;
  */
 public class Writer implements ItemWriter<String> {
 
+
     @Override
     public void write(List<? extends String> list) throws Exception {
         for (String str:list){
             System.out.println(str);
         }
     }
+
+
 }

@@ -22,7 +22,7 @@ public class IQYWriteHelper {
             writer = new FlatFileItemWriter<IQYWriterDomain>();
             writer.setAppendAllowed(true);
             writer.setEncoding("UTF-8");
-            writer.setResource(new FileSystemResource("F:\\tutorial_space\\tutorial_springboot_\\tutorial_batch\\file\\hello.txt"));
+            writer.setResource(new FileSystemResource("F:\\tutorial_space\\tutorial_springboot_\\tutorial_batch\\file\\iqiyi_data.txt"));
             writer.setLineAggregator(new DelimitedLineAggregator<IQYWriterDomain>() {{
                 setDelimiter(",");
                 setFieldExtractor(new BeanWrapperFieldExtractor<IQYWriterDomain>() {{

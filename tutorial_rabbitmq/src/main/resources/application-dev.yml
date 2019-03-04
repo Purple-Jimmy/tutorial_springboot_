@@ -25,7 +25,6 @@ spring:
       enabled: true
       force: true
 
-
   rabbitmq:
     host: 47.101.149.94
     port: 5672
@@ -36,7 +35,7 @@ spring:
     publisher-returns: true   #开启发送失败退回 开启发送消息到exchange但是exchange没有和队列绑定的确认机制
     template:
       mandatory: true
-      reply-timeout: 10000 #超时时间
+      reply-timeout: 10000s #超时时间
       retry:
         enabled: true  #设置为true的时候RabbitTemplate(生产端)能够实现重试
     listener:

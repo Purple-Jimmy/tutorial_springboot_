@@ -165,4 +165,7 @@ public class ProducerConfigurer implements RabbitTemplate.ConfirmCallback, Rabbi
         CorrelationData correlationData = new CorrelationData(UUID.randomUUID().toString());
         rabbitTemplate.convertAndSend(RabbitExchangeType.TOPIC.name(), routingKey, object, correlationData);
     }
+
+
+
 }
