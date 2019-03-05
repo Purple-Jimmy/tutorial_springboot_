@@ -19,4 +19,9 @@ public interface IBookRepository {
     List<Book> queryAll();
 
     void delete(Integer id);
+
+
+    void transOut(Integer id,Integer price);
+
+    void transInt(Integer id,Integer price);
 }

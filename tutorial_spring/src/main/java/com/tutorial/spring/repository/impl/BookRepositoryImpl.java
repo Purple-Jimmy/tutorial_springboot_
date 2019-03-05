@@ -56,4 +56,14 @@ public class BookRepositoryImpl implements IBookRepository {
     public void delete(Integer id) {
         jdbcTemplate.update("delete from book where id = ?", id);
     }
+
+    @Override
+    public void transOut(Integer id, Integer price) {
+        jdbcTemplate.update("update book set price = price - ? where id = ?", price,id);
+    }
+
+    @Override
+    public void transInt(Integer id, Integer price) {
+        jdbcTemplate.update("update book set price = price + ? where id = ?", price,id);
+    }
 }

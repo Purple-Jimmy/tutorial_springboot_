@@ -24,4 +24,8 @@
     <bean id="bookRepository" class="com.tutorial.spring.repository.impl.BookRepositoryImpl">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <bean id="bookService" class="com.tutorial.spring.service.impl.BookServiceImpl">
+        <property name="bookRepository" ref="bookRepository"/>
+    </bean>
 </beans>

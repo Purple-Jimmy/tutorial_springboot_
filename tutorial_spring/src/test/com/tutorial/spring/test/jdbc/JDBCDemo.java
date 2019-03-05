@@ -2,6 +2,7 @@ package com.tutorial.spring.test.jdbc;
 
 import com.tutorial.spring.entity.Book;
 import com.tutorial.spring.repository.IBookRepository;
+import com.tutorial.spring.service.IBookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,6 +19,9 @@ import java.util.List;
 public class JDBCDemo {
     @Autowired
     private IBookRepository bookRepository;
+    @Autowired
+    private IBookService bookService;
+
 
     @Test
     public void saveTest(){
@@ -52,6 +56,11 @@ public class JDBCDemo {
         bookRepository.delete(1);
     }
 
+
+    @Test
+    public void transTest(){
+        bookService.trans(2,3,100);
+    }
 
 
 }
