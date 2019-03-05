@@ -1,4 +1,4 @@
-package com.tutorial.spring.aop.proxy.statics;
+package com.tutorial.spring.test.aop.proxy.statics;
 
 import com.tutorial.spring.entity.Employee;
 import com.tutorial.spring.service.IEmployeeService;
