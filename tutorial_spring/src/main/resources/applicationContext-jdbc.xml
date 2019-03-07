@@ -4,11 +4,13 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
     <context:property-placeholder file-encoding="utf-8" location="classpath:jdbc.properties" system-properties-mode="NEVER"/>
@@ -28,4 +30,28 @@
     <bean id="bookService" class="com.tutorial.spring.service.impl.BookServiceImpl">
         <property name="bookRepository" ref="bookRepository"/>
     </bean>
+
+    <!--what:配置JDBC事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" >
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!--when:配置事务管理器增强-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="trans" read-only="" no-rollback-for=""/>
+            <!--name:需要被事务管理的方法名,支持通配符*
+                propagation:事务的传播规则
+                isolation:事务的隔离级别,默认default，使用数据库自身的隔离级别
+                timeout:事务超时时间,默认-1,使用数据库本身的超时时间
+                read-only:是否是只读事务,默认false.对查询方法设置只读事务可以提高性能
+                no-rollback-for:遇到指定异常不做事务回滚
+                rollback-for:遇到指定异常做事务回滚,默认RunTimeException
+            -->
+        </tx:attributes>
+    </tx:advice>
+    <!--where:配置切面-->
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* com.tutorial.spring.service.*Service.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+    </aop:config>
 </beans>
