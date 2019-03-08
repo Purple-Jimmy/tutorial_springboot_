@@ -1,6 +1,7 @@
 package com.rabbitmq.configurer;
 
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.GetResponse;
 import com.rabbitmq.domain.Animal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,8 @@ public class ConsumerConfigurer {
     @RabbitListener(queues = "direct_queue")
     @RabbitHandler
     public void processConvertAndSend_direct(@Payload Animal animal, Channel channel, Message message) throws InterruptedException, IOException {
+        GetResponse response = channel.basicGet("",true);
+        System.out.println("消息量:"+response.getMessageCount());
         logger.info("接收到direct_queue的消息,开始处理,消息Id {},内容 {}",message.getMessageProperties().getDeliveryTag(), animal);
         TimeUnit.SECONDS.sleep(10);
         logger.info("消息{} 处理完成,发送ACK",animal);
