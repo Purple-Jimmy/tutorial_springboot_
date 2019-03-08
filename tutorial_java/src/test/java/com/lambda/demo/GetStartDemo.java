@@ -13,6 +13,31 @@ import java.util.stream.Collectors;
 
 public class GetStartDemo {
 
+
+    @Test
+    public void getStart_12(){
+       List<Car> carList = new ArrayList<>();
+       Car c1 = new Car(1L,"m1",100L);
+       Car c2 = new Car(2L,"m2",100L);
+       Car c3 = new Car(3L,"m3",100L);
+       carList.add(c1);
+       carList.add(c2);
+       carList.add(c3);
+
+       List<Long> nameList = new ArrayList<>();
+       List<Car> list = carList.stream().map(p->{
+           p.setBrand("3");
+           nameList.add(p.getId());
+           return p;
+       }).collect(Collectors.toList());
+        System.out.println(nameList);
+        System.out.println(list);
+
+        carList.stream().forEach(s->s.setPrice(10L));
+        System.out.println(carList);
+    }
+
+
     @Test
     public void getStart_1(){
         Car car = new Car();
