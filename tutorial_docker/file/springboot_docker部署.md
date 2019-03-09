@@ -37,6 +37,60 @@ ps aux |grep dockerd
 ```
 
 
+## pom配置
+```
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <!-- Docker maven plugin -->
+        <plugin>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <!--<version>1.0.0</version>-->
+            <!--将插件绑定在某个phase执行-->
+          <!--  <executions>
+                <execution>
+                    <id>build-image</id>
+                    &lt;!&ndash;将插件绑定在package这个phase上。也就是说，用户只需执行mvn package ，就会自动执行mvn docker:build&ndash;&gt;
+                    <phase>package</phase>
+                    <goals>
+                        <goal>build</goal>
+                    </goals>
+                </execution>
+            </executions>-->
+            <configuration>
+                <!--指定生成的镜像名-->
+                <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                <!--指定标签-->
+               <!-- <imageTags>
+                    <imageTag>latest</imageTag>
+                </imageTags>-->
+                <!-- 指定Dockerfile路径${project.basedir}项目根路径下-->
+                <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                <!--指定远程 docker api地址-->
+                <!--<dockerHost>http://47.101.149.94:2375</dockerHost>-->
+                <!-- 复制 jar 包到 docker 容器指定目录配置 -->
+                <resources>
+                    <resource>
+                        <targetPath>/</targetPath>
+                        <!--jar包所在的路径,此处配置对应的target目录-->
+                        <directory>${project.build.directory}</directory>
+                        <!-- 需要包含的jar包,这里对应的是 Dockerfile中添加的文件名　-->
+                        <include>${project.build.finalName}.jar</include>
+                    </resource>
+                </resources>
+                <!-- 以下两行是为了docker push到DockerHub使用的。 -->
+               <!-- <serverId>docker-hub</serverId>
+                <registryUrl>https://index.docker.io/v1</registryUrl>-->
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
 
 
 

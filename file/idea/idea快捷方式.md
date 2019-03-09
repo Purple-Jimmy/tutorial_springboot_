@@ -6,3 +6,6 @@ command+l
 
 * 搜索
 command+shift+r
+
+* 水平缩进
+shift+tab
