@@ -91,10 +91,24 @@ ps aux |grep dockerd
 </build>
 ```
 
+## Dockerfile
+```
+FROM java:8
+VOLUME /tmp
+ADD tutorial_docker-1.0.jar app.jar
+RUN bash -c 'touch /app.jar'
+EXPOSE 8080
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","app.jar"]
+```
 
 
 
 ## 启动镜像
 ```
 docker run -d -p 18080:8085 --name docker-resource 60c98a0d15bc
+```
+
+## 访问
+```
+http://ip:18080/docker
 ```
