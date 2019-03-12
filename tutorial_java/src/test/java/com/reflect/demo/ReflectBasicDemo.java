@@ -98,4 +98,9 @@ public class ReflectBasicDemo {
         System.out.println(field.getType());
     }
 
+    @Test
+    public void methodInfoTest(){
+
+    }
+
 }
