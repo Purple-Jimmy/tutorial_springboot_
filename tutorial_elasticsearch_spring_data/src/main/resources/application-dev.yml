@@ -2,7 +2,7 @@ server:
   port: 8090
   servlet:
    #context-path: /spring-boot
-    application-display-name: /spring-boot-tutorial
+    application-display-name: /spring-boot-elasticsearch-tutorial
   error:
     path: /error
   #内嵌tomcat配置
@@ -14,7 +14,7 @@ server:
 
 spring:
   application:
-    name: springboot-tutorial
+    name: spring-boot-elasticsearch-tutorial
   #热部署 设置false restart类加载器还会初始化,但不会监视文件更新
   devtools:
     restart:
