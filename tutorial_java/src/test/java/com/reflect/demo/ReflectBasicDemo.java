@@ -1,6 +1,7 @@
 package com.reflect.demo;
 
 import com.java.domain.Car;
+import com.java.domain.Lexus;
 import org.junit.Test;
 
 import java.lang.reflect.*;
@@ -10,6 +11,21 @@ import java.lang.reflect.*;
  * @date 2019-03-1222:29
  */
 public class ReflectBasicDemo {
+
+    /**
+     * 类的加载
+     */
+    @Test
+    public void classLoadTest() {
+        /*
+        public static Class<?> forName(String className)
+        public static Class<?> forName(String name, boolean initialize, ClassLoader loader)
+        initialize􏱟􏰬􏱫􏱾􏱖􏱲􏱁􏰻􏲂􏲇􏱹􏰈􏱺􏱄􏰎􏰙􏱌表示加载后是否执行类的初始化代码(如static语句块)
+        第一个方法相当于 Class.forName(className, true, currentLoader)
+        currentLoader表示加载当前类的ClassLoader
+        */
+    }
+
 
     /**
      * Class有一个newInstance()方法可以创建对象,会调用默认的无参public构造方法
@@ -26,6 +42,24 @@ public class ReflectBasicDemo {
         Constructor<?>[] allConstructor= Car.class.getDeclaredConstructors();
         System.out.println(allConstructor);
     }
+
+    /**
+     * Class类信息
+     */
+    @Test
+    public void classTInfoest() {
+        /*
+        public native boolean isArray();//是否是数组
+        public native boolean isPrimitive();//是否是基本类型
+        public native boolean isInterface();//是否是接口
+        public boolean isEnum();//是否是枚举
+        public boolean isAnnotation();//是否是注解
+        public boolean isAnonymousClass();//是否是匿名内部类
+        public boolean isMemberClass();//是否是成员类,成员类定义在方法外,不是匿名类
+        public boolean isLocalClass();//是否是本地类,本地类定义在方法内,不是匿名类
+        */
+    }
+
 
     /**
      * Constructor类表示构造方法
@@ -157,6 +191,39 @@ public class ReflectBasicDemo {
         method.setAccessible(true);
         //在指定对象obj上调用Method代表的方法,参数列表为args
         System.out.println(method.invoke(car));
+    }
+
+
+    /**
+     * isInstance和cast描述的是对象和类之间的关系
+     * isAssignableFrom描述类型之间的关系
+     * 类型检查和强制转换
+     */
+    @Test
+    public void typeCheck() throws ClassNotFoundException {
+        Lexus lexus = new Lexus();
+        //静态类型检查 instanceof 后面的类型是确定的
+        System.out.println(lexus instanceof Car);
+        //动态类型检查
+        Class clazz = Class.forName("com.java.domain.Car");
+        System.out.println(clazz.isInstance(lexus));
+        //静态强制转换
+        Car car = (Car)lexus;
+        System.out.println(car);
+        //动态强制转换
+        Lexus l2 = new Lexus();
+        System.out.println(clazz.cast(l2));
+        //描述类与类之间的关系 参数类型cla能否赋值给当前Class类型的变量
+        Object.class.isAssignableFrom(String.class);
+    }
+
+    /**
+     * 反射获取数组的元素类型
+     */
+    @Test
+    public void arrayMemberType(){
+        String[] arr = new String[]{};
+        System.out.println(arr.getClass().getComponentType());
     }
 
 }

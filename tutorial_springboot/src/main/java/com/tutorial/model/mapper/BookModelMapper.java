@@ -14,6 +14,9 @@ import java.util.List;
  */
 @Mapper
 public interface BookModelMapper {
+    /**
+     * 默认配置
+     */
     BookModelMapper bookModelMapper = Mappers.getMapper(BookModelMapper.class);
 
     BookModel bookModel(Book book);
