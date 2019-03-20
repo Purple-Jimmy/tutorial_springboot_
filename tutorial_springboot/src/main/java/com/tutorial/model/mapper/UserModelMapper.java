@@ -21,13 +21,6 @@ public interface UserModelMapper {
     @Mapping(target = "test1",ignore = true)
     UserModel userModel(User user);
 
-/*
-    @Mappings({
-            @Mapping(source = "type.name",target = "typeName"),
-            @Mapping(source = "good.id",target = "goodId"),
-            @Mapping(source = "good.title",target = "goodName"),
-            @Mapping(source = "good.price",target = "goodPrice"),
-            @Mapping(source = "birthday", target = "birthDateFormat", dateFormat = "yyyy-MM-dd HH:mm:ss")
-    })*/
+
     List<UserModel> userModelList(List<User> userList);
 }

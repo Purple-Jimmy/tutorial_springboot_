@@ -25,6 +25,7 @@ public interface UserAccountMapper {
 
 
 
+
     default Boolean convert2Bool(Integer value) {
         if (value == null || value < 1) {
             return Boolean.FALSE;
