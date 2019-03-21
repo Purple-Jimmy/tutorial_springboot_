@@ -2,7 +2,7 @@ server:
   port: 8085
   servlet:
    #context-path: /spring-boot
-    application-display-name: /docker-tutorial
+    application-display-name: /es-rest-tutorial
   error:
     path: /error
   #内嵌tomcat配置
@@ -14,7 +14,7 @@ server:
 
 spring:
   application:
-    name: docker-tutorial
+    name: es-rest-tutorial
   #热部署 设置false restart类加载器还会初始化,但不会监视文件更新
   devtools:
     restart:
