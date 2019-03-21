@@ -1,4 +1,5 @@
-# 需求:把一个字符转换为另一个字符,如'& => and'        
+# 需求:把一个字符转换为另一个字符,如'& => and'  
+https://www.elastic.co/guide/en/elasticsearch/reference/6.7/analysis-mapping-charfilter.html      
 ```
 curl -X PUT "localhost:9200/char_filter_index" -H 'Content-Type: application/json' -d'
 {
