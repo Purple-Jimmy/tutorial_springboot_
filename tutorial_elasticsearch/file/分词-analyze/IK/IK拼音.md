@@ -59,11 +59,11 @@ curl  -H "Content-Type:application/json" -XGET "localhost:9200/ik_pinyin_tutoria
 
 #### 参数说明
 * keep_first_letter: ldh (默认true)
-* keep_separate_first_letter:分割first_letter,ldh会变成 l,d,h (默认false)
+* keep_separate_first_letter:将字母分割first_letter,ldh会变成 l,d,h (默认false)
 * limit_first_letter_length:设置first_letter的长度(默认16)
 * keep_full_pinyin:liu,de,hua (默认true)
 * keep_joined_full_pinyin:liudehua (默认false)
-* keep_none_chinese: 剔除中文和数字(默认true)
+* keep_none_chinese: 不在结果中保留非中文字母或数字(默认true)
 * keep_none_chinese_together: keep_none_chinese必须先设置false (默认true)
 ```
 "text":"DJ音乐家"
