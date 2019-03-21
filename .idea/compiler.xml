@@ -15,6 +15,7 @@
         <module name="tutorial_design_pattern" />
         <module name="tutorial_docker" />
         <module name="tutorial_elasticsearch" />
+        <module name="tutorial_elasticsearch_resthlc" />
         <module name="tutorial_elasticsearch_spring_data" />
         <module name="tutorial_guava" />
         <module name="tutorial_java" />

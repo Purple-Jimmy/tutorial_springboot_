@@ -1,0 +1,26 @@
+server:
+  port: 8085
+  servlet:
+   #context-path: /spring-boot
+    application-display-name: /docker-tutorial
+  error:
+    path: /error
+  #内嵌tomcat配置
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000 #tomcat能启动用来处理请求的最大线程数,如果请求处理量一直远远大于最大线程数,可能会僵死
+    max-connections: 500 #瞬时最大连接数,超出的会排队等待
+    accept-count: 500 #如果tomcat的线程都忙于响应,新来的连接会进入队列排队,如果超出排队大小,则拒绝连接
+
+spring:
+  application:
+    name: docker-tutorial
+  #热部署 设置false restart类加载器还会初始化,但不会监视文件更新
+  devtools:
+    restart:
+      enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
