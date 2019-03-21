@@ -24,3 +24,9 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+#
+elasticsearch:
+  #多个地址以,隔开
+  urls: http://47.101.149.94:9200
+  username:
+  password:

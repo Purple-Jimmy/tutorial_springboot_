@@ -33,8 +33,8 @@
     <module>tutorial_data_structure</module>
     <module>tutorial_caffeine</module>
     <module>tutorial_spring</module>
-      <module>tutorial_elasticsearch_spring_data</module>
-      <module>tutorial_elasticsearch_resthlc</module>
+    <module>tutorial_elasticsearch_spring_data</module>
+    <module>tutorial_elasticsearch_resthlc</module>
   </modules>
 
   <name>tutorial_springboot_</name>
@@ -184,6 +184,12 @@
       <groupId>io.jsonwebtoken</groupId>
       <artifactId>jjwt</artifactId>
       <version>0.9.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.8.1</version>
     </dependency>
     <!--https://www.hutool.cn/-->
     <dependency>
