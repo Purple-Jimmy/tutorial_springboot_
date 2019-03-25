@@ -63,7 +63,8 @@ public class ElasticsearchRestConfigurer {
                 .filter(Objects::nonNull)
                 .toArray(HttpHost[]::new);
         log.info("hosts:{}", Arrays.toString(hosts));
-        return RestClient.builder(hosts);
+        RestClientBuilder builder = RestClient.builder(hosts);
+        return builder;
     }
 
 
