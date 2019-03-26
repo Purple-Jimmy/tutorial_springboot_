@@ -2,11 +2,15 @@ package com.elasticsearch.configurer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
+import org.apache.http.impl.nio.reactor.IOReactorConfig;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.sniff.SniffOnFailureListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,12 +56,6 @@ public class ElasticsearchRestConfigurer {
      * 最大路由连接数
      */
     private static int maxConnectPerRoute = 100;
-
-
-
-    private static final int ADDRESS_LENGTH = 2;
-    private static final String HTTP_SCHEME = "http";
-
     List<HttpHost> hostList = new ArrayList<>();
 
     @PostConstruct
@@ -73,12 +71,20 @@ public class ElasticsearchRestConfigurer {
 
     @Bean
     public RestHighLevelClient restHighLevelClient() {
+        final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
+        //credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("", ""));
+
+        SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
+
+        RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200, "http")).build();
         RestClientBuilder builder = RestClient.builder(hostList.toArray(new HttpHost[0]));
         // 异步httpclient连接延时配置
         builder.setRequestConfigCallback(new RestClientBuilder.RequestConfigCallback() {
             @Override
             public RequestConfig.Builder customizeRequestConfig(RequestConfig.Builder requestConfigBuilder) {
+                //连接超时(默认为1秒）
                 requestConfigBuilder.setConnectTimeout(connectTimeOut);
+                //套接字超时(默认为30秒）
                 requestConfigBuilder.setSocketTimeout(socketTimeOut);
                 requestConfigBuilder.setConnectionRequestTimeout(connectionRequestTimeOut);
                 return requestConfigBuilder;
@@ -90,11 +96,19 @@ public class ElasticsearchRestConfigurer {
             public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpClientBuilder) {
                 httpClientBuilder.setMaxConnTotal(maxConnectNum);
                 httpClientBuilder.setMaxConnPerRoute(maxConnectPerRoute);
+                //The Apache Http Async Client默认启动一个dispatcher线程和供连接管理器使用的多个worker线程,
+                //与本地检测到的处理器数量一样多(取决于Runtime.getRuntime().availableProcessors()的返回值)
+                httpClientBuilder.setDefaultIOReactorConfig(IOReactorConfig.custom().setIoThreadCount(1).build());
                 return httpClientBuilder;
             }
         });
-        RestHighLevelClient client = new RestHighLevelClient(builder);
-        return client;
+        //最大重试超时时间(默认为30秒）
+        builder.setMaxRetryTimeoutMillis(6000);
+       // RestHighLevelClient client = new RestHighLevelClient(builder);
+        //嗅探器
+       // Sniffer sniffer = Sniffer.builder(restClient).build();
+
+        return null;
     }
 
 
