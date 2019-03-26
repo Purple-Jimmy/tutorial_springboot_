@@ -104,11 +104,11 @@ public class ElasticsearchRestConfigurer {
         });
         //最大重试超时时间(默认为30秒）
         builder.setMaxRetryTimeoutMillis(6000);
-       // RestHighLevelClient client = new RestHighLevelClient(builder);
+        RestHighLevelClient client = new RestHighLevelClient(builder);
         //嗅探器
        // Sniffer sniffer = Sniffer.builder(restClient).build();
 
-        return null;
+        return client;
     }
 
 
