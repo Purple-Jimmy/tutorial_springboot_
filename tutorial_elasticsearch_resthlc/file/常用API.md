@@ -16,5 +16,5 @@ curl -X GET 'localhost:9200/customer/user/1?pretty'
 
 * 查询文档列表(默认查询返回10条数据)
 ```
-curl -X GET 'localhost:9200/customer/user/_search?pretty'
+curl -X GET 'localhost:9200/city_index/tutorial_mapping/_search?pretty'
 ```

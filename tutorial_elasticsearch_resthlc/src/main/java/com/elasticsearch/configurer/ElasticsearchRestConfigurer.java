@@ -1,18 +1,20 @@
 package com.elasticsearch.configurer;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.http.HttpHost;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.nio.client.HttpAsyncClientBuilder;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
+import java.util.List;
 
 /**
  * @Author: jimmy
@@ -22,7 +24,7 @@ import java.util.Objects;
 @Configuration
 public class ElasticsearchRestConfigurer {
     @Value("${elasticsearch.urls}")
-    String[] urls;
+    String urls;
 
     @Value("${elasticsearch.username}")
     private String userName;
@@ -56,30 +58,26 @@ public class ElasticsearchRestConfigurer {
     private static final int ADDRESS_LENGTH = 2;
     private static final String HTTP_SCHEME = "http";
 
+    List<HttpHost> hostList = new ArrayList<>();
+
+    @PostConstruct
+    public void init(){
+        String[] hostArray = urls.split(",");
+        Arrays.stream(hostArray).forEach(s->{
+            String[] strArray = s.split(":");
+            hostList.add(new HttpHost(strArray[0],Integer.parseInt(strArray[1]),"http"));
+        });
+    }
+
+
+
     @Bean
-    public RestClientBuilder restClientBuilder() {
-        HttpHost[] hosts = Arrays.stream(urls)
-                .map(this::makeHttpHost)
-                .filter(Objects::nonNull)
-                .toArray(HttpHost[]::new);
-        log.info("hosts:{}", Arrays.toString(hosts));
-        RestClientBuilder builder = RestClient.builder(hosts);
-        return builder;
-    }
-
-
-    @Bean(name = "highLevelClient")
-    public RestHighLevelClient highLevelClient(@Autowired RestClientBuilder restClientBuilder) {
-        return new RestHighLevelClient(restClientBuilder);
-    }
-
-   /* @Bean
-    public RestHighLevelClient client() {
+    public RestHighLevelClient restHighLevelClient() {
         RestClientBuilder builder = RestClient.builder(hostList.toArray(new HttpHost[0]));
         // 异步httpclient连接延时配置
         builder.setRequestConfigCallback(new RestClientBuilder.RequestConfigCallback() {
             @Override
-            public Builder customizeRequestConfig(Builder requestConfigBuilder) {
+            public RequestConfig.Builder customizeRequestConfig(RequestConfig.Builder requestConfigBuilder) {
                 requestConfigBuilder.setConnectTimeout(connectTimeOut);
                 requestConfigBuilder.setSocketTimeout(socketTimeOut);
                 requestConfigBuilder.setConnectionRequestTimeout(connectionRequestTimeOut);
@@ -87,7 +85,7 @@ public class ElasticsearchRestConfigurer {
             }
         });
         // 异步httpclient连接数配置
-        builder.setHttpClientConfigCallback(new HttpClientConfigCallback() {
+        builder.setHttpClientConfigCallback(new RestClientBuilder.HttpClientConfigCallback() {
             @Override
             public HttpAsyncClientBuilder customizeHttpClient(HttpAsyncClientBuilder httpClientBuilder) {
                 httpClientBuilder.setMaxConnTotal(maxConnectNum);
@@ -98,17 +96,11 @@ public class ElasticsearchRestConfigurer {
         RestHighLevelClient client = new RestHighLevelClient(builder);
         return client;
     }
-*/
 
-    private HttpHost makeHttpHost(String s) {
-        assert StringUtils.isNotEmpty(s);
-        String[] address = s.split(":");
-        if (address.length == ADDRESS_LENGTH) {
-            String ip = address[0];
-            int port = Integer.parseInt(address[1]);
-            return new HttpHost(ip, port, HTTP_SCHEME);
-        } else {
-            return null;
-        }
-    }
+
+
+
+
+
+
 }
