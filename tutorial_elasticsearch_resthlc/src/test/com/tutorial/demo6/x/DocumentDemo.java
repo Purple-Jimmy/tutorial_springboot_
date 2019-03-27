@@ -53,11 +53,13 @@ public class DocumentDemo {
 
     /**
      * 索引单个文档
+     * DocWriteRequest.OpType.CREATE 如果索引中已存在该id的文档,则索引操作将失败
+     * DocWriteRequest.OpType.INDEX  如果索引中已存在该id的文档,则更新文档(默认)
      * @throws IOException
      */
     @Test
     public void saveDoc() throws IOException {
-        City city = new City(1L,"nanjing");
+        City city = new City(1L,"nanjing1");
 
         IndexRequest indexRequest = new IndexRequest(INDEX_NAME);
         indexRequest.type(MAPPING_NAME);
