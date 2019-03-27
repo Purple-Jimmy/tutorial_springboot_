@@ -27,6 +27,6 @@ spring:
 #
 elasticsearch:
   #多个地址以,隔开
-  urls: 47.101.149.94:9200
+  urls: 192.168.50.15:9200
   username:
   password:

@@ -12,7 +12,9 @@ import org.apache.http.message.BasicHeader;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.sniff.SniffOnFailureListener;
 import org.elasticsearch.client.sniff.Sniffer;
+import org.elasticsearch.client.sniff.SnifferBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -89,10 +91,10 @@ public class ElasticsearchRestConfigurer {
         Header[] defaultHeaders = new Header[]{new BasicHeader("header", "value")};
         builder.setDefaultHeaders(defaultHeaders);
 
-        //设置一个监听程序,每次节点发生故障时都会收到通知,这样就可以采取相应的措施。
+        //设置一个监听器,当每次节点出现问题时得到提醒,执行方法做一些必要的处理.需要开启失败探测功能
         builder.setFailureListener(new RestClient.FailureListener() {
             public void onFailure(HttpHost host) {
-                //Used internally when sniffing on failure is enabled.(这句话没搞懂啥意思)
+
             }
         });
 
@@ -127,12 +129,12 @@ public class ElasticsearchRestConfigurer {
         //最大重试超时时间(默认为30秒）
         builder.setMaxRetryTimeoutMillis(6000);
         //监听同网段服务
-        //SnifferBuilder snifferBuilder = Sniffer.builder(builder.build()).setSniffIntervalMillis(6000);
+        SnifferBuilder snifferBuilder = Sniffer.builder(builder.build()).setSniffIntervalMillis(6000);
         //嗅探器:RestClient实例创建后,就可以将一个Sniffer关联到它.Sniffer使用RestClient定期(默认每5分钟)从集群中获取当前所有节点的列表,并通过调用RestClient的setHosts方法来更新
-        //sniffer = snifferBuilder.build();
-        //SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
-        //sniffOnFailureListener.setSniffer(sniffer);
-        //builder.setFailureListener(sniffOnFailureListener);
+        sniffer = snifferBuilder.build();
+        SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
+        sniffOnFailureListener.setSniffer(sniffer);
+        builder.setFailureListener(sniffOnFailureListener);
         RestHighLevelClient restHighLevelClient = new RestHighLevelClient(builder);
         restClient = restHighLevelClient;
         return restHighLevelClient;
