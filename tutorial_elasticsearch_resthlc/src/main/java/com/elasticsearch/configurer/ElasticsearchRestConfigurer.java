@@ -11,11 +11,15 @@ import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestClientBuilder;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.sniff.SniffOnFailureListener;
+import org.elasticsearch.client.sniff.Sniffer;
+import org.elasticsearch.client.sniff.SnifferBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -57,6 +61,8 @@ public class ElasticsearchRestConfigurer {
      */
     private static int maxConnectPerRoute = 100;
     List<HttpHost> hostList = new ArrayList<>();
+    RestHighLevelClient restClient;
+
 
     @PostConstruct
     public void init(){
@@ -68,16 +74,13 @@ public class ElasticsearchRestConfigurer {
     }
 
 
-
     @Bean
     public RestHighLevelClient restHighLevelClient() {
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         //credentialsProvider.setCredentials(AuthScope.ANY, new UsernamePasswordCredentials("", ""));
 
-        SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
-
-        RestClient restClient = RestClient.builder(new HttpHost("localhost", 9200, "http")).build();
         RestClientBuilder builder = RestClient.builder(hostList.toArray(new HttpHost[0]));
+
         // 异步httpclient连接延时配置
         builder.setRequestConfigCallback(new RestClientBuilder.RequestConfigCallback() {
             @Override
@@ -104,15 +107,28 @@ public class ElasticsearchRestConfigurer {
         });
         //最大重试超时时间(默认为30秒）
         builder.setMaxRetryTimeoutMillis(6000);
-        RestHighLevelClient client = new RestHighLevelClient(builder);
+        //监听同网段服务
+        SnifferBuilder snifferBuilder = Sniffer.builder(builder.build()).setSniffIntervalMillis(1000);
         //嗅探器
-       // Sniffer sniffer = Sniffer.builder(restClient).build();
-
-        return client;
+        Sniffer sniffer = snifferBuilder.build();
+        SniffOnFailureListener sniffOnFailureListener = new SniffOnFailureListener();
+        sniffOnFailureListener.setSniffer(sniffer);
+        builder.setFailureListener(sniffOnFailureListener);
+        RestHighLevelClient restHighLevelClient = new RestHighLevelClient(builder);
+        restClient = restHighLevelClient;
+        return restHighLevelClient;
     }
 
 
-
+    @PreDestroy
+    public void close(){
+        System.out.println("关闭资源");
+        try {
+            restClient.close();
+        } catch (IOException e) {
+            log.info("restHighLevelClient 关闭失败");
+        }
+    }
 
 
 
