@@ -154,7 +154,22 @@ public class DocumentDemo {
         }
     }
 
-
+    /**
+     * 批量删除
+     * @throws IOException
+     */
+    @Test
+    public void delBulkDoc() throws IOException {
+        BulkRequest bulkRequest = new BulkRequest();
+        DeleteRequest deleteRequest1 = new DeleteRequest(INDEX_NAME, MAPPING_NAME, "1");
+        bulkRequest.add(deleteRequest1);
+        DeleteRequest deleteRequest2 = new DeleteRequest(INDEX_NAME, MAPPING_NAME, "2");
+        bulkRequest.add(deleteRequest2);
+        DeleteRequest deleteRequest3 = new DeleteRequest(INDEX_NAME, MAPPING_NAME, "3");
+        bulkRequest.add(deleteRequest3);
+        BulkResponse bulkResponse = restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+        System.out.println(bulkResponse);
+    }
 
     /**
      * 异步保存
