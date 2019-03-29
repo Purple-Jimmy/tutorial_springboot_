@@ -71,9 +71,10 @@ public class SearchDemo {
         System.out.println("took=="+took);
         System.out.println("terminatedEarly=="+terminatedEarly);
         System.out.println("timedOut=="+timedOut);
-        int totalShards = searchResponse.getTotalShards();
-        int successfulShards = searchResponse.getSuccessfulShards();
-        int failedShards = searchResponse.getFailedShards();
+        System.out.println("totalShards=="+searchResponse.getTotalShards());
+        System.out.println("successfulShards=="+searchResponse.getSuccessfulShards());
+        System.out.println("failedShards=="+searchResponse.getFailedShards());
+
         for (ShardSearchFailure failure : searchResponse.getShardFailures()) {
             // failures should be handled here
         }
