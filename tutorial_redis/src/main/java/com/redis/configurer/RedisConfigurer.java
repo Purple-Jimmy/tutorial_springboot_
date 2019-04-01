@@ -24,8 +24,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisNode;
+import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -75,11 +75,6 @@ public class RedisConfigurer extends CachingConfigurerSupport {
             redisConfig.setPassword(password);
         }*/
 
-        // 哨兵redis
-        // RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
-
-        // 集群redis
-        RedisClusterConfiguration redisConfig = new RedisClusterConfiguration();
         Set<RedisNode> nodes = new HashSet<>();
         String[] hosts = environment.getProperty("spring.redis.cluster.nodes").split(",");
         for (String h : hosts) {
@@ -90,9 +85,16 @@ public class RedisConfigurer extends CachingConfigurerSupport {
                 nodes.add(new RedisNode(host, port));
             }
         }
-        redisConfig.setClusterNodes(nodes);
+
+        // 哨兵redis
+         RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
+         redisConfig.setSentinels(nodes);
+
+        // 集群redis
+        //RedisClusterConfiguration redisConfig = new RedisClusterConfiguration();
+        //redisConfig.setClusterNodes(nodes);
         // 跨集群执行命令时要遵循的最大重定向数量
-        redisConfig.setMaxRedirects(3);
+        //redisConfig.setMaxRedirects(3);
        // redisConfig.setPassword(password);
 
         return new LettuceConnectionFactory(redisConfig, lettucePoolingClientConfiguration);

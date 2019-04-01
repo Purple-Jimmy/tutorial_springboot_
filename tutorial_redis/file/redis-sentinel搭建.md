@@ -134,6 +134,8 @@ cluster_enabled:0
 哨兵是一个单独的程序,所以需要单独部署.  
 新建一个文件加redis-sentinel,如上安装一遍redis,然后在3个redis文件夹中redis/conf/sentinel.conf都增加如下内容
 ```
+# 禁止保护模式
+protected-mode no
 port 26379
 sentinel monitor master1 10.0.0.10 6379 2
 sentinel down-after-milliseconds master1 30000   //哨兵程序每5秒检测一次Master是否正常
@@ -144,9 +146,31 @@ sentinel parallel-syncs master1 1
 
 启动哨兵:
 ```
+redis-sentinel程序
+redis-sentinel /path/to/sentinel.conf
 
 redis-server程序
 redis-server /path/to/sentinel.conf --sentinel & //(&有这可以Ctrl +C退到命令行,没有这个就直接退出哨兵进程)
+
+
+
+
+添加窗口
+screen -S sentinel
+
+
+在新窗口启动哨兵
+/opt/redis/src/redis-sentinel /opt/redis/conf/sentinel.conf --protected-mode no
+启动后即可看到前台输出信息。
+
+
+后台挂起这个窗口请按：
+Ctrl+a+d
+
+
+下次返回观看这个窗口请输入
+screen -r sentinel
+
 ```
 
 关闭哨兵:
@@ -154,3 +178,32 @@ redis-server /path/to/sentinel.conf --sentinel & //(&有这可以Ctrl +C退到�
 pkill redis-server   //这个会关掉Redis服务器和Sentinel(哨兵)进程
 kill 进程号           //可以关掉指定进程号的进程
 ```
+
+## 命令
+```
+info replication
+```
+
+① INFO
+    sentinel的基本状态信息
+
+②SENTINEL masters
+   列出所有被监视的主服务器，以及这些主服务器的当前状态
+
+③ SENTINEL slaves
+   列出给定主服务器的所有从服务器，以及这些从服务器的当前状态
+
+④SENTINEL get-master-addr-by-name
+    返回给定名字的主服务器的 IP 地址和端口号
+
+⑤SENTINEL reset
+    重置所有名字和给定模式 pattern 相匹配的主服务器。重置操作清除主服务器目前的所有状态， 包括正在执行中的故障转移， 并移除目前已经发现和关联的， 主服务器的所有从服务器和 Sentinel 。
+
+⑥SENTINEL failover
+   当主服务器失效时， 在不询问其他 Sentinel 意见的情况下， 强制开始一次自动故障迁移，但是它会给其他sentinel发送一个最新的配置，其他sentinel会根据这个配置进行更新
+   
+   
+注意启动的顺序。首先是主机（192.168.11.128）的Redis服务进程，然后启动从机的服务进程，最后启动3个哨兵的服务进程
+
+
+/root/redis-cluster/redis-slaver/redis-3.2.4/src/redis-sentinel /root/redis-cluster/redis-slaver/redis-3.2.4/sentinel.conf --protected-mode no
