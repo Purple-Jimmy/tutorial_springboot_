@@ -16,9 +16,8 @@ import java.util.Set;
 @Component
 @Data
 public class SentinelProperties {
-    @Value("${lettuce.sentinel.master}")
-    private String master;
-    @Value("${lettuce.sentinel.nodes}")
+
+    @Value("${spring.redis.cluster.nodes}")
     private String nodes;
 
     private Set<String> hosts;

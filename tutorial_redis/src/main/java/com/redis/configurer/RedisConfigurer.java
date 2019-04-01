@@ -88,6 +88,7 @@ public class RedisConfigurer extends CachingConfigurerSupport {
 
         // 哨兵redis
          RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
+         redisConfig.setMaster("mymaster");
          redisConfig.setSentinels(nodes);
 
         // 集群redis

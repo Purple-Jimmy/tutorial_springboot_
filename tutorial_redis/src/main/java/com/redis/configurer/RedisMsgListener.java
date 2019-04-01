@@ -11,7 +11,7 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
  * @Author: jimmy
  * @Date: 2018/8/13
  */
-@Configuration
+//@Configuration
 public class RedisMsgListener {
 
     @Bean
