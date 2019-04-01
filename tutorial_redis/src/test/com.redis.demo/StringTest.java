@@ -1,6 +1,7 @@
 package com.redis.demo;
 
 import com.redis.RedisStart;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,17 +21,21 @@ public class StringTest {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    //@Test
+    @Test
     public void saveStringTest(){
         //redisTemplate.opsForValue().set("zzp","big z");
         stringRedisTemplate.opsForValue().set("zz","hello");
     }
 
-    //@Test
+    @Test
     public void getStringTest(){
         System.out.println(stringRedisTemplate.opsForValue().get("zz"));
     }
 
+    @Test
+    public void delStringTest(){
+        System.out.println(stringRedisTemplate.delete("zz"));
+    }
 
     //@Test
     public void saveUserTest(){

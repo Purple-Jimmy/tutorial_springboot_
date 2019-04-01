@@ -21,4 +21,8 @@ protected-mode no 设置为no
 firewall-cmd --zone=public --add-port=6379/tcp --permanent
 firewall-cmd --reload
 ```
+7. redis登录命令 redis/src/redis-cli -p 6379
+
+8. 停止 redis-cli -p 6379 shutdown
+
 

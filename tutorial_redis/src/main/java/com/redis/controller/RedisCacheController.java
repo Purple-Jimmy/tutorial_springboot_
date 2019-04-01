@@ -35,14 +35,14 @@ public class RedisCacheController {
 
     @RequestMapping("/findById")
     public void findById(){
-        City city = cityService.findById(10L);
+        City city = cityService.findById(21L);
         log.info("city {}",city);
     }
 
     @RequestMapping("/deleteById")
     public void deleteById(){
        log.info("delete by id");
-       cityService.delCity(10L);
+       cityService.delCity(19L);
     }
 
     @RequestMapping("/findAllCity")
