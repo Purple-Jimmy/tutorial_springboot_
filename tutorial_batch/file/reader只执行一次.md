@@ -1,0 +1,2 @@
+# reader只执行一次的问题
+在JobConfiguration类上添加@EnableBatchProcessing注解,同时在ItemReader方法上添加@StepScope注解
