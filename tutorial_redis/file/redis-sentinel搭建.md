@@ -144,7 +144,7 @@ sentinel parallel-syncs master1 1
 #sentinel auth-pass mymaster 123456　　#如果你的redis集群有密码
 ```
 
-启动哨兵:
+启动sentinel:
 ```
 redis-sentinel程序
 redis-sentinel /path/to/sentinel.conf
@@ -173,7 +173,73 @@ screen -r sentinel
 
 ```
 
-关闭哨兵:
+验证sentinel:
+```
+[root@izuf64u1jmuzim8azzt99bz src]# redis-cli -p 26379
+127.0.0.1:26379> info
+# Server
+redis_version:3.2.4
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:4e27bfb0ac79c74d
+redis_mode:sentinel
+os:Linux 3.10.0-862.14.4.el7.x86_64 x86_64
+arch_bits:64
+multiplexing_api:epoll
+gcc_version:4.8.5
+process_id:5178
+run_id:0e9418ad5de9b47770ca82fa00eba91544291f72
+tcp_port:26379
+uptime_in_seconds:6171
+uptime_in_days:0
+hz:10
+lru_clock:10680563
+executable:/root/redis-cluster/redis-3.2.4/src/redis-sentinel
+config_file:/root/redis-cluster/redis-3.2.4/sentinel.conf
+
+# Clients
+connected_clients:3
+client_longest_output_list:0
+client_biggest_input_buf:0
+blocked_clients:0
+
+# CPU
+used_cpu_sys:7.44
+used_cpu_user:5.97
+used_cpu_sys_children:0.00
+used_cpu_user_children:0.00
+
+# Stats
+total_connections_received:3
+total_commands_processed:17785
+instantaneous_ops_per_sec:2
+total_net_input_bytes:999185
+total_net_output_bytes:106664
+instantaneous_input_kbps:0.13
+instantaneous_output_kbps:0.02
+rejected_connections:0
+sync_full:0
+sync_partial_ok:0
+sync_partial_err:0
+expired_keys:0
+evicted_keys:0
+keyspace_hits:0
+keyspace_misses:0
+pubsub_channels:0
+pubsub_patterns:0
+latest_fork_usec:0
+migrate_cached_sockets:0
+
+# Sentinel
+sentinel_masters:1
+sentinel_tilt:0
+sentinel_running_scripts:0
+sentinel_scripts_queue_length:0
+sentinel_simulate_failure_flags:0
+master0:name=mymaster,status=ok,address=47.101.149.94:6579,slaves=2,sentinels=3
+```
+
+关闭sentinel:
 ```
 pkill redis-server   //这个会关掉Redis服务器和Sentinel(哨兵)进程
 kill 进程号           //可以关掉指定进程号的进程

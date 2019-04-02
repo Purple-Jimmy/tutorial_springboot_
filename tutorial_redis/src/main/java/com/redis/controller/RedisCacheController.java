@@ -5,6 +5,7 @@ import com.redis.service.CityService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,15 +35,15 @@ public class RedisCacheController {
 
 
     @RequestMapping("/findById")
-    public void findById(){
-        City city = cityService.findById(23L);
+    public void findById(@RequestParam Long id){
+        City city = cityService.findById(id);
         log.info("city {}",city);
     }
 
     @RequestMapping("/deleteById")
-    public void deleteById(){
+    public void deleteById(@RequestParam Long id){
        log.info("delete by id");
-       cityService.delCity(23L);
+       cityService.delCity(id);
     }
 
     @RequestMapping("/findAllCity")
