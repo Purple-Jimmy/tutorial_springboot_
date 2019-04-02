@@ -12,11 +12,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.Cache;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -29,8 +32,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @Author: jimmy
  * @Date: 2018/8/13
  */
-//@Configuration
-//@AutoConfigureAfter(RedisAutoConfiguration.class)
+@Configuration
+@AutoConfigureAfter(RedisAutoConfiguration.class)
 @Slf4j
 public class RedisSingleConfigurer extends CachingConfigurerSupport {
     private static final Logger logger = LoggerFactory.getLogger(RedisSingleConfigurer.class);
