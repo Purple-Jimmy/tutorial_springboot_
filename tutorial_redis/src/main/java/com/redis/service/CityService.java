@@ -3,6 +3,7 @@ package com.redis.service;
 import com.redis.domain.City;
 import com.redis.repository.CityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -43,9 +44,11 @@ public class CityService {
      * allEntries=true表示删除缓存中的所有数据
      */
     //@CacheEvict(value = "city", key = "'city'.concat(#id.toString())")
-    @CachePut(value = "city",key = "'city' + #id")
+    @CacheEvict(value = "city",key = "'city' + #id")
     public void delCity(Long id){
-        cityRepository.deleteById(id);
+        if(cityRepository.existsById(id)){
+            cityRepository.deleteById(id);
+        }
     }
 
     /**

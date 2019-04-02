@@ -69,7 +69,8 @@ spring:
   redis:
     cluster:
       #nodes: 192.168.50.26:7000,192.168.50.26:7001,192.168.50.26:7002,192.168.50.184:7003,192.168.50.184:7004,192.168.50.184:7005
-      nodes: 47.101.149.94:26379
+      nodes: 47.101.149.94:26379,47.101.149.94:26380
+      master: mymaster
       max-redirects: 3
     timeout: 1000s
    #lettuce pool
@@ -80,3 +81,4 @@ spring:
         max-idle: 8 #连接池中的最大空闲连接
         min-idle: 4 #连接池中的最小空闲连接
         shutdown-timeout: 100s
+        max-total: 10

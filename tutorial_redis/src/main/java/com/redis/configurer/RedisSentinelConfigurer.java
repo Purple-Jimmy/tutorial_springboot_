@@ -10,8 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -44,8 +42,7 @@ import java.util.Set;
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 @Slf4j
-public class RedisConfigurerSentinel extends CachingConfigurerSupport {
-    private static final Logger logger = LoggerFactory.getLogger(RedisConfigurerSentinel.class);
+public class RedisSentinelConfigurer extends CachingConfigurerSupport {
     @Autowired
     private Environment environment;
 
@@ -67,14 +64,8 @@ public class RedisConfigurerSentinel extends CachingConfigurerSupport {
         LettucePoolingClientConfiguration lettucePoolingClientConfiguration = LettucePoolingClientConfiguration.builder()
                 .poolConfig(poolConfig)
                 .build();
-        // 单机redis
-      /*  RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
-        redisConfig.setHostName(host==null||"".equals(host)?"localhost":host.split(":")[0]);
-        redisConfig.setPort(Integer.valueOf(host==null||"".equals(host)?"6379":host.split(":")[1]));
-        if (password != null && !"".equals(password)) {
-            redisConfig.setPassword(password);
-        }*/
 
+        // 哨兵redis
         Set<RedisNode> nodes = new HashSet<>();
         String[] hosts = environment.getProperty("spring.redis.cluster.nodes").split(",");
         for (String h : hosts) {
@@ -86,7 +77,6 @@ public class RedisConfigurerSentinel extends CachingConfigurerSupport {
             }
         }
 
-        // 哨兵redis
          RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
          redisConfig.setMaster("mymaster");
          redisConfig.setSentinels(nodes);
@@ -109,7 +99,8 @@ public class RedisConfigurerSentinel extends CachingConfigurerSupport {
      */
     @Bean
     public StringRedisTemplate stringRedisTemplate(@Autowired LettuceConnectionFactory lettuceConnectionFactory) {
-        logger.info("StringRedisTemplate 初始化...");
+        log.info("StringRedisTemplate 初始化...");
+        lettuceConnectionFactory.setDatabase(1);
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
@@ -124,7 +115,8 @@ public class RedisConfigurerSentinel extends CachingConfigurerSupport {
      */
     @Bean
     public RedisTemplate<String,Object> redisTemplate(@Autowired LettuceConnectionFactory lettuceConnectionFactory){
-        logger.info("redisTemplate 初始化...");
+        log.info("redisTemplate 初始化...");
+        lettuceConnectionFactory.setDatabase(1);
         RedisTemplate<String,Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);
         Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Object.class);

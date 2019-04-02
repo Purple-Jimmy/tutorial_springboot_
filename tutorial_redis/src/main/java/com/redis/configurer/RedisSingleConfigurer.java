@@ -9,106 +9,41 @@ import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.cache.Cache;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.interceptor.CacheErrorHandler;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.connection.RedisNode;
-import org.springframework.data.redis.connection.RedisSentinelConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettucePoolingClientConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * @Author: jimmy
  * @Date: 2018/8/13
  */
-@Configuration
-@AutoConfigureAfter(RedisAutoConfiguration.class)
+//@Configuration
+//@AutoConfigureAfter(RedisAutoConfiguration.class)
 @Slf4j
-public class RedisConfigurer extends CachingConfigurerSupport {
-    private static final Logger logger = LoggerFactory.getLogger(RedisConfigurer.class);
+public class RedisSingleConfigurer extends CachingConfigurerSupport {
+    private static final Logger logger = LoggerFactory.getLogger(RedisSingleConfigurer.class);
+
     @Autowired
-    private Environment environment;
-
-    @Value("${spring.redis.lettuce.pool.max-active}")
-    private Integer maxActive;
-    @Value("${spring.redis.lettuce.pool.max-idle}")
-    private Integer maxIdle;
-    @Value("${spring.redis.lettuce.pool.min-idle}")
-    private Integer minIdle;
-
-    @Bean
-    LettuceConnectionFactory lettuceConnectionFactory() {
-        // 连接池配置
-        GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();
-        poolConfig.setMaxIdle(maxIdle == null ? 8 : maxIdle);
-        poolConfig.setMinIdle(minIdle == null ? 1 : minIdle);
-       // poolConfig.setMaxTotal(maxTotal == null ? 8 : maxTotal);
-        poolConfig.setMaxWaitMillis(5000L);
-        LettucePoolingClientConfiguration lettucePoolingClientConfiguration = LettucePoolingClientConfiguration.builder()
-                .poolConfig(poolConfig)
-                .build();
-        // 单机redis
-      /*  RedisStandaloneConfiguration redisConfig = new RedisStandaloneConfiguration();
-        redisConfig.setHostName(host==null||"".equals(host)?"localhost":host.split(":")[0]);
-        redisConfig.setPort(Integer.valueOf(host==null||"".equals(host)?"6379":host.split(":")[1]));
-        if (password != null && !"".equals(password)) {
-            redisConfig.setPassword(password);
-        }*/
-
-        Set<RedisNode> nodes = new HashSet<>();
-        String[] hosts = environment.getProperty("spring.redis.cluster.nodes").split(",");
-        for (String h : hosts) {
-            h = h.replaceAll("\\s", "").replaceAll("\n", "");
-            if (!"".equals(h)) {
-                String host = h.split(":")[0];
-                int port = Integer.valueOf(h.split(":")[1]);
-                nodes.add(new RedisNode(host, port));
-            }
-        }
-
-        // 哨兵redis
-         RedisSentinelConfiguration redisConfig = new RedisSentinelConfiguration();
-         redisConfig.setMaster("mymaster");
-         redisConfig.setSentinels(nodes);
-
-        // 集群redis
-        //RedisClusterConfiguration redisConfig = new RedisClusterConfiguration();
-        //redisConfig.setClusterNodes(nodes);
-        // 跨集群执行命令时要遵循的最大重定向数量
-        //redisConfig.setMaxRedirects(3);
-       // redisConfig.setPassword(password);
-
-        return new LettuceConnectionFactory(redisConfig, lettucePoolingClientConfiguration);
-    }
-
-
+    private LettuceConnectionFactory lettuceConnectionFactory;
 
     /**
      * StringRedisTemplate继承自RedisTemplate,只能操作键值都是String类型的数据
      * @return
      */
     @Bean
-    public StringRedisTemplate stringRedisTemplate(@Autowired LettuceConnectionFactory lettuceConnectionFactory) {
+    public StringRedisTemplate stringRedisTemplate() {
         logger.info("StringRedisTemplate 初始化...");
         StringRedisTemplate redisTemplate = new StringRedisTemplate();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);
@@ -123,7 +58,7 @@ public class RedisConfigurer extends CachingConfigurerSupport {
      * @return
      */
     @Bean
-    public RedisTemplate<String,Object> redisTemplate(@Autowired LettuceConnectionFactory lettuceConnectionFactory){
+    public RedisTemplate<String,Object> redisTemplate(){
         logger.info("redisTemplate 初始化...");
         RedisTemplate<String,Object> redisTemplate = new RedisTemplate<String, Object>();
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);

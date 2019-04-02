@@ -38,6 +38,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+           <!-- <version>4.1.34.Final</version>-->
+        </dependency>
+
+
         <!-- redis依赖commons-pool 这个依赖一定要添加 父pom已经添加,此处注释掉-->
        <!-- <dependency>
             <groupId>org.apache.commons</groupId>
