@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.awt.print.Book;
 
 /**
  * Created by Jimmy. 2018/4/18  09:37
@@ -43,6 +46,10 @@ public class StringTest {
         book.setId(1L);
         book.setName("java");
         redisTemplate.opsForValue().set("book",book);*/
+
+        ValueOperations<String, Book> operations = redisTemplate.opsForValue();
+        operations.set("1",new Book());
+        operations.set("2",new Book());
     }
 
     //@Test
