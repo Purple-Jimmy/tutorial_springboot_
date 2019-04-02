@@ -1,0 +1,117 @@
+2019-04-02 21:26:21.889 |-INFO  [restartedMain] com.tutorial.SpringbootStart [50] [ LOGID: ]-| Starting SpringbootStart on jimmyMacBook-Pro.local with PID 2968 (/Users/zhoucheng/tutorial_space/tutorial_springboot_/tutorial_springboot/target/classes started by zhoucheng in /Users/zhoucheng/tutorial_space/tutorial_springboot_)
+2019-04-02 21:26:21.892 |-INFO  [restartedMain] com.tutorial.SpringbootStart [679] [ LOGID: ]-| The following profiles are active: dev
+2019-04-02 21:26:22.427 |-INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate [126] [ LOGID: ]-| Bootstrapping Spring Data repositories in DEFERRED mode.
+2019-04-02 21:26:22.485 |-INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate [182] [ LOGID: ]-| Finished Spring Data repository scanning in 54ms. Found 4 repository interfaces.
+2019-04-02 21:26:22.727 |-INFO  [restartedMain] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [330] [ LOGID: ]-| Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6982c196] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-02 21:26:23.162 |-INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [90] [ LOGID: ]-| Tomcat initialized with port(s): 8090 (http)
+2019-04-02 21:26:23.171 |-INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol [173] [ LOGID: ]-| Initializing ProtocolHandler ["http-nio-8090"]
+2019-04-02 21:26:23.178 |-INFO  [restartedMain] org.apache.catalina.core.StandardService [173] [ LOGID: ]-| Starting service [Tomcat]
+2019-04-02 21:26:23.179 |-INFO  [restartedMain] org.apache.catalina.core.StandardEngine [173] [ LOGID: ]-| Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-02 21:26:23.183 |-INFO  [restartedMain] org.apache.catalina.core.AprLifecycleListener [173] [ LOGID: ]-| The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/zhoucheng/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-04-02 21:26:23.243 |-INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [173] [ LOGID: ]-| Initializing Spring embedded WebApplicationContext
+2019-04-02 21:26:23.243 |-INFO  [restartedMain] org.springframework.web.context.ContextLoader [296] [ LOGID: ]-| Root WebApplicationContext: initialization completed in 1272 ms
+2019-04-02 21:26:23.372 |-INFO  [restartedMain] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [171] [ LOGID: ]-| Initializing ExecutorService
+2019-04-02 21:26:23.375 |-INFO  [restartedMain] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [171] [ LOGID: ]-| Initializing ExecutorService 'taskExecutor'
+2019-04-02 21:26:23.422 |-INFO  [MyExecutor-1] org.hibernate.jpa.internal.util.LogHelper [31] [ LOGID: ]-| HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-02 21:26:23.480 |-INFO  [MyExecutor-1] org.hibernate.Version [46] [ LOGID: ]-| HHH000412: Hibernate Core {5.3.7.Final}
+2019-04-02 21:26:23.481 |-INFO  [MyExecutor-1] org.hibernate.cfg.Environment [213] [ LOGID: ]-| HHH000206: hibernate.properties not found
+2019-04-02 21:26:23.528 |-INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource [110] [ LOGID: ]-| TUTORIAL-POOL - Starting...
+2019-04-02 21:26:23.579 |-INFO  [MyExecutor-1] org.hibernate.annotations.common.Version [49] [ LOGID: ]-| HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-04-02 21:26:23.782 |-INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource [123] [ LOGID: ]-| TUTORIAL-POOL - Start completed.
+2019-04-02 21:26:23.801 |-INFO  [MyExecutor-1] org.hibernate.dialect.Dialect [157] [ LOGID: ]-| HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-02 21:26:23.838 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1208] [ LOGID: ]-| Using default implementation for ThreadExecutor
+2019-04-02 21:26:23.850 |-INFO  [restartedMain] org.quartz.core.SchedulerSignalerImpl [61] [ LOGID: ]-| Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-04-02 21:26:23.850 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [229] [ LOGID: ]-| Quartz Scheduler v.2.3.0 created.
+2019-04-02 21:26:23.851 |-INFO  [restartedMain] org.quartz.simpl.RAMJobStore [155] [ LOGID: ]-| RAMJobStore initialized.
+2019-04-02 21:26:23.851 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [294] [ LOGID: ]-| Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-04-02 21:26:23.851 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1362] [ LOGID: ]-| Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-04-02 21:26:23.852 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1366] [ LOGID: ]-| Quartz scheduler version: 2.3.0
+2019-04-02 21:26:23.852 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [2287] [ LOGID: ]-| JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@31f6ccaf
+2019-04-02 21:26:23.855 |-INFO  [MyExecutor-1] org.hibernate.envers.boot.internal.EnversServiceImpl [92] [ LOGID: ]-| Envers integration enabled? : true
+2019-04-02 21:26:24.410 |-INFO  [MyExecutor-1] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [415] [ LOGID: ]-| Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-02 21:26:25.134 |-WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [236] [ LOGID: ]-| spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-02 21:26:25.321 |-INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [57] [ LOGID: ]-| LiveReload server is running on port 35729
+2019-04-02 21:26:25.343 |-INFO  [restartedMain] org.springframework.scheduling.quartz.SchedulerFactoryBean [726] [ LOGID: ]-| Starting Quartz Scheduler now
+2019-04-02 21:26:25.344 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [547] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-04-02 21:26:25.345 |-INFO  [restartedMain] org.springframework.data.repository.config.DeferredRepositoryInitializationListener [49] [ LOGID: ]-| Triggering deferred initialization of Spring Data repositories…
+2019-04-02 21:26:25.458 |-INFO  [restartedMain] org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [47] [ LOGID: ]-| HHH000397: Using ASTQueryTranslatorFactory
+2019-04-02 21:26:25.547 |-INFO  [restartedMain] org.springframework.data.repository.config.DeferredRepositoryInitializationListener [53] [ LOGID: ]-| Spring Data repositories initialized!
+2019-04-02 21:26:25.553 |-INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol [173] [ LOGID: ]-| Starting ProtocolHandler ["http-nio-8090"]
+2019-04-02 21:26:25.588 |-INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [204] [ LOGID: ]-| Tomcat started on port(s): 8090 (http) with context path ''
+2019-04-02 21:26:25.591 |-INFO  [restartedMain] com.tutorial.SpringbootStart [59] [ LOGID: ]-| Started SpringbootStart in 3.967 seconds (JVM running for 5.306)
+2019-04-02 21:26:25.591 |-INFO  [restartedMain] com.tutorial.listener.PropertiesListener [26] [ LOGID: ]-| load categoryCode.properties start....
+2019-04-02 21:27:18.140 |-INFO  [Thread-14] org.quartz.core.QuartzScheduler [585] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-04-02 21:27:18.143 |-INFO  [Thread-14] org.springframework.scheduling.quartz.SchedulerFactoryBean [844] [ LOGID: ]-| Shutting down Quartz Scheduler
+2019-04-02 21:27:18.143 |-INFO  [Thread-14] org.quartz.core.QuartzScheduler [666] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2019-04-02 21:27:18.143 |-INFO  [Thread-14] org.quartz.core.QuartzScheduler [585] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-04-02 21:27:18.144 |-INFO  [Thread-14] org.quartz.core.QuartzScheduler [740] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2019-04-02 21:27:18.144 |-INFO  [Thread-14] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [597] [ LOGID: ]-| Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-02 21:27:18.145 |-INFO  [Thread-14] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [208] [ LOGID: ]-| Shutting down ExecutorService 'taskExecutor'
+2019-04-02 21:27:18.146 |-INFO  [Thread-14] com.zaxxer.hikari.HikariDataSource [350] [ LOGID: ]-| TUTORIAL-POOL - Shutdown initiated...
+2019-04-02 21:27:18.148 |-INFO  [Thread-14] com.zaxxer.hikari.HikariDataSource [352] [ LOGID: ]-| TUTORIAL-POOL - Shutdown completed.
+2019-04-02 21:27:18.388 |-INFO  [restartedMain] com.tutorial.SpringbootStart [50] [ LOGID: ]-| Starting SpringbootStart on jimmyMacBook-Pro.local with PID 2968 (/Users/zhoucheng/tutorial_space/tutorial_springboot_/tutorial_springboot/target/classes started by zhoucheng in /Users/zhoucheng/tutorial_space/tutorial_springboot_)
+2019-04-02 21:27:18.388 |-INFO  [restartedMain] com.tutorial.SpringbootStart [679] [ LOGID: ]-| The following profiles are active: dev
+2019-04-02 21:27:18.839 |-INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate [126] [ LOGID: ]-| Bootstrapping Spring Data repositories in DEFERRED mode.
+2019-04-02 21:27:18.874 |-INFO  [restartedMain] org.springframework.data.repository.config.RepositoryConfigurationDelegate [182] [ LOGID: ]-| Finished Spring Data repository scanning in 34ms. Found 4 repository interfaces.
+2019-04-02 21:27:18.983 |-INFO  [restartedMain] org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker [330] [ LOGID: ]-| Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6982c196] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-02 21:27:19.120 |-INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [90] [ LOGID: ]-| Tomcat initialized with port(s): 8090 (http)
+2019-04-02 21:27:19.121 |-INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol [173] [ LOGID: ]-| Initializing ProtocolHandler ["http-nio-8090"]
+2019-04-02 21:27:19.122 |-INFO  [restartedMain] org.apache.catalina.core.StandardService [173] [ LOGID: ]-| Starting service [Tomcat]
+2019-04-02 21:27:19.122 |-INFO  [restartedMain] org.apache.catalina.core.StandardEngine [173] [ LOGID: ]-| Starting Servlet engine: [Apache Tomcat/9.0.16]
+2019-04-02 21:27:19.129 |-INFO  [restartedMain] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] [173] [ LOGID: ]-| Initializing Spring embedded WebApplicationContext
+2019-04-02 21:27:19.129 |-INFO  [restartedMain] org.springframework.web.context.ContextLoader [296] [ LOGID: ]-| Root WebApplicationContext: initialization completed in 702 ms
+2019-04-02 21:27:19.194 |-INFO  [restartedMain] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [171] [ LOGID: ]-| Initializing ExecutorService
+2019-04-02 21:27:19.197 |-INFO  [restartedMain] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [171] [ LOGID: ]-| Initializing ExecutorService 'taskExecutor'
+2019-04-02 21:27:19.209 |-INFO  [MyExecutor-1] org.hibernate.jpa.internal.util.LogHelper [31] [ LOGID: ]-| HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-04-02 21:27:19.221 |-INFO  [MyExecutor-1] com.zaxxer.hikari.HikariDataSource [110] [ LOGID: ]-| TUTORIAL-POOL - Starting...
+2019-04-02 21:27:19.370 |-INFO  [MyExecutor-1] com.zaxxer.hikari.HikariDataSource [123] [ LOGID: ]-| TUTORIAL-POOL - Start completed.
+2019-04-02 21:27:19.371 |-INFO  [MyExecutor-1] org.hibernate.dialect.Dialect [157] [ LOGID: ]-| HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-04-02 21:27:19.376 |-INFO  [MyExecutor-1] org.hibernate.envers.boot.internal.EnversServiceImpl [92] [ LOGID: ]-| Envers integration enabled? : true
+2019-04-02 21:27:19.388 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1208] [ LOGID: ]-| Using default implementation for ThreadExecutor
+2019-04-02 21:27:19.389 |-INFO  [restartedMain] org.quartz.core.SchedulerSignalerImpl [61] [ LOGID: ]-| Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2019-04-02 21:27:19.389 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [229] [ LOGID: ]-| Quartz Scheduler v.2.3.0 created.
+2019-04-02 21:27:19.389 |-INFO  [restartedMain] org.quartz.simpl.RAMJobStore [155] [ LOGID: ]-| RAMJobStore initialized.
+2019-04-02 21:27:19.389 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [294] [ LOGID: ]-| Scheduler meta-data: Quartz Scheduler (v2.3.0) 'quartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2019-04-02 21:27:19.389 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1362] [ LOGID: ]-| Quartz scheduler 'quartzScheduler' initialized from an externally provided properties instance.
+2019-04-02 21:27:19.390 |-INFO  [restartedMain] org.quartz.impl.StdSchedulerFactory [1366] [ LOGID: ]-| Quartz scheduler version: 2.3.0
+2019-04-02 21:27:19.390 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [2287] [ LOGID: ]-| JobFactory set to: org.springframework.scheduling.quartz.SpringBeanJobFactory@6c0123e9
+2019-04-02 21:27:19.455 |-INFO  [MyExecutor-1] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [415] [ LOGID: ]-| Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-04-02 21:27:19.756 |-WARN  [restartedMain] org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration [236] [ LOGID: ]-| spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-04-02 21:27:19.893 |-INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [57] [ LOGID: ]-| LiveReload server is running on port 35729
+2019-04-02 21:27:19.906 |-INFO  [restartedMain] org.springframework.scheduling.quartz.SchedulerFactoryBean [726] [ LOGID: ]-| Starting Quartz Scheduler now
+2019-04-02 21:27:19.906 |-INFO  [restartedMain] org.quartz.core.QuartzScheduler [547] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED started.
+2019-04-02 21:27:19.906 |-INFO  [restartedMain] org.springframework.data.repository.config.DeferredRepositoryInitializationListener [49] [ LOGID: ]-| Triggering deferred initialization of Spring Data repositories…
+2019-04-02 21:27:19.969 |-INFO  [restartedMain] org.hibernate.hql.internal.QueryTranslatorFactoryInitiator [47] [ LOGID: ]-| HHH000397: Using ASTQueryTranslatorFactory
+2019-04-02 21:27:20.017 |-INFO  [restartedMain] org.springframework.data.repository.config.DeferredRepositoryInitializationListener [53] [ LOGID: ]-| Spring Data repositories initialized!
+2019-04-02 21:27:20.020 |-INFO  [restartedMain] org.apache.coyote.http11.Http11NioProtocol [173] [ LOGID: ]-| Starting ProtocolHandler ["http-nio-8090"]
+2019-04-02 21:27:20.022 |-INFO  [restartedMain] org.springframework.boot.web.embedded.tomcat.TomcatWebServer [204] [ LOGID: ]-| Tomcat started on port(s): 8090 (http) with context path ''
+2019-04-02 21:27:20.023 |-INFO  [restartedMain] com.tutorial.SpringbootStart [59] [ LOGID: ]-| Started SpringbootStart in 1.718 seconds (JVM running for 59.739)
+2019-04-02 21:27:20.023 |-INFO  [restartedMain] com.tutorial.listener.PropertiesListener [26] [ LOGID: ]-| load categoryCode.properties start....
+2019-04-02 21:27:20.026 |-INFO  [restartedMain] org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener [56] [ LOGID: ]-| Condition evaluation unchanged
+2019-04-02 21:27:55.396 |-INFO  [Thread-28] org.quartz.core.QuartzScheduler [585] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-04-02 21:27:55.398 |-INFO  [Thread-28] org.springframework.scheduling.quartz.SchedulerFactoryBean [844] [ LOGID: ]-| Shutting down Quartz Scheduler
+2019-04-02 21:27:55.398 |-INFO  [Thread-28] org.quartz.core.QuartzScheduler [666] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED shutting down.
+2019-04-02 21:27:55.398 |-INFO  [Thread-28] org.quartz.core.QuartzScheduler [585] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED paused.
+2019-04-02 21:27:55.398 |-INFO  [Thread-28] org.quartz.core.QuartzScheduler [740] [ LOGID: ]-| Scheduler quartzScheduler_$_NON_CLUSTERED shutdown complete.
+2019-04-02 21:27:55.399 |-INFO  [Thread-28] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean [597] [ LOGID: ]-| Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-04-02 21:27:55.399 |-INFO  [Thread-28] org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor [208] [ LOGID: ]-| Shutting down ExecutorService 'taskExecutor'
+2019-04-02 21:27:55.400 |-INFO  [Thread-28] com.zaxxer.hikari.HikariDataSource [350] [ LOGID: ]-| TUTORIAL-POOL - Shutdown initiated...
+2019-04-02 21:27:55.404 |-INFO  [Thread-28] com.zaxxer.hikari.HikariDataSource [352] [ LOGID: ]-| TUTORIAL-POOL - Shutdown completed.
